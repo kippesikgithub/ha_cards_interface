@@ -1,0 +1,219 @@
+type: custom:vertical-stack-in-card
+horizontal: false
+cards:
+  - type: custom:stack-in-card
+    cards:
+      - type: custom:mushroom-template-card
+        primary: Overloop2
+        icon: hue:room-other
+        icon_color: teal
+        layout: horizontal
+        entity: light.overloop2_hue
+        secondary: >-
+          {{states('sensor.overloop2_motion_hue_temperature') }}°C |
+          {{states('sensor.overloop2_motion_hue_illuminance_lux') | int }}lux
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-tablet/overloop2
+        fill_container: true
+        multiline_secondary: false
+        card_mod:
+          style: |
+            ha-card {
+              z-index: 1;
+            }
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.overloop2_motion_hue_temperature
+            name: Temperature
+        color_thresholds:
+          - value: -20
+            color: '#264CFF'
+          - value: -15
+            color: '#3FA0FF'
+          - value: -10
+            color: '#72D8FF'
+          - value: -5
+            color: '#AAF7FF'
+          - value: 0
+            color: '#E0FFFF'
+          - value: 5
+            color: '#FFFFBF'
+          - value: 10
+            color: '#FFE099'
+          - value: 15
+            color: '#FFAD72'
+          - value: 20
+            color: '#F76D5E'
+          - value: 25
+            color: '#D82632'
+          - value: 30
+            color: '#A50021'
+        height: 50
+        hours_to_show: 24
+        line_width: 2
+        font_size: 50
+        animate: true
+        show:
+          name: false
+          icon: false
+          state: false
+          legend: false
+          fill: fade
+          labels: false
+          labels_secondary: false
+          points: false
+        card_mod:
+          style: |
+            ha-card {
+              position: absolute !important;
+              height: 100%;
+              width: 100%;
+              top: 0px;
+              --ha-card-border-width: 0;
+            }
+            ha-card:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, var(--card-background-color) 20%, transparent);
+            }
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.overloop2_hue
+            layout: vertical
+            icon: |-
+              {% if is_state('light.overloop2_hue', 'on') %}
+              hue:single-spot
+              {% else %}
+              hue:single-spot
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.overloop2_hue', 'on') %}
+                yellow
+              {% endif %}
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              target:
+                entity_id: input_boolean.node_red_overloop2_automations
+              data: {}
+            card_mod:
+              style:
+                mushroom-shape-icon$: >
+                  {% if is_state('input_boolean.node_red_overloop2_automations',
+                  'on') %}
+
+                  .shape {
+                    --shape-animation: ping 3s infinite;
+                  }
+
+                  @keyframes ping {
+                    0% {
+                      box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 5px 5px transparent;
+                    }
+                  }
+
+                  {% elif
+                  is_state('input_boolean.node_red_overloop2_automations',
+                  'off') %}
+
+                  {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:smoke
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                red
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.rookmelder_overloop2_kaku_smoke
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:motion-sensor
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.overloop2_motion_hue_occupancy
+            tap_action:
+              action: more-info
+        alignment: end
+        card_mod:
+          style:
+            mushroom-template-chip: |
+              ha-card {
+                --ha-card-box-shadow: none;
+                --chip-background: none;
+                --chip-box-shadow: none;
+                --chip-spacing: 0;
+                : -36px;
+              } 
+            mushroom-template-chip:nth-child(1)$: >
+              {% if
+              is_state('binary_sensor.rookmelder_overloop2_kaku_smoke','on') %}
+
+              ha-state-icon {
+                animation: clip 2s linear infinite;
+              }
+
+              @keyframes clip {
+                50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
+              }
+
+              .shape {
+                --shape-animation: motion 2s linear infinite;
+              }
+
+              @keyframes motion {
+                0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
+                50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
+              }
+
+              }
+
+              {% else %}
+            mushroom-template-chip:nth-child(2)$: >
+              {% if
+              is_state('binary_sensor.overloop2_motion_hue_occupancy','on') %}
+
+              ha-state-icon {
+                animation: clip 2s linear infinite;
+              }
+
+              @keyframes clip {
+                50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
+              }
+
+              .shape {
+                --shape-animation: motion 2s linear infinite;
+              }
+
+              @keyframes motion {
+                0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
+                50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
+              }
+
+              }
+
+              {% else %}
+
+
+              {% endif %}
+
+              }
