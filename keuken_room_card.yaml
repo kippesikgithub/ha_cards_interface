@@ -1,0 +1,154 @@
+type: custom:vertical-stack-in-card
+mode: vertical
+cards:
+  - type: custom:mushroom-template-card
+    primary: Keuken
+    icon: mdi:countertop
+    icon_color: teal
+    layout: horizontal
+    entity: light.woonkamer_keuken_dimmer_6sp_ecodim
+    secondary: >-
+      {{states('sensor.woonkamer_motion_hue_temperature') }}°C |
+      {{states('sensor.woonkamer_motion_hue_illuminance_lux') | int }}lux |
+      {{states('sensor.keuken_total_energy_watt') | int }}W
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/keuken
+  - type: custom:vertical-stack-in-card
+    horizontal: true
+    cards:
+      - type: custom:mushroom-template-card
+        entity: light.woonkamer_keuken_dimmer_6sp_ecodim
+        layout: vertical
+        icon: |-
+          {% if is_state('light.woonkamer_keuken_dimmer_6sp_ecodim', 'on') %}
+          hue:bulb-group-ceiling-flush-circular
+          {% else %}
+          hue:bulb-group-ceiling-flush-circular
+          {% endif %}
+        icon_color: |-
+          {% if is_state('light.woonkamer_keuken_dimmer_6sp_ecodim', 'on') %}
+            yellow
+          {% endif %}
+  - type: custom:mushroom-chips-card
+    chips:
+      - type: template
+        icon: mdi:coffee-maker
+        icon_color: |2-
+            {% if states('sensor.shelly1pm_koffie_power') | float > 2 %}
+            brown
+            {% else %}
+            disabled
+            {% endif %}
+        entity: sensor.shelly1pm_koffie_power
+        tap_action:
+          action: more-info
+      - type: template
+        icon: mdi:dishwasher
+        icon_color: |2-
+            {% if is_state(entity, 'on') %}
+            blue
+            {% else %}
+            disabled
+            {% endif %}
+        entity: binary_sensor.vaatwasser_status
+        tap_action:
+          action: more-info
+      - type: conditional
+        conditions:
+          - entity: sensor.espresense_keuken_count
+            state_not: '0'
+        chip:
+          type: entity
+          icon: mdi:human-greeting
+          icon_color: green
+          entity: sensor.espresense_keuken_count
+          tap_action:
+            action: more-info
+      - type: template
+        icon: |-
+          {% if is_state(entity, 'off') %}
+          mdi:window-closed
+          {% else %}
+          mdi:window-open
+          {% endif %}
+        icon_color: |2-
+            {% if is_state(entity, 'off') %}
+            green
+            {% else %}
+            red
+            {% endif %}
+        entity: binary_sensor.keuken_raam_aqara_contact
+        tap_action:
+          action: more-info
+      - type: template
+        icon: |-
+          {% if is_state(entity, 'off') %}
+          mdi:door-sliding-lock
+          {% else %}
+          mdi:door-sliding-open
+          {% endif %}
+        icon_color: |2-
+            {% if is_state(entity, 'off') %}
+            green
+            {% else %}
+            red
+            {% endif %}
+        entity: binary_sensor.achterdeur_aqara_contact
+        tap_action:
+          action: more-info
+    alignment: end
+    card_mod:
+      style:
+        mushroom-template-chip: |
+          ha-card {
+            --ha-card-box-shadow: none;
+            --chip-background: none;
+            --chip-box-shadow: none;
+            --chip-spacing: 0;
+            : -36px;
+          } 
+        mushroom-template-chip:nth-child(1)$: |
+          {% if states('sensor.shelly1pm_koffie_power') | float > 2 %}
+          ha-state-icon {
+            animation: java 4s linear infinite;
+          }
+          @keyframes java {
+            0%, 80%, 100% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 0 100%); }
+            10% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 79%, 63% 76%, 67% 70%, 66% 54%, 42% 55%, 42% 70%, 47% 77%, 55% 80%, 57% 100%, 0 100%); }
+            15% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 79%, 63% 76%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 47% 77%, 55% 80%, 55% 100%, 0 100%); }
+            20% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 76%, 63% 76%, 67% 70%, 66% 54%, 42% 55%, 42% 70%, 47% 76%, 55% 76%, 57% 100%, 0 100%); }
+            25% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 76%, 63% 76%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 47% 76%, 55% 76%, 56% 100%, 0 100%); }
+            30% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 73%, 64% 73%, 66% 70%, 66% 55%, 42% 55%, 42% 69%, 44% 73%, 55% 73%, 57% 100%, 0 100%); }
+            35% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 73%, 64% 73%, 66% 70%, 66% 55%, 42% 54%, 42% 69%, 44% 73%, 55% 73%, 56% 100%, 0 100%); }
+            40% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 70%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 57% 70%, 57% 100%, 0 100%); }
+            45% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 70%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 55% 70%, 56% 100%, 0 100%); }
+            50% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 66%, 67% 65%, 66% 54%, 42% 54%, 42% 65%, 57% 65%, 57% 100%, 0 100%); }
+            55% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 66%, 67% 65%, 66% 54%, 42% 54%, 42% 65%, 55% 65%, 56% 100%, 0 100%); }
+            60% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 60%, 66% 60%, 66% 54%, 42% 54%, 42% 60%, 57% 60%, 57% 100%, 0 100%); }
+            65% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 60%, 66% 60%, 66% 54%, 42% 54%, 42% 60%, 55% 60%, 56% 100%, 0 100%); }
+            70% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 56%, 66% 56%, 66% 54%, 42% 54%, 42% 56%, 57% 56%, 57% 100%, 0 100%); }
+            75% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 56%, 66% 56%, 66% 54%, 42% 54%, 42% 56%, 55% 56%, 55% 100%, 0 100%); }
+          }
+          {% else %}
+
+          {% endif %}
+          }
+        mushroom-template-chip:nth-child(2)$: |
+          {% if is_state('binary_sensor.vaatwasser_status','on') %}
+          ha-state-icon {
+            animation: bounce 1.5s ease-in-out infinite, wash 1s ease-in-out infinite;
+            transform-origin: 50% 75%;
+          }
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0); } 
+            40% { transform: translateY(-1.2px) rotate(5deg); } 
+            60% { transform: translateY(-1.1px) rotate(-4deg); } 
+          } 
+          @keyframes wash {
+            50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 36% 74%, 31% 43%, 61% 40%, 71% 69%, 62% 78%, 36% 73%, 35% 100%, 100% 100%, 100% 0); }
+          }
+          {% else %}
+
+          {% endif %}
+          }
