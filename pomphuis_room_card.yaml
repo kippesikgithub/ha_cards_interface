@@ -1,0 +1,261 @@
+type: custom:vertical-stack-in-card
+horizontal: false
+cards:
+  - type: custom:stack-in-card
+    cards:
+      - type: custom:mushroom-template-card
+        primary: Pomphuis
+        icon: mdi:greenhouse
+        icon_color: green
+        layout: horizontal
+        entity: sensor.esp_pomphuis_esp_pomphuis_temperature
+        secondary: >-
+          🌡️{{states('input_number.esp_pomphuis_temperature_last') }}°C | 
+          💧{{states('input_number.esp_pomphuis_humidity_last') | int }}% |
+          💡{{states('input_number.esp_pomphuis_illuminance_last') | int }} lux
+        tap_action:
+          action: more-info
+        fill_container: true
+        multiline_secondary: false
+        card_mod:
+          style: |
+            ha-card {
+              z-index: 1;
+            }
+      - type: custom:mini-graph-card
+        entities:
+          - entity: input_number.esp_pomphuis_temperature_last
+            name: Temperature
+          - entity: input_number.esp_pomphuis_humidity_last
+            name: Humidity
+            color: blue
+            y_axis: secondary
+        color_thresholds:
+          - value: -20
+            color: '#264CFF'
+          - value: -15
+            color: '#3FA0FF'
+          - value: -10
+            color: '#72D8FF'
+          - value: -5
+            color: '#AAF7FF'
+          - value: 0
+            color: '#E0FFFF'
+          - value: 5
+            color: '#FFFFBF'
+          - value: 10
+            color: '#FFE099'
+          - value: 15
+            color: '#FFAD72'
+          - value: 20
+            color: '#F76D5E'
+          - value: 25
+            color: '#D82632'
+          - value: 30
+            color: '#A50021'
+        height: 50
+        hours_to_show: 24
+        line_width: 2
+        font_size: 50
+        animate: true
+        show:
+          name: false
+          icon: false
+          state: false
+          legend: false
+          fill: fade
+          labels: false
+          labels_secondary: false
+          points: false
+        card_mod:
+          style: |
+            ha-card {
+              position: absolute !important;
+              height: 100%;
+              width: 100%;
+              top: 0px;
+              --ha-card-border-width: 0;
+            }
+            ha-card:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, var(--card-background-color) 20%, transparent);
+            }
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: switch.esp_pomphuis_pomphuis_waterpomp
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('switch.esp_pomphuis_pomphuis_waterpomp', 'on') %}
+              mdi:water-pump
+              {% else %}
+              mdi:water-pump-off
+              {% endif %}
+            icon_color: |-
+              {% if is_state('switch.esp_pomphuis_pomphuis_waterpomp', 'on') %}
+                yellow
+              {% endif %}
+      - type: custom:vertical-stack-in-card
+        horizontal: false
+        cards:
+          - type: custom:apexcharts-card
+            chart_type: radialBar
+            experimental:
+              color_threshold: true
+            apex_config:
+              legend:
+                show: false
+              chart:
+                height: 250px
+              plotOptions:
+                radialBar:
+                  startAngle: -90
+                  endAngle: 90
+                  dataLabels:
+                    name:
+                      show: true
+                      offsetY: 35
+                    value:
+                      show: true
+                      offsetY: -25
+                    total:
+                      show: true
+                      label: Batterij
+                      formatter: |
+                        EVAL:(w) => {
+                          return w.globals.seriesTotals + '%';
+                        }
+                  hollow:
+                    size: 45%
+                    imageWidth: 70
+                    imageHeight: 70
+                    imageOffsetY: -40
+                    imageClipped: false
+                  track:
+                    show: true
+                    strokeWidth: 175%
+                    dropShadow:
+                      enabled: true
+                      top: 2
+                      left: 0
+                      blur: 4
+                      opacity: 0.15
+              stroke:
+                dashArray: 5
+                lineCap: butt
+            series:
+              - entity: input_number.esp_pomphuis_battery_percentage_last
+                show:
+                  header_color_threshold: true
+                color_threshold:
+                  - color: '#B20000'
+                    value: 10
+                  - color: '#FF9912'
+                    value: 15
+                  - color: '#FFFF00'
+                    value: 25
+                  - color: '#98FB98'
+                    value: 60
+                  - color: '#008C23'
+                    value: 100
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'on') %}
+              mdi:water-pump
+              {% else %}
+              mdi:water-pump-off
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                disabled
+                {% endif %}
+            entity: switch.esp_pomphuis_pomphuis_waterpomp
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'on') %}
+              mdi:update
+              {% else %}
+              mdi:update
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
+            entity: input_boolean.esp_pomphuis_ota_update
+            tap_action:
+              action: more-info
+          - type: template
+            content: '{{states(''input_number.esp_pomphuis_battery_voltage_last'') }} v'
+            entity: input_number.esp_pomphuis_battery_voltage_last
+            icon: |2
+                        {% set bl = states('input_number.esp_pomphuis_battery_percentage_last') | int %}
+                        {% if bl < 10 %} mdi:battery-outline
+                        {% elif bl < 20 %} mdi:battery-10
+                        {% elif bl < 30 %} mdi:battery-20
+                        {% elif bl < 40 %} mdi:battery-30
+                        {% elif bl < 50 %} mdi:battery-40
+                        {% elif bl < 60 %} mdi:battery-50
+                        {% elif bl < 70 %} mdi:battery-60
+                        {% elif bl < 80 %} mdi:battery-70
+                        {% elif bl < 90 %} mdi:battery-80
+                        {% elif bl < 100 %} mdi:battery-90
+                        {% elif bl == 100 %} mdi:battery
+                        {% else %} mdi:battery-unknown
+                        {% endif %}
+            icon_color: |2-
+                        {% set bl = states('input_number.esp_pomphuis_battery_percentage_last') | int %}
+                        {% if bl < 10 %} red
+                        {% elif bl < 20 %} red
+                        {% elif bl < 30 %} red
+                        {% elif bl < 40 %} orange
+                        {% elif bl < 50 %} orange
+                        {% elif bl < 60 %} green
+                        {% elif bl < 70 %} green
+                        {% elif bl < 80 %} green
+                        {% elif bl < 90 %} green
+                        {% elif bl < 100 %} green
+                        {% elif bl == 100 %} green
+                        {% else %} grey
+                        {% endif %}
+            tap_action:
+              action: more-info
+        alignment: end
+        card_mod:
+          style: |
+            ha-card {
+                --ha-card-box-shadow: none;
+                --chip-background: none;
+                --chip-box-shadow: none;
+                --chip-spacing: 0;
+              : -36px;
+            } 
+            mushroom-template-chip:nth-child(1)$: |
+              {% if is_state('switch.speelhuis_waterpomp','on') %}
+              ha-state-icon {
+                animation: drip 2s infinite; 
+              }
+              @keyframes drip {
+                0%, 100% { clip-path: inset(0 0 0 0); }
+                15%, 85% { clip-path: polygon(0 0, 100% 0, 100% 57%, 64% 57%, 64% 100%, 0 100%); }
+              }
+              }
+              {% else %}
+
+              {% endif %}
+              }
