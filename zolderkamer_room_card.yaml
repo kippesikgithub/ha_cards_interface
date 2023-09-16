@@ -1,0 +1,240 @@
+type: custom:vertical-stack-in-card
+horizontal: false
+cards:
+  - type: custom:stack-in-card
+    cards:
+      - type: custom:mushroom-template-card
+        primary: Zolderkamer
+        icon: hue:room-office
+        icon_color: teal
+        layout: horizontal
+        entity: light.zolderkamer_hue
+        secondary: >-
+          🌡️{{states('sensor.zolderkamer_temperature') }}°C | 
+          💧{{states('sensor.zolderkamer_humidity') | int }}% |
+          💡{{states('sensor.zolderkamer_illuminance') | int }}lux
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-tablet/zolderkamer
+        fill_container: true
+        multiline_secondary: false
+        card_mod:
+          style: |
+            ha-card {
+              z-index: 1;
+            }
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.zolderkamer_temperature
+            name: Temperature
+          - entity: sensor.zolderkamer_humidity
+            name: Humidity
+            color: blue
+            y_axis: secondary
+        color_thresholds:
+          - value: -20
+            color: '#264CFF'
+          - value: -15
+            color: '#3FA0FF'
+          - value: -10
+            color: '#72D8FF'
+          - value: -5
+            color: '#AAF7FF'
+          - value: 0
+            color: '#E0FFFF'
+          - value: 5
+            color: '#FFFFBF'
+          - value: 10
+            color: '#FFE099'
+          - value: 15
+            color: '#FFAD72'
+          - value: 20
+            color: '#F76D5E'
+          - value: 25
+            color: '#D82632'
+          - value: 30
+            color: '#A50021'
+        height: 50
+        hours_to_show: 24
+        line_width: 2
+        font_size: 50
+        animate: true
+        show:
+          name: false
+          icon: false
+          state: false
+          legend: false
+          fill: fade
+          labels: false
+          labels_secondary: false
+          points: false
+        card_mod:
+          style: |
+            ha-card {
+              position: absolute !important;
+              height: 100%;
+              width: 100%;
+              top: 0px;
+              --ha-card-border-width: 0;
+            }
+            ha-card:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, var(--card-background-color) 20%, transparent);
+            }
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.zolderkamer_hue
+            layout: vertical
+            icon: |-
+              {% if is_state('light.zolderkamer_hue', 'on') %}
+              hue:pendant-round
+              {% else %}
+              hue:pendant-round
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.zolderkamer_hue', 'on') %}
+                yellow
+              {% endif %}
+          - type: custom:mushroom-template-card
+            entity: light.wled_monitor_master
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('light.wled_monitor', 'on') %}
+              mdi:television-ambient-light
+              {% else %}
+              mdi:television-ambient-light
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.wled_monitor', 'on') %}
+                yellow
+              {% endif %}
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.wled_lines
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('light.wled_lines', 'on') %}
+              mdi:chart-timeline-variant
+              {% else %}
+              mdi:chart-timeline-variant
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.wled_lines', 'on') %}
+                yellow
+              {% endif %}
+          - type: custom:mushroom-template-card
+            entity: light.wled_kerstboom
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('light.wled_kerstboom', 'on') %}
+              mdi:pine-tree-box
+              {% else %}
+              mdi:pine-tree-box
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.wled_kerstboom', 'on') %}
+                yellow
+              {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:motion-sensor
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.zolderkamer_occupancy
+            tap_action:
+              action: more-info
+          - type: entity
+            entity: sensor.ikea_vindriktning_zolder_pm25
+            icon_color: blue
+          - type: conditional
+            conditions:
+              - entity: sensor.espresense_zolderkamer_count
+                state_not: '0'
+            chip:
+              type: entity
+              icon: mdi:human-greeting
+              icon_color: green
+              entity: sensor.espresense_zolderkamer_count
+              tap_action:
+                action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:window-closed
+              {% else %}
+              mdi:window-open
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'off') %}
+                green
+                {% else %}
+                red
+                {% endif %}
+            entity: binary_sensor.zolder_kamer_raam_voor_aqara_contact
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:window-closed
+              {% else %}
+              mdi:window-open
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'off') %}
+                green
+                {% else %}
+                red
+                {% endif %}
+            entity: binary_sensor.zolder_kamer_raam_achter_aqara_contact
+            tap_action:
+              action: more-info
+        alignment: end
+        card_mod:
+          style:
+            mushroom-template-chip: |
+              ha-card {
+                --ha-card-box-shadow: none;
+                --chip-background: none;
+                --chip-box-shadow: none;
+                --chip-spacing: 0;
+                : -36px;
+              } 
+            mushroom-template-chip:nth-child(1)$: |
+              {% if is_state('binary_sensor.zolderkamer_occupancy','on') %}
+              ha-state-icon {
+                animation: clip 2s linear infinite;
+              }
+              @keyframes clip {
+                50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
+              }
+              .shape {
+                --shape-animation: motion 2s linear infinite;
+              }
+              @keyframes motion {
+                0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
+                50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
+              }
+              }
+              {% else %}
+
+              {% endif %}
+              }
