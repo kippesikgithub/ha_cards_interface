@@ -1,8 +1,8 @@
 # Home Assistant Cards
 
-### Top Chips Current card
+#### Top Chips Current card
 top_chips_card_current_overview.yaml
 
 
-### Top Persons card
+#### Top Persons card
 top_persons_card.yaml
