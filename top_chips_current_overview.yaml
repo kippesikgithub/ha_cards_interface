@@ -1,0 +1,187 @@
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    icon: |-
+      {% if states('sensor.achtertuin_buitentemperatuur') | float < 0 %}
+      mdi:temperature-celsius
+      {% elif states('sensor.achtertuin_buitentemperatuur') | float > 0 %}
+      mdi:temperature-celsius
+      {% else %}
+      mdi:temperature-celsius
+      {% endif %}
+    icon_color: |-
+      {% if states('sensor.achtertuin_buitentemperatuur') | float < 10 %}
+      blue
+      {% elif states('sensor.achtertuin_buitentemperatuur') | float > 20 %}
+      red
+      {% else %}
+      orange
+      {% endif %}
+    content: '{{ states("sensor.achtertuin_buitentemperatuur") }}'
+    entity: sensor.achtertuin_buitentemperatuur
+    tap_action:
+      action: more-info
+  - type: template
+    icon: |-
+      {% if is_state(entity, 'off') %}
+      mdi:door-closed-lock
+      {% else %}
+      mdi:door-open
+      {% endif %}
+    icon_color: |2-
+        {% if is_state(entity, 'off') %}
+        green
+        {% else %}
+        red
+        {% endif %}
+    entity: binary_sensor.voordeur_aqara_contact
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/deurrraam
+  - type: template
+    icon: |-
+      {% if is_state(entity, 'off') %}
+      mdi:door-sliding-lock
+      {% else %}
+      mdi:door-sliding-open
+      {% endif %}
+    icon_color: |2-
+        {% if is_state(entity, 'off') %}
+        green
+        {% else %}
+        red
+        {% endif %}
+    entity: binary_sensor.achterdeur_aqara_contact
+    tap_action:
+      action: more-info
+  - type: template
+    icon: |-
+      {% if is_state(entity, 'off') %}
+      mdi:garage-variant-lock
+      {% else %}
+      mdi:garage-open-variant
+      {% endif %}
+    icon_color: |2-
+        {% if is_state(entity, 'off') %}
+        green
+        {% else %}
+        red
+        {% endif %}
+    entity: binary_sensor.garage_garagedeur_aqara_contact
+    tap_action:
+      action: more-info
+  - type: template
+    icon: |-
+      {% if states('sensor.p1_meter_current_power') | float < 0 %}
+      mdi:transmission-tower-import
+      {% elif states('sensor.p1_meter_current_power') | float > 0 %}
+      mdi:transmission-tower-export
+      {% else %}
+      mdi:transmission-tower-export
+      {% endif %}
+    icon_color: |-
+      {% if states('sensor.p1_meter_current_power') | float < 0 %}
+      green
+      {% elif states('sensor.p1_meter_current_power') | float > 0 %}
+      red
+      {% else %}
+      grey
+      {% endif %}
+    content: '{{ states("sensor.p1_meter_current_power") }} W'
+    entity: sensor.p1_meter_current_power
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:solar-power-variant
+    icon_color: >-
+      {% if states('sensor.envoy_122217065650_current_power_production') | float
+      > 0.1 %}
+
+      yellow
+
+      {% else %}
+
+      grey
+
+      {% endif %}
+    content: '{{ states("sensor.envoy_122217065650_current_power_production") }} W'
+    entity: sensor.envoy_122217065650_current_power_production
+    tap_action:
+      action: more-info
+  - type: conditional
+    conditions:
+      - entity: light.wled_vuilniswagen
+        state: 'on'
+    chip:
+      type: template
+      icon: |-
+        {% if is_state(entity, 'on') %}
+        mdi:trash-can-outline
+        {% else %}
+        mdi:recycle
+        {% endif %}
+      icon_color: |2-
+          {% if is_state('sensor.avalex_tomorrow', 'None') %}
+          yellow
+          {% elif is_state('sensor.avalex_tomorrow', 'pmd') %}
+          #FF00FF
+          {% elif is_state('sensor.avalex_tomorrow', 'papier') %}
+          blue
+          {% elif is_state('sensor.avalex_tomorrow', 'gft') %}
+          green
+          {% elif is_state('sensor.avalex_tomorrow', 'restafval') %}
+          yellow
+          {% else %}
+          disabled
+          {% endif %}
+      entity: light.wled_vuilniswagen
+      tap_action:
+        action: toggle
+  - type: template
+    icon: |-
+      {% if is_state(entity, 'on') %}
+      mdi:fuse
+      {% else %}
+      mdi:fuse-alert
+      {% endif %}
+    icon_color: |2-
+        {% if is_state(entity, 'on') %}
+        disabled
+        {% else %}
+        red
+        {% endif %}
+    entity: switch.away_mode_switches
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/switches
+alignment: center
+card_mod:
+  style:
+    mushroom-template-chip: |
+      ha-card {
+        --ha-card-box-shadow: none;
+        --chip-background: none;
+        --chip-box-shadow: none;
+        --chip-spacing: 0;
+        : -36px;
+      } 
+    mushroom-template-chip:nth-child(6)$: >
+      {% if states('sensor.envoy_122217065650_current_power_production') | float
+      > 0.1 %}
+
+      ha-state-icon {
+        animation: rays 2s infinite;
+      }
+
+
+      @keyframes rays {
+        0%, 100% { clip-path: inset(0 0 0 0); }
+        80% { clip-path: polygon(100% 99%, 0% 99%, 11% 50%, 57% 48%, 56% 31%, 41% 31%, 33% 25%, 29% 18%, 27% 11%, 27% 6%, 74% 6%, 73% 15%, 69% 23%, 62% 29%, 71% 42%, 87% 47%); }
+      }
+
+      {% else %}
+
+
+      {% endif %}
+
+      }
