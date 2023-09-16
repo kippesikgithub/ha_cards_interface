@@ -1,0 +1,183 @@
+type: custom:vertical-stack-in-card
+mode: vertical
+cards:
+  - type: custom:mushroom-template-card
+    primary: Speelhuis
+    icon: mdi:home-heart
+    icon_color: pink
+    layout: horizontal
+    entity: sensor.achtertuin_buitentemperatuur
+    secondary: Sophie
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/speelhuis
+  - type: custom:vertical-stack-in-card
+    horizontal: true
+    cards:
+      - type: custom:mushroom-template-card
+        entity: light.esp_speelhuis_ledstrip
+        layout: vertical
+        icon: |-
+          {% if is_state('light.esp_speelhuis_ledstrip', 'on') %}
+          hue:single-spot
+          {% else %}
+          hue:single-spot
+          {% endif %}
+        icon_color: |-
+          {% if is_state('light.esp_speelhuis_ledstrip', 'on') %}
+            yellow
+          {% endif %}
+      - type: custom:mushroom-template-card
+        entity: switch.esp_speelhuis_waterpomp
+        layout: vertical
+        use_light_color: true
+        icon: |-
+          {% if is_state('switch.esp_speelhuis_waterpomp', 'on') %}
+          mdi:water-pump
+          {% else %}
+          mdi:water-pump-off
+          {% endif %}
+        icon_color: |-
+          {% if is_state('switch.esp_speelhuis_waterpomp', 'on') %}
+            yellow
+          {% endif %}
+  - type: custom:vertical-stack-in-card
+    horizontal: true
+    cards:
+      - type: custom:apexcharts-card
+        chart_type: radialBar
+        experimental:
+          color_threshold: true
+        apex_config:
+          legend:
+            show: false
+          chart:
+            height: 250px
+          plotOptions:
+            radialBar:
+              startAngle: -90
+              endAngle: 90
+              dataLabels:
+                name:
+                  show: true
+                  offsetY: 35
+                value:
+                  show: true
+                  offsetY: -25
+                total:
+                  show: true
+                  label: Thuis Batterij
+                  formatter: |
+                    EVAL:(w) => {
+                      return w.globals.seriesTotals + '%';
+                    }
+              hollow:
+                size: 45%
+                imageWidth: 70
+                imageHeight: 70
+                imageOffsetY: -40
+                imageClipped: false
+              track:
+                show: true
+                strokeWidth: 175%
+                dropShadow:
+                  enabled: true
+                  top: 2
+                  left: 0
+                  blur: 4
+                  opacity: 0.15
+          stroke:
+            dashArray: 5
+            lineCap: butt
+        series:
+          - entity: sensor.esp_speelhuis_battery_level
+            show:
+              header_color_threshold: true
+            color_threshold:
+              - color: '#B20000'
+                value: 10
+              - color: '#FF9912'
+                value: 15
+              - color: '#FFFF00'
+                value: 25
+              - color: '#98FB98'
+                value: 60
+              - color: '#008C23'
+                value: 100
+  - type: custom:mushroom-chips-card
+    chips:
+      - type: template
+        icon: |-
+          {% if is_state(entity, 'on') %}
+          mdi:water-pump
+          {% else %}
+          mdi:water-pump-off
+          {% endif %}
+        icon_color: |2-
+            {% if is_state(entity, 'on') %}
+            blue
+            {% else %}
+            disabled
+            {% endif %}
+        entity: switch.speelhuis_waterpomp
+        tap_action:
+          action: more-info
+      - type: template
+        content: '{{states(''sensor.esp_speelhuis_battery_voltage'') }} v'
+        entity: sensor.esp_speelhuis_battery_voltage
+        icon: |2
+                    {% set bl = states('sensor.esp_speelhuis_battery_level') | int %}
+                    {% if bl < 10 %} mdi:battery-outline
+                    {% elif bl < 20 %} mdi:battery-10
+                    {% elif bl < 30 %} mdi:battery-20
+                    {% elif bl < 40 %} mdi:battery-30
+                    {% elif bl < 50 %} mdi:battery-40
+                    {% elif bl < 60 %} mdi:battery-50
+                    {% elif bl < 70 %} mdi:battery-60
+                    {% elif bl < 80 %} mdi:battery-70
+                    {% elif bl < 90 %} mdi:battery-80
+                    {% elif bl < 100 %} mdi:battery-90
+                    {% elif bl == 100 %} mdi:battery
+                    {% else %} mdi:battery-unknown
+                    {% endif %}
+        icon_color: |2-
+                    {% set bl = states('sensor.esp_speelhuis_battery_level') | int %}
+                    {% if bl < 10 %} red
+                    {% elif bl < 20 %} red
+                    {% elif bl < 30 %} red
+                    {% elif bl < 40 %} orange
+                    {% elif bl < 50 %} orange
+                    {% elif bl < 60 %} green
+                    {% elif bl < 70 %} green
+                    {% elif bl < 80 %} green
+                    {% elif bl < 90 %} green
+                    {% elif bl < 100 %} green
+                    {% elif bl == 100 %} green
+                    {% else %} grey
+                    {% endif %}
+        tap_action:
+          action: more-info
+    alignment: end
+    card_mod:
+      style: |
+        ha-card {
+            --ha-card-box-shadow: none;
+            --chip-background: none;
+            --chip-box-shadow: none;
+            --chip-spacing: 0;
+          : -36px;
+        } 
+        mushroom-template-chip:nth-child(1)$: |
+          {% if is_state('switch.speelhuis_waterpomp','on') %}
+          ha-icon {
+            animation: drip 2s infinite; 
+          }
+          @keyframes drip {
+            0%, 100% { clip-path: inset(0 0 0 0); }
+            15%, 85% { clip-path: polygon(0 0, 100% 0, 100% 57%, 64% 57%, 64% 100%, 0 100%); }
+          }
+          }
+          {% else %}
+
+          {% endif %}
+          }
