@@ -1,0 +1,137 @@
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    content: Vandaag
+  - type: template
+    icon: |-
+      {% if states('sensor.power_p1_netto_daily_kwh') | float < 0 %}
+      mdi:transmission-tower-import
+      {% elif states('sensor.power_p1_netto_daily_kwh') | float > 0 %}
+      mdi:transmission-tower-export
+      {% else %}
+      mdi:transmission-tower-export
+      {% endif %}
+    icon_color: |-
+      {% if states('sensor.power_p1_netto_daily_kwh') | float < 0 %}
+      green
+      {% elif states('sensor.power_p1_netto_daily_kwh') | float > 0 %}
+      red
+      {% else %}
+      grey
+      {% endif %}
+    content: '{{ states("sensor.power_p1_netto_daily_kwh") }} kWh'
+    entity: sensor.power_p1_netto_daily_kwh
+    tap_action:
+      action: more-info
+  - type: template
+    icon: |-
+      {% if states('sensor.gas_import_p1_daily') | float < 0 %}
+      mdi:gas-cylinder
+      {% elif states('sensor.gas_import_p1_daily') | float > 0 %}
+      mdi:gas-cylinder
+      {% else %}
+      mdi:gas-cylinder
+      {% endif %}
+    icon_color: |-
+      {% if states('sensor.gas_import_p1_daily') | float < 0 %}
+      green
+      {% elif states('sensor.gas_import_p1_daily') | float > 0 %}
+      red
+      {% else %}
+      grey
+      {% endif %}
+    content: '{{ (states("sensor.gas_import_p1_daily")|round(1)) }} m3'
+    entity: sensor.gas_import_p1_daily
+    tap_action:
+      action: more-info
+  - type: template
+    icon: |-
+      {% if states('sensor.p1_meter_current_power') | float < 0 %}
+      mdi:water
+      {% elif states('sensor.p1_meter_current_power') | float > 0 %}
+      mdi:water
+      {% else %}
+      mdi:water
+      {% endif %}
+    icon_color: |-
+      {% if states('sensor.water_daily_total') | float < 0 %}
+      blue
+      {% elif states('sensor.water_daily_total') | float > 0 %}
+      blue
+      {% else %}
+      grey
+      {% endif %}
+    content: '{{ (states("sensor.water_daily_total")|float *1000)|round }} L'
+    entity: sensor.water_daily_total
+    tap_action:
+      action: more-info
+  - type: template
+    icon: >-
+      {% if states('sensor.envoy_122217065650_today_s_energy_production') |
+      float < 0 %}
+
+      mdi:solar-power-variant
+
+      {% elif states('sensor.envoy_122217065650_today_s_energy_production') |
+      float > 0 %}
+
+      mdi:solar-power-variant
+
+      {% else %}
+
+      mdi:solar-power-variant
+
+      {% endif %}
+    icon_color: >-
+      {% if states('sensor.envoy_122217065650_today_s_energy_production') |
+      float < 0 %}
+
+      grey
+
+      {% elif states('sensor.envoy_122217065650_today_s_energy_production') |
+      float > 0 %}
+
+      yellow
+
+      {% else %}
+
+      grey
+
+      {% endif %}
+    content: >-
+      {{ (states("sensor.envoy_122217065650_today_s_energy_production")|float /
+      1000)|round(1) }} kWh
+    entity: sensor.envoy_122217065650_today_s_energy_production
+    tap_action:
+      action: more-info
+alignment: center
+card_mod:
+  style:
+    mushroom-template-chip: |
+      ha-card {
+        --ha-card-box-shadow: none;
+        --chip-background: none;
+        --chip-box-shadow: none;
+        --chip-spacing: 0;
+        : -36px;
+      } 
+    mushroom-template-chip:nth-child(5)$: >
+      {% if states('sensor.envoy_122217065650_current_power_production') | float
+      > 0.1 %}
+
+      ha-state-icon {
+        animation: rays 2s infinite;
+      }
+
+
+      @keyframes rays {
+        0%, 100% { clip-path: inset(0 0 0 0); }
+        80% { clip-path: polygon(100% 99%, 0% 99%, 11% 50%, 57% 48%, 56% 31%, 41% 31%, 33% 25%, 29% 18%, 27% 11%, 27% 6%, 74% 6%, 73% 15%, 69% 23%, 62% 29%, 71% 42%, 87% 47%); }
+      }
+
+      {% else %}
+
+
+      {% endif %}
+
+      }
