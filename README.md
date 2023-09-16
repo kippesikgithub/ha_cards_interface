@@ -1,9 +1,11 @@
 # Home Assistant Cards
 
 #### Top Chips Current card
-![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/47803fe6-7e31-45d4-8bfd-fbb1dff4f847)
+![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
 
 top_chips_card_current_overview.yaml
+chips icon and color changing based on value: Outside Temperature, Doors, Current power usage, Solar, Garbage Bin notification
+chips animated based on value: Solar 
 
 
 #### Top Persons card
