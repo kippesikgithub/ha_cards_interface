@@ -1,0 +1,205 @@
+type: custom:vertical-stack-in-card
+horizontal: false
+cards:
+  - type: custom:stack-in-card
+    cards:
+      - type: custom:mushroom-template-card
+        primary: Slaapkamer 💑
+        icon: hue:room-bedroom
+        icon_color: teal
+        layout: horizontal
+        entity: light.masterbedroom_group_hue
+        secondary: >-
+          🌡️{{states('sensor.masterbedroom_bed_jolanda_motion_hue_temperature')
+          }}°C |  
+          💡{{states('sensor.masterbedroom_bed_jolanda_motion_hue_illuminance_lux')|
+          int }}lux
+        tap_action:
+          action: navigate
+          navigation_path: /lovelace-tablet/masterbedroom
+        fill_container: true
+        multiline_secondary: false
+        card_mod:
+          style: |
+            ha-card {
+              z-index: 1;
+            }
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.masterbedroom_bed_jolanda_motion_hue_temperature
+            name: Temperature
+        color_thresholds:
+          - value: -20
+            color: '#264CFF'
+          - value: -15
+            color: '#3FA0FF'
+          - value: -10
+            color: '#72D8FF'
+          - value: -5
+            color: '#AAF7FF'
+          - value: 0
+            color: '#E0FFFF'
+          - value: 5
+            color: '#FFFFBF'
+          - value: 10
+            color: '#FFE099'
+          - value: 15
+            color: '#FFAD72'
+          - value: 20
+            color: '#F76D5E'
+          - value: 25
+            color: '#D82632'
+          - value: 30
+            color: '#A50021'
+        height: 50
+        hours_to_show: 24
+        line_width: 2
+        font_size: 50
+        animate: true
+        show:
+          name: false
+          icon: false
+          state: false
+          legend: false
+          fill: fade
+          labels: false
+          labels_secondary: false
+          points: false
+        card_mod:
+          style: |
+            ha-card {
+              position: absolute !important;
+              height: 100%;
+              width: 100%;
+              top: 0px;
+              --ha-card-border-width: 0;
+            }
+            ha-card:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, var(--card-background-color) 20%, transparent);
+            }
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.masterbedroom_group_hue
+            layout: vertical
+            icon: |-
+              {% if is_state('light.masterbedroom_group_hue_group_hue', 'on') %}
+              hue:ceiling-fugato-three
+              {% else %}
+              hue:ceiling-fugato-three
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.masterbedroom_group_hue', 'on') %}
+                yellow
+              {% endif %}
+          - type: custom:mushroom-template-card
+            entity: light.masterbedroom_ledstrip_group
+            layout: vertical
+            icon: |-
+              {% if is_state('light.masterbedroom_ledstrip_group', 'on') %}
+              mdi:bed-king-outline
+              {% else %}
+              mdi:bed-king-outline
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.masterbedroom_ledstrip_group', 'on') %}
+                yellow
+              {% endif %}
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.shellyrgbw_masterbedroombed_kast
+            layout: vertical
+            icon: |-
+              {% if is_state('light.shellyrgbw_masterbedroombed_kast', 'on') %}
+              mdi:wardrobe-outline
+              {% else %}
+              mdi:wardrobe-outline
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.shellyrgbw_masterbedroombed_kast', 'on') %}
+                yellow
+              {% endif %}
+          - type: custom:mushroom-template-card
+            entity: switch.slaapkamer_fan_plug_bw
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('switch.slaapkamer_fan_plug_bw', 'on') %}
+              mdi:fan
+              {% else %}
+              mdi:fan
+              {% endif %}
+            icon_color: |-
+              {% if is_state('switch.slaapkamer_fan_plug_bw', 'on') %}
+                green
+              {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: conditional
+            conditions:
+              - entity: sensor.espresense_slaapkamer_count
+                state_not: '0'
+            chip:
+              type: entity
+              icon: mdi:human-greeting
+              icon_color: green
+              entity: sensor.espresense_slaapkamer_count
+              tap_action:
+                action: more-info
+          - type: conditional
+            conditions:
+              - entity: switch.slaapkamer_fan_plug_tuya
+                state: 'on'
+            chip:
+              type: template
+              icon_color: green
+              icon: mdi:fan
+              card_mod:
+                style: |
+                  @keyframes rotation {
+                    0% {
+                      transform: rotate(0deg);
+                    }
+                    100% {
+                      transform: rotate(360deg);
+                    }
+                  }
+                  ha-state-card {
+                    animation: rotation 2s linear infinite;
+                  }
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:window-closed
+              {% else %}
+              mdi:window-open
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'off') %}
+                green
+                {% else %}
+                red
+                {% endif %}
+            entity: binary_sensor.masterbedroom_raam_aqara_contact
+            tap_action:
+              action: more-info
+        alignment: end
+        card_mod:
+          style: |
+            ha-card {
+              --ha-card-box-shadow: none;
+              --chip-background: none;
+              --chip-box-shadow: none;
+              --chip-spacing: 0;
+              : -36px;
+            } 
