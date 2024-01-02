@@ -25,5 +25,6 @@ top_chips_today_overview.yaml
 
 #### Trapkast Room Card
 ![trapkast_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9de6b181-02ae-4656-8920-c9d77cc54fa2)
+  
 trapkast_room_card.yaml
 
