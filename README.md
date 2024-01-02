@@ -19,7 +19,7 @@ top_button_card.yaml
 
 
 #### Top Chips Today card
-![top_chips_today_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8da5b64d-24ae-4ee5-98d4-780b8c6922a5)
+![top_chips_today_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8da5b64d-24ae-4ee5-98d4-780b8c6922a5)  
 
 top_chips_today_overview.yaml
 
