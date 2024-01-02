@@ -1,5 +1,9 @@
 # Home Assistant Cards
 
+
+  ![total_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4eb03b94-86a5-4e74-93e5-da66e00c7ce8)
+
+
 #### Top Chips Current card
 ![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
 
