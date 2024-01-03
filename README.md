@@ -32,3 +32,23 @@ top_chips_today_overview.yaml
   
 trapkast_room_card.yaml
 
+#### Badkamer Room Card
+![badkamer_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/637caac6-3d99-4ecf-80e3-45628e5833d1)
+
+badkamer_room_card.yaml
+
+#### Sophie Room Card
+![sophie_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/110e952c-5979-4731-8029-3b6d862b0966)
+
+sophie_room_card.yaml
+
+#### Lucas Room Card
+![lucas_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/c3ace65b-76e9-4c74-b12e-f5beb4321e57)
+
+lucas_room_card.yaml
+
+#### Woonkamer Room Card
+![woonkamer_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ccd2267c-a1d9-47f0-b373-a23409d9ea9d)
+
+woonkamer_room_card.yaml
+
