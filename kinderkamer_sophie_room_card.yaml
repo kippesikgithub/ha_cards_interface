@@ -105,6 +105,66 @@ cards:
                 yellow
               {% endif %}
           - type: custom:mushroom-template-card
+            entity: climate.airco_sophie
+            layout: vertical
+            icon: |-
+              {% if is_state('climate.airco_sophie', 'heat') %}
+              mdi:thermometer-chevron-up
+              {% elif is_state('climate.airco_sophie', 'cool') %}
+              mdi:thermometer-chevron-down
+              {% elif is_state('climate.airco_sophie', 'off') %}
+              mdi:thermostat
+              {% else %}
+              disbled
+              {% endif %}
+            icon_color: |-
+              {% if is_state('climate.airco_sophie', 'heat') %}
+              red
+              {% elif is_state('climate.airco_sophie', 'cool') %}
+              blue
+              {% elif is_state('climate.airco_sophie', 'off') %}
+              disabled
+              {% else %}
+              disbled
+              {% endif %}
+            tap_action:
+              action: more-info
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              target:
+                entity_id: input_boolean.node_red_kinderkamer_sophie_airco_automations
+              data: {}
+            card_mod:
+              style:
+                mushroom-shape-icon$: >
+                  {% if
+                  is_state('input_boolean.node_red_kinderkamer_sophie_airco_automations',
+                  'on') %}
+
+                  .shape {
+                    --shape-animation: ping 3s infinite;
+                  }
+
+                  @keyframes ping {
+                    0% {
+                      box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 5px 5px transparent;
+                    }
+                  }
+
+                  {% elif
+                  is_state('input_boolean.node_red_kinderkamer_sophie_airco_automations',
+                  'off') %}
+
+                  {% endif %}
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
             entity: light.wled_unicorn
             layout: vertical
             icon: |-
@@ -158,6 +218,24 @@ cards:
                 red
                 {% endif %}
             entity: binary_sensor.kinderkamer_sophie_raam_aqara_contact
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:thermostat
+              {% else %}
+              mdi:thermostat 
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'heat') %}
+                red
+                {% elif is_state(entity, 'cool') %}
+                blue
+                {% else %}
+                disabled
+                {% endif %}
+            entity: climate.airco_sophie
             tap_action:
               action: more-info
         alignment: end
