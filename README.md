@@ -167,3 +167,10 @@ Visualised using Mushroom template and Mushroom chips cards. Current status of t
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/708ec9fb-37dd-4daa-af4f-6f6bb319109f)
 #### filename
 multimedia_tv_audio_controll_card.yaml
+
+## Mediaplayer Card
+Visualised using Mushroom Mediaplayer and Mushroom chips cards.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d54e982d-ee71-4a7d-9590-878de173fa25)
+#### filename
+multimedia_mediaplayer_card.yaml
+
