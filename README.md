@@ -53,7 +53,8 @@ Room card for the Trapkast. Contains a pretty basic version of the roomcard, onl
 #### features
 Temperature graph in top of card, containing last 24 hours.  
 Current Temperature status.  
-chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
+Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
+Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
 #### filename
 trapkast_room_card.yaml
 
@@ -63,6 +64,7 @@ Room card for the Badkamer.
 #### features
 Temperature and Humidity graph in top of card, containing last 24 hours.  
 Current Temperature and Humidity statusses.  
+Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: fan, toothbrushes charging, shower status, window.
 Navigation to subview from click on card.
 #### filename
