@@ -1,0 +1,339 @@
+type: custom:mushroom-chips-card
+chips:
+  - type: template
+    icon: mdi:washing-machine
+    icon_color: |2-
+        {% if is_state(entity, 'on') %}
+        blue
+        {% else %}
+        disabled
+        {% endif %}
+    entity: binary_sensor.wasmachine_status
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:tumble-dryer
+    icon_color: |2-
+        {% if is_state(entity, 'on') %}
+        red
+        {% else %}
+        disabled
+        {% endif %}
+    entity: binary_sensor.droger_status
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:dishwasher
+    icon_color: |2-
+        {% if is_state(entity, 'on') %}
+        blue
+        {% else %}
+        disabled
+        {% endif %}
+    entity: binary_sensor.vaatwasser_status
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:coffee-maker
+    icon_color: |2-
+        {% if states('sensor.shelly1pm_koffie_power') | float > 2 %}
+        green
+        {% else %}
+        disabled
+        {% endif %}
+    entity: sensor.shelly1pm_koffie_power
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:monitor
+    icon_color: |2-
+        {% if states('sensor.woonkamer_multimedia_tv_plug_tuya_power') | float > 2 %}
+        green
+        {% else %}
+        disabled
+        {% endif %}
+    entity: switch.woonkamer_multimedia_tv_plug_tuya
+    tap_action:
+      action: more-info
+    card_mod:
+      style:
+        mushroom-template-chip: |
+          ha-state-icon:before {
+            content: "";
+            position: absolute;
+            width: 40%;
+            height: 30%;
+            margin: 6%;
+            animation: refresh 300ms linear infinite;
+          }
+          @keyframes refresh { 
+            0% { background: linear-gradient(180deg, rgba(var(--rgb-{{ config.icon_color }}), 0.2) 0%, transparent 50%, transparent 100%); }
+            25% { background: linear-gradient(180deg, transparent 0%, rgba(var(--rgb-{{ config.icon_color }}), 0.2) 25%, transparent 100%); }
+            50% { background: linear-gradient(180deg, transparent 0%, rgba(var(--rgb-{{ config.icon_color }}), 0.2) 50%, transparent 100%); }
+            75% { background: linear-gradient(180deg, transparent 0%, rgba(var(--rgb-{{ config.icon_color }}), 0.2) 75%, transparent 100%); }
+            100% { background: linear-gradient(180deg, transparent 0%, transparent 50%, rgba(var(--rgb-{{ config.icon_color }}), 0.2) 100%); }
+          }
+  - type: template
+    icon: mdi:speaker
+    icon_color: |2-
+        {% if states('sensor.woonkamer_multimedia_audio_plug_tuya_power') | float > 2 %}
+        green
+        {% else %}
+        disabled
+        {% endif %}
+    entity: switch.woonkamer_multimedia_audio_plug_tuya
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:microwave
+    icon_color: |2-
+        {% if states('sensor.keuken_magnetron_plug_tuya_power') | float > 2 %}
+        green
+        {% else %}
+        disabled
+        {% endif %}
+    entity: switch.keuken_magnetron_plug_tuya
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:toaster-oven
+    icon_color: |2-
+        {% if states('sensor.keuken_oven_plug_bw_power') | float > 2 %}
+        red
+        {% else %}
+        disabled
+        {% endif %}
+    entity: switch.keuken_oven_plug_bw
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:water-pump
+    icon_color: |2-
+        {% if states('sensor.shellyplugs_quooker_power') | float > 2 %}
+        red
+        {% else %}
+        disabled
+        {% endif %}
+    entity: switch.shellyplugs_quooker
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:printer-3d-nozzle
+    icon_color: |2-
+        {% if states('sensor.shellyplugs_3dprinter_e3pro_power') | float > 2 %}
+        green
+        {% else %}
+        disabled
+        {% endif %}
+    entity: switch.shellyplugs_3dprinter_e3pro
+    tap_action:
+      action: more-info
+  - type: template
+    icon: mdi:shower-head
+    icon_color: |2-
+        {% if is_state(entity, 'on') %}
+        blue
+        {% else %}
+        disabled
+        {% endif %}
+    entity: binary_sensor.hot_tap_water
+    tap_action:
+      action: more-info
+  - type: template
+    icon: |-
+      {% if is_state(entity, 'on') %}
+      mdi:fuse
+      {% else %}
+      mdi:fuse-alert
+      {% endif %}
+    icon_color: |2-
+        {% if is_state(entity, 'on') %}
+        disabled
+        {% else %}
+        red
+        {% endif %}
+    entity: switch.away_mode_switches
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-tablet/switches
+  - type: conditional
+    conditions:
+      - entity: light.wled_vuilniswagen
+        state: 'on'
+    chip:
+      type: template
+      icon: |-
+        {% if is_state(entity, 'on') %}
+        mdi:trash-can-outline
+        {% else %}
+        mdi:recycle
+        {% endif %}
+      icon_color: |2-
+          {% if is_state('sensor.avalex_tomorrow', 'None') %}
+          disabled
+          {% elif is_state('sensor.avalex_tomorrow', 'pmd') %}
+          #FF00FF
+          {% elif is_state('sensor.avalex_tomorrow', 'papier') %}
+          blue
+          {% elif is_state('sensor.avalex_tomorrow', 'gft') %}
+          green
+          {% elif is_state('sensor.avalex_tomorrow', 'restafval') %}
+          yellow
+          {% else %}
+          disabled
+          {% endif %}
+      entity: light.wled_vuilniswagen
+      tap_action:
+        action: toggle
+alignment: center
+card_mod:
+  style:
+    mushroom-template-chip: |
+      ha-card {
+        --ha-card-box-shadow: none;
+        --chip-background: none;
+        --chip-box-shadow: none;
+        --chip-spacing: 0;
+        --chip-height: 50px;
+        : -36px;
+      } 
+    mushroom-template-chip:nth-child(1)$: |
+      {% if is_state('binary_sensor.wasmachine_status','on') %}
+      ha-state-icon {
+        animation: shake 400ms ease-in-out infinite, drum 2s ease infinite;
+        transform-origin: 50% 110%;
+      }
+      @keyframes shake {
+        0%, 100% { transform: translate(0, 0) rotate(0); }
+        20%  { transform: translate(0.4px, -0.4px) rotate(-4deg); }
+        40%  { transform: translate(-0.4px, 0.4px) rotate(4deg); }
+        60%  { transform: translate(0.4px, 0.4px) rotate(-4deg); }
+        80%  { transform: translate(-0.4px, -0.4px) rotate(4deg); }
+      }
+      @keyframes drum {
+        50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 34% 68%, 60% 41%, 71% 56%, 65% 74%, 47% 79%, 32% 69%, 35% 100%, 100% 100%, 100% 0); }
+      }
+      }
+      {% else %}
+
+      {% endif %}
+      }
+    mushroom-template-chip:nth-child(2)$: |
+      {% if is_state('binary_sensor.droger_status','on') %}
+      ha-state-icon {
+        animation: shake 400ms ease-in-out infinite, drum 1s infinite;
+        transform-origin: 50% 65%;
+      }
+      @keyframes shake {
+        0%, 100% { transform: rotate(4deg); }
+        50%  { transform: rotate(-4deg); }
+      }
+      @keyframes drum {
+        50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 36% 74%, 31% 43%, 61% 40%, 71% 69%, 62% 78%, 36% 73%, 35% 100%, 100% 100%, 100% 0); }
+      }
+      }
+      {% else %}
+
+      {% endif %}
+      }
+    mushroom-template-chip:nth-child(3)$: |
+      {% if is_state('binary_sensor.vaatwasser_status','on') %}
+      ha-state-icon {
+        animation: bounce 1.5s ease-in-out infinite, wash 1s ease-in-out infinite;
+        transform-origin: 50% 75%;
+      }
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {transform: translateY(0); } 
+        40% { transform: translateY(-1.2px) rotate(5deg); } 
+        60% { transform: translateY(-1.1px) rotate(-4deg); } 
+      } 
+      @keyframes wash {
+        50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 36% 74%, 31% 43%, 61% 40%, 71% 69%, 62% 78%, 36% 73%, 35% 100%, 100% 100%, 100% 0); }
+      }
+      {% else %}
+
+      {% endif %}
+      }
+    mushroom-template-chip:nth-child(4)$: |
+      {% if states('sensor.shelly1pm_koffie_power') | float > 2 %}
+      ha-state-icon {
+        animation: java 4s linear infinite;
+      }
+      @keyframes java {
+        0%, 80%, 100% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 0 100%); }
+        10% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 79%, 63% 76%, 67% 70%, 66% 54%, 42% 55%, 42% 70%, 47% 77%, 55% 80%, 57% 100%, 0 100%); }
+        15% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 79%, 63% 76%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 47% 77%, 55% 80%, 55% 100%, 0 100%); }
+        20% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 76%, 63% 76%, 67% 70%, 66% 54%, 42% 55%, 42% 70%, 47% 76%, 55% 76%, 57% 100%, 0 100%); }
+        25% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 76%, 63% 76%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 47% 76%, 55% 76%, 56% 100%, 0 100%); }
+        30% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 73%, 64% 73%, 66% 70%, 66% 55%, 42% 55%, 42% 69%, 44% 73%, 55% 73%, 57% 100%, 0 100%); }
+        35% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 73%, 64% 73%, 66% 70%, 66% 55%, 42% 54%, 42% 69%, 44% 73%, 55% 73%, 56% 100%, 0 100%); }
+        40% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 70%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 57% 70%, 57% 100%, 0 100%); }
+        45% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 70%, 67% 70%, 66% 54%, 42% 54%, 42% 70%, 55% 70%, 56% 100%, 0 100%); }
+        50% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 66%, 67% 65%, 66% 54%, 42% 54%, 42% 65%, 57% 65%, 57% 100%, 0 100%); }
+        55% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 66%, 67% 65%, 66% 54%, 42% 54%, 42% 65%, 55% 65%, 56% 100%, 0 100%); }
+        60% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 60%, 66% 60%, 66% 54%, 42% 54%, 42% 60%, 57% 60%, 57% 100%, 0 100%); }
+        65% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 60%, 66% 60%, 66% 54%, 42% 54%, 42% 60%, 55% 60%, 56% 100%, 0 100%); }
+        70% { clip-path: polygon(0 0, 100% 0, 100% 32%, 47% 32%, 47% 43%, 100% 43%, 100% 100%, 55% 100%, 55% 56%, 66% 56%, 66% 54%, 42% 54%, 42% 56%, 57% 56%, 57% 100%, 0 100%); }
+        75% { clip-path: polygon(0 0, 100% 0, 100% 100%, 55% 100%, 55% 56%, 66% 56%, 66% 54%, 42% 54%, 42% 56%, 55% 56%, 55% 100%, 0 100%); }
+      }
+      {% else %}
+
+      {% endif %}
+      }
+    mushroom-template-chip:nth-child(6)$: >
+      {% if states('sensor.woonkamer_multimedia_audio_plug_tuya_power') | float
+      > 2 %}
+
+      ha-state-icon {
+        animation: beat 1.3s ease-out infinite both;
+        transform-origin: 50% 60%;
+      } @keyframes beat {
+        0% { transform: scale(1); }
+        10% { transform: scale(1.1); }
+        17% { transform: scale(1.05); }
+        33% { transform: scale(1.25); }
+        60% { transform: scale(1); }
+      }
+
+      {% else %}
+
+
+      {% endif %}
+
+      }
+    mushroom-template-chip:nth-child(7)$: >
+      {% if states('sensor.keuken_oven_plug_bw_power') | float > 2  %}
+      ha-state-icon:before {
+        content: "";
+        position: absolute;
+        width: 25%;
+        height: 25%;
+        margin: 10%;
+        animation: cook 1s linear infinite;
+      } @keyframes cook { 
+        0%, 100% { background: linear-gradient(90deg, white 0%, transparent 50%, transparent 100%); }
+        33% { background: linear-gradient(90deg, transparent 0%, white 50%, transparent 100%); }
+        66% { background: linear-gradient(90deg, transparent 0%, transparent 50%, white 100%); }
+      } {% else %} {% endif %} }
+    mushroom-template-chip:nth-child(9)$: >
+      {% if states('sensor.shellyplugs_quooker_power') | float > 2  %}
+      ha-state-icon {
+        animation: drip 2s infinite; 
+      } @keyframes drip {
+        0%, 100% { clip-path: inset(0 0 0 0); }
+        15%, 85% { clip-path: polygon(0 0, 100% 0, 100% 57%, 64% 57%, 64% 100%, 0 100%); }
+      } {% else %} {% endif %} }
+    mushroom-template-chip:nth-child(11)$: |
+      {% if is_state('binary_sensor.hot_tap_water','on') %}
+      ha-state-icon {
+        animation: clip 0.7s ease-out infinite;
+      }
+      @keyframes clip {
+        0% {clip-path: inset(0 0 45% 0); }
+        100% { clip-path: inset(0 0 0 0); }
+      }
+      }
+      {% else %}
+
+      {% endif %}
+      }
