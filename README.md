@@ -131,23 +131,23 @@ Visualised with Mushroom Chips. Which devices are on and using power. Visualised
 #### filename
 energy_current_devices_status_card.yaml
 
-## Netto Electricity per day 
+## Netto Electricity per day, last week
 Visualised in Apexcharts. Import electricity from net - exported electricity to net  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/54edec09-d756-4430-a497-c117ce7f7e0c)
 #### filename
-energy_electricity_netto_card.yaml
+energy_electricity_netto_last_week_card.yaml
 
 ## Electricity In per day, last week
 Visualised in Apexcharts. Total Electricity import per day from last week  
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/54edec09-d756-4430-a497-c117ce7f7e0c)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3c281470-6239-44c6-b875-1a447d4afcc2)
 #### filename
-energy_electricity_in_card.yaml
+energy_electricity_in_last_week_card.yaml
 
 ## Electricity Out per day, last week
-Visualised in Apexcharts.  Total Electricity export per day from last week 
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/54edec09-d756-4430-a497-c117ce7f7e0c)
+Visualised in Apexcharts.  Total Electricity export per day from last week  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d08a4f3b-125f-4293-8cb0-2b64562da124)
 #### filename
-energy_electricity_out_card.yaml
+energy_electricity_out_last_week_card.yaml
 
 ## Gas per day, last week 
 Visualised in Apexcharts. Gas usage last week, per day. Color changing bars based on values.
