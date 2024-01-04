@@ -1,0 +1,55 @@
+type: custom:stack-in-card
+title: Electriciteit Uit
+cards:
+  - type: custom:apexcharts-card
+    graph_span: 7d
+    span:
+      end: day
+    apex_config:
+      chart:
+        height: 150px
+        fontFamily: Raleway,sans-serif
+      legend:
+        show: false
+      stroke:
+        width: 5
+      plotOptions:
+        bar:
+          columnWidth: 100%
+      grid:
+        show: true
+        borderColor: '#00000030'
+        strokeDashArray: 4
+        position: back
+    experimental:
+      color_threshold: true
+    header:
+      show: true
+      show_states: false
+      colorize_states: false
+    yaxis:
+      - id: first
+        decimals: 0
+        min: 0
+        apex_config:
+          tickAmount: 2
+    series:
+      - entity: sensor.power_export_p1_daily
+        name: Electriciteit
+        yaxis_id: first
+        show:
+          legend_value: true
+          datalabels: true
+          in_header: true
+          name_in_header: true
+        type: column
+        group_by:
+          func: max
+          duration: 1d
+        color_threshold:
+          - value: 5
+            color: red
+          - value: 10
+            color: orange
+          - value: 15
+            color: green
