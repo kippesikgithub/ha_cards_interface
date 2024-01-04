@@ -4,7 +4,7 @@ The interface you see in the overview is our mobile dashboard, which is also usa
 Down here you can see the overview and screenshots of the card, also mentioned which yaml configuration corresponds to that card in this repository.  
 I will also include a short Guide later, on howto setup your first room card from the basic.
 
-# Overview and Screenshot per card
+# Overview
 ![total_room_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/c373e5c2-f11b-46e0-8a9e-df0729510afc)
 
 Custom made mostly using Mushroom cards and Card Mod  
@@ -12,6 +12,7 @@ blinking rings: Automations for that entity/area are enabled, no ring means disa
 Animated Icons  
 Colors and text changing from entities and attributes   
 
+# Screenshot per card
 #### Top Chips Current card  
 Build with Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
 ![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
