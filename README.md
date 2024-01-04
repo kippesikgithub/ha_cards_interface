@@ -1,6 +1,6 @@
 # Home Assistant Cards
 Welcome to my github and some explanations about the interface and cards I build in Home Assistant. For every card i'll explain a bit about the contents and what features are in it. The room cards I use, are custom, but i re-use them throughout the whole interface, you can just place them in Grids or other cards to arrange them. The base for every room is the same card.  
-The interface you see in the overview is our mobile dashboard, which is also usable for desktop. Every room has a Subview in where you can see all the detailed information or extended features for the entities in that room.  
+The interface you see in the overview is our mobile dashboard, which is also usable for desktop. Every room has a Subview in where you can see all the detailed information or extended features for the entities in that room. I use the subviews, because they also contain a 'back' button by default.  
 Down here you can see the overview and screenshots of the card, also mentioned which yaml configuration corresponds to that card in this repository.  
 I will also include a short Guide later, on howto setup your first room card from the basic.
 
@@ -32,8 +32,11 @@ top_persons_card.yaml
 
 
 ## Top Button card
+Build with custom Mushroom template cards. Just some simple buttons to navigate to subviews with summaries and statistics about Energy, Temperatures, Mediaplayers incl volumes and sources, 3d printing and outside screens. every button navigates to a subview.
 ![top_button_navigation](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f1ade95c-a77d-4a4b-b31f-af099f8c1018)
-
+#### features
+nothing special, just some color changing and animated icons
+#### filename
 top_button_card.yaml
 
 ## Top Chips Today card  
