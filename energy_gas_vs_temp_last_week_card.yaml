@@ -1,0 +1,76 @@
+type: custom:stack-in-card
+title: Gas
+cards:
+  - type: custom:apexcharts-card
+    graph_span: 7d
+    span:
+      end: day
+    apex_config:
+      chart:
+        height: 150px
+        fontFamily: Raleway,sans-serif
+      legend:
+        show: true
+      stroke:
+        width: 3
+      plotOptions:
+        bar:
+          columnWidth: 100%
+      grid:
+        show: true
+        borderColor: '#00000030'
+        strokeDashArray: 4
+        position: back
+    experimental:
+      color_threshold: true
+    header:
+      show: true
+      show_states: false
+      colorize_states: false
+    yaxis:
+      - id: first
+        decimals: 0
+        min: 0
+        apex_config:
+          tickAmount: 2
+      - id: second
+        opposite: true
+        decimals: 0
+        apex_config:
+          tickAmount: 2
+    series:
+      - entity: sensor.gas_usage_today
+        name: Gas
+        yaxis_id: first
+        show:
+          legend_value: true
+          datalabels: true
+          in_header: true
+          name_in_header: true
+        type: column
+        group_by:
+          func: max
+          duration: 1d
+        color_threshold:
+          - value: 0
+            color: green
+          - value: 10
+            color: green
+          - value: 12
+            color: green
+      - entity: sensor.buienradar_temperature
+        name: temp
+        yaxis_id: second
+        show:
+          legend_value: true
+          datalabels: false
+          in_header: true
+          name_in_header: true
+        type: area
+        curve: smooth
+        opacity: 0.2
+        color: yellow
+        extend_to: false
+        group_by:
+          func: avg
+          duration: 60min
