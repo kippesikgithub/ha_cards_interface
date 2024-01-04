@@ -131,4 +131,10 @@ Visualised in Apexcharts. Import energy from net - exported energy to net
 #### filename
 energy_netto_card.yaml
 
+## Gas per day, last week 
+Visualised in Apexcharts. Gas usage last week, per day. Color changing bars based on values.
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/233c6527-a7de-4ebb-b995-5899b7288766)
+
+#### filename
+gas_last_week_card.yaml
 
