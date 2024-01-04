@@ -10,8 +10,9 @@ cards:
         layout: horizontal
         entity: light.staanlamp_hue
         secondary: >-
-          {{states('sensor.woonkamer_motion_hue_temperature') }}°C |
-          {{states('sensor.woonkamer_motion_hue_illuminance_lux') | int }}lux
+          🌡️{{states('sensor.woonkamer_motion_hue_temperature') }}°C |
+          💧{{states('sensor.humidity') | int }}% |
+          💡{{states('sensor.woonkamer_motion_hue_illuminance_lux') | int }}lux
         tap_action:
           action: navigate
           navigation_path: /lovelace-tablet/woonkamer
@@ -40,6 +41,10 @@ cards:
         entities:
           - entity: sensor.woonkamer_motion_hue_temperature
             name: Temperature
+          - entity: sensor.humidity
+            name: Humidity
+            color: blue
+            y_axis: secondary
         color_thresholds:
           - value: -20
             color: '#264CFF'
@@ -154,6 +159,20 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('light.eettafel_hue', 'on') %}
+                yellow
+              {% endif %}
+          - type: custom:mushroom-template-card
+            entity: light.woonkamer_knutseltafel_hue
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('light.woonkamer_knutseltafel_hue', 'on') %}
+              mdi:desk
+              {% else %}
+              mdi:desk
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.woonkamer_knutseltafel_hue', 'on') %}
                 yellow
               {% endif %}
           - type: custom:mushroom-template-card
@@ -287,31 +306,17 @@ cards:
                 : -36px;
               } 
             mushroom-template-chip:nth-child(2)$: >
-              {% if is_state('binary_sensor.woonkamer_zithoek_occupancy','on')
-              %}
-
+              {% if
+              is_state('binary_sensor.woonkamer_motion_hue_occupancy','on') %}
               ha-state-icon {
                 animation: clip 2s linear infinite;
-              }
-
-              @keyframes clip {
+              } @keyframes clip {
                 50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
-              }
-
-              .shape {
+              } .shape {
                 --shape-animation: motion 2s linear infinite;
-              }
-
-              @keyframes motion {
+              } @keyframes motion {
                 0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
                 50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
-              }
+              } } {% else %}
 
-              }
-
-              {% else %}
-
-
-              {% endif %}
-
-              }
+              {% endif %} }
