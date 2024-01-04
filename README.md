@@ -55,6 +55,12 @@ Temperature graph in top of card, containing last 24 hours.
 Current Temperature status.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
+#### Devices in room
+Hue light  
+Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)  
+Wemos D1 + proximity sensor (measure watermeter)  
+Esp32 + LD2410 (mmwave) + BMP180 (temp and baro)  
+Zigbee Wall socket for controlling floor heating pump
 #### filename
 trapkast_room_card.yaml
 
