@@ -55,7 +55,7 @@ Temperature graph in top of card, containing last 24 hours.
 Current Temperature status.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
-#### Devices in room
+#### devices in room
 Hue light  
 Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)  
 Wemos D1 + proximity sensor (measure watermeter)  
@@ -73,7 +73,7 @@ Current Temperature and Humidity statusses.
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: fan, toothbrushes charging, shower status, window.
 Navigation to subview from click on card.
-#### Devices in room
+#### devices in room
 Aqara Zigbee Temperature and Humidity sensor  
 Zigbee Wall socket for controlling charging electric toothbrushes  
 Shelly 1L for controlling the Fan (based on humidity level)  
@@ -89,7 +89,7 @@ Temperature and Humidity graph in top of card, containing last 24 hours.
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
 Chips icon and color changing based on value: motion, window, airco.  
 Navigation to subview from click on card.
-#### Devices in room
+#### devices in room
 Hue Light  
 Hue remote dimmer  
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
@@ -109,7 +109,7 @@ Temperature and Humidity graph in top of card, containing last 24 hours.
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
 chips icon and color changing based on value: motion, window, airco.  
 Navigation to subview from click on card.
-#### Devices in room
+#### devices in room
 Hue Light  
 Hue remote dimmer  
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
