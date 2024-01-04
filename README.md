@@ -125,6 +125,12 @@ kinderkamer_lucas_room_card.yaml
 woonkamer_room_card.yaml
 
 # Subview Energy (navigation from Top Button card)
+## Current Devices status
+Visualised with Mushroom Chips. Which devices are on and using power. Visualised with colored/animated icons. 
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f095f9dd-80d9-4008-926f-d76976c91073)
+#### filename
+energy_current_devices_status_card.yaml
+
 ## Netto Electricity per day 
 Visualised in Apexcharts. Import electricity from net - exported electricity to net  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/54edec09-d756-4430-a497-c117ce7f7e0c)
