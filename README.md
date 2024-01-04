@@ -12,6 +12,11 @@ blinking rings: Automations for that entity/area are enabled, no ring means disa
 Animated Icons  
 Colors and text changing from entities and attributes   
 
+# Wall Tablet Overview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/7a58060c-08d9-4722-9c6f-4b4439ec1e30)
+#### repository link
+[https://github.com/kippesikgithub/hass_detailed_power_monitoring](https://github.com/kippesikgithub/hass_walltablet)
+
 # Screenshot per card
 ## Top Chips Current card  
 Build with custom Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
