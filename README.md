@@ -160,7 +160,3 @@ Visualised in Apexcharts. Water usage last week, per day. Color changing bars ba
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a08d52e-e6e9-4b57-97d1-1cbb7b803ef2)
 #### filename
 energy_water_last_week_card.yaml
-
-
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/2e8f5b40-0f4a-4fba-aef7-c57988b2761c)
-
