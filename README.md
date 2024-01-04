@@ -133,8 +133,13 @@ energy_netto_card.yaml
 
 ## Gas per day, last week 
 Visualised in Apexcharts. Gas usage last week, per day. Color changing bars based on values.
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/233c6527-a7de-4ebb-b995-5899b7288766)
-
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/6dc65b24-abde-4783-8dea-cef5466c610c)
 #### filename
-gas_last_week_card.yaml
+energy_gas_last_week_card.yaml
+
+## Water per day, last week 
+Visualised in Apexcharts. Water usage last week, per day. Color changing bars based on values.
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a08d52e-e6e9-4b57-97d1-1cbb7b803ef2)
+#### filename
+energy_water_last_week_card.yaml
 
