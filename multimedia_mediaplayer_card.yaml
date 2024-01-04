@@ -1,0 +1,58 @@
+type: custom:vertical-stack-in-card
+title: Woonkamer
+cards:
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:mushroom-media-player-card
+        entity: media_player.volumiowoonkamer
+        icon: mdi:speaker
+        name: VolumioWoonkamer
+        media_controls:
+          - play_pause_stop
+        show_volume_level: false
+        use_media_info: true
+        fill_container: true
+        collapsible_controls: true
+  - type: custom:vertical-stack-in-card
+    cards:
+      - type: custom:mushroom-media-player-card
+        entity: media_player.volumiowoonkamer
+        volume_controls:
+          - volume_mute
+          - volume_buttons
+          - volume_set
+        icon_type: none
+        primary_info: none
+        secondary_info: none
+        show_volume_level: none
+        collabsible_controls: true
+      - type: custom:mushroom-chips-card
+        alignment: center
+        chips:
+          - type: entity
+            entity: script.audio_volumio_radio538
+            tap_action:
+              action: toggle
+            content_info: name
+            name: 538
+          - type: entity
+            entity: script.audio_volumio_radio538top50
+            tap_action:
+              action: toggle
+            content_info: name
+            name: 538 Top50
+          - type: entity
+            entity: script.audio_volumio_100nl
+            tap_action:
+              action: toggle
+            content_info: name
+            name: 100% NL
+        card_mod:
+          style: |
+            ha-card {
+              --ha-card-box-shadow: none;
+              --chip-background: none;
+              --chip-box-shadow: none;
+              --chip-spacing: 0;
+              : -36px;
+            } 
