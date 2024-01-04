@@ -13,10 +13,10 @@ Animated Icons
 Colors and text changing from entities and attributes   
 
 # Screenshot per card
-#### Top Chips Current card  
+## Top Chips Current card  
 Build with custom Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
 ![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
-## features
+# features
 top_chips_card_current_overview.yaml  
 chips icon and color changing based on value: Outside Temperature, Doors, Current power usage, Solar, Garbage Bin notification  
 chips animated based on value: Solar   
