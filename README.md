@@ -48,7 +48,7 @@ chips icon and color changing based on value: Total power usage, gas, water and 
 chips animated based on value: Solar 
 
 ## Trapkast Room Card
-Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.
+Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
 ![trapkast_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9de6b181-02ae-4656-8920-c9d77cc54fa2)
 #### features
 chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
@@ -56,7 +56,7 @@ chips icon and color changing based on value: motion, main water usage, floor he
 trapkast_room_card.yaml
 
 ## Badkamer Room Card
-Room card for the Badkamer. 
+Room card for the Badkamer.  
 ![badkamer_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/637caac6-3d99-4ecf-80e3-45628e5833d1)
 #### features
 chips icon and color changing based on value: fan, toothbrushes charging, shower status, window
@@ -64,7 +64,7 @@ chips icon and color changing based on value: fan, toothbrushes charging, shower
 badkamer_room_card.yaml
 
 ## Kinderkamer Sophie Room Card
-Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.
+Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
 ![sophie_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/110e952c-5979-4731-8029-3b6d862b0966)
 #### features
 chips icon and color changing based on value: motion, window, airco
@@ -72,7 +72,7 @@ chips icon and color changing based on value: motion, window, airco
 kinderkamer_sophie_room_card.yaml
 
 ## Kinderkamer Lucas Room Card
-Room card for sons room. Offcourse including babyicons, controlls for the led-lighting (commode), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.
+Room card for sons room. Offcourse including babyicons, controlls for the led-lighting (commode), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
 ![lucas_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/c3ace65b-76e9-4c74-b12e-f5beb4321e57)
 #### features
 chips icon and color changing based on value: motion, window, airco
