@@ -83,7 +83,8 @@ Navigation to subview from click on card.
 Aqara Zigbee Temperature and Humidity sensor  
 Zigbee Wall socket for controlling charging electric toothbrushes  
 Shelly 1L for controlling the Fan (based on humidity level)  
-Toon integration for reading shower/warm water status
+Toon integration for reading shower/warm water status  
+Aqara Zigbee window sensor
 #### filename
 badkamer_room_card.yaml
 
@@ -103,7 +104,8 @@ Zigbee Wall socket(s) measuring power usage
 Mitsubishi Heavy Industries Airco (cooling/heating)  
 Esp32 WLED Desk ledstrip  
 Wemos D1 mini WLED Unicorn light  
-Esp32 Somfy RTS for controlling screens
+Esp32 Somfy RTS for controlling screens  
+Aqara Zigbee window sensor
 #### filename
 kinderkamer_sophie_room_card.yaml
 
@@ -121,7 +123,8 @@ Hue remote dimmer
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
 Zigbee Wall socket(s) measuring power usage  
 Mitsubishi Heavy Industries Airco (cooling/heating)  
-Esp32 WLED Commode ledstrip
+Esp32 WLED Commode ledstrip  
+Aqara Zigbee window sensor
 #### filename
 kinderkamer_lucas_room_card.yaml
 
@@ -160,7 +163,8 @@ Hue Light
 Hue Motion sensors  
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
 Shelly 1PM Power measuring (washing machine, dryer)  
-Zigbee Wall socket(s) measuring power usage
+Zigbee Wall socket(s) measuring power usage  
+Aqara Zigbee window sensor
 #### filename
 washok_room_card.yaml
 
