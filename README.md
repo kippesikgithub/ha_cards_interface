@@ -163,7 +163,7 @@ energy_water_last_week_card.yaml
 
 # Subview Audio (navigation from Top Button card)
 ## TV and Audio Card
-Visualised using Mushroom template and Mushroom chips cards. Current status of tv/audio related devices, buttons for controll and color changing icons based on TV/Audio sources and power usage. 
+Visualised using Mushroom template and Mushroom chips cards. Current status of tv/audio related devices, buttons for controll and color changing icons based on TV/Audio sources and power usage.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/708ec9fb-37dd-4daa-af4f-6f6bb319109f)
 #### filename
 multimedia_tv_audio_controll.yaml
