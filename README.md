@@ -124,3 +124,11 @@ kinderkamer_lucas_room_card.yaml
 
 woonkamer_room_card.yaml
 
+# Subview Energy (navigation from Top Button card)
+## Netto Energy per day 
+Visualised in Apexcharts. Import energy from net - exported energy to net  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/54edec09-d756-4430-a497-c117ce7f7e0c)
+#### filename
+energy_netto_card.yaml
+
+
