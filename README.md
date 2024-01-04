@@ -146,6 +146,24 @@ Lenovo Wall Tablet
 #### filename
 woonkamer_room_card.yaml
 
+## Washok Room Card
+Room card for the Washok.  
+![washok_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/a68dad4d-edd4-4f24-843a-7d860de0f9b5)
+#### features
+Temperature graph in top of card, containing last 24 hours. 
+Current Temperature, Illumination of room statusses.  
+chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
+Navigation to subview from click on card.
+#### devices in room
+Hue Light  
+Hue Motion sensors  
+Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
+Shelly 1PM Power measuring (washing machine, dryer)  
+Zigbee Wall socket(s) measuring power usage
+#### filename
+washok_room_card.yaml
+
+
 # Subview Energy (navigation from Top Button card)
 ## Overview Electricity per room
 Visualised with Sankey Diagram.  
