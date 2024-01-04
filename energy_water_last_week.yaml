@@ -1,0 +1,55 @@
+type: custom:stack-in-card
+title: Water
+cards:
+  - type: custom:apexcharts-card
+    graph_span: 7d
+    span:
+      end: day
+    apex_config:
+      chart:
+        height: 150px
+        fontFamily: Raleway,sans-serif
+      legend:
+        show: false
+      stroke:
+        width: 5
+      plotOptions:
+        bar:
+          columnWidth: 100%
+      grid:
+        show: true
+        borderColor: '#00000030'
+        strokeDashArray: 4
+        position: back
+    experimental:
+      color_threshold: true
+    header:
+      show: true
+      show_states: false
+      colorize_states: false
+    yaxis:
+      - id: first
+        decimals: 0
+        min: 0
+        apex_config:
+          tickAmount: 2
+    series:
+      - entity: sensor.waterverbruik_per_dag
+        name: Water
+        yaxis_id: first
+        show:
+          legend_value: true
+          datalabels: true
+          in_header: true
+          name_in_header: true
+        type: column
+        group_by:
+          func: max
+          duration: 1d
+        color_threshold:
+          - value: 0.2
+            color: green
+          - value: 0.3
+            color: orange
+          - value: 0.5
+            color: red
