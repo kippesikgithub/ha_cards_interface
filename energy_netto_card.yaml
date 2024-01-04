@@ -1,0 +1,50 @@
+type: custom:stack-in-card
+title: Netto Elektriciteit
+cards:
+  - type: custom:apexcharts-card
+    graph_span: 3d
+    span:
+      end: day
+    apex_config:
+      chart:
+        height: 150px
+        fontFamily: Raleway,sans-serif
+      legend:
+        show: true
+      stroke:
+        width: 3
+      plotOptions:
+        bar:
+          columnWidth: 100%
+      grid:
+        show: true
+        borderColor: '#00000030'
+        strokeDashArray: 4
+        position: back
+    experimental:
+      color_threshold: true
+    header:
+      show: true
+      show_states: false
+      colorize_states: false
+    yaxis:
+      - id: first
+        decimals: 2
+        apex_config:
+          tickAmount: 1
+    series:
+      - entity: sensor.power_p1_netto_daily_kwh
+        name: temp
+        yaxis_id: first
+        show:
+          legend_value: true
+          datalabels: false
+          in_header: true
+          name_in_header: true
+        type: area
+        opacity: 0.2
+        color: yellow
+        extend_to: false
+        group_by:
+          func: avg
+          duration: 60min
