@@ -4,18 +4,19 @@ cards:
   - type: custom:stack-in-card
     cards:
       - type: custom:mushroom-template-card
-        primary: Badkamer 🚿
+        primary: Washok
+        icon: mdi:washing-machine
+        icon_color: teal
+        layout: horizontal
+        entity: light.washok_hue
         secondary: >-
-          🌡️{{states('sensor.badkamer_temperatuur_aqara_temperature') }}°C | 
-          💧{{states('sensor.badkamer_temperatuur_aqara_humidity') | int }}%
+          🌡️{{states('sensor.washok_motion_hue_temperature') }}°C | 
+          💡{{states('sensor.washok_motion_hue_illuminance_lux') | int }}lux |
+          🔌{{states('sensor.washok_elektronica_plug_bw_power') | int }}W
         tap_action:
           action: navigate
-          navigation_path: /lovelace-tablet/badkamer
-        entity: light.bathroom
-        icon: mdi:shower-head
-        icon_color: blue
+          navigation_path: /lovelace-tablet/washok
         fill_container: true
-        layout: horizontal
         multiline_secondary: false
         card_mod:
           style: |
@@ -24,12 +25,8 @@ cards:
             }
       - type: custom:mini-graph-card
         entities:
-          - entity: sensor.badkamer_temperatuur_aqara_humidity
+          - entity: sensor.washok_motion_hue_temperature
             name: Temperature
-          - entity: sensor.badkamer_temperatuur_aqara_temperature
-            name: Humidity
-            color: blue
-            y_axis: secondary
         color_thresholds:
           - value: -20
             color: '#264CFF'
@@ -84,168 +81,181 @@ cards:
               background: linear-gradient(to right, var(--card-background-color) 20%, transparent);
             }
   - type: custom:vertical-stack-in-card
-    horizontal: true
+    mode: vertical
     cards:
-      - type: custom:mushroom-template-card
-        entity: switch.shelly1l_badkamerfan
-        layout: vertical
-        use_light_color: true
-        icon: |-
-          {% if is_state('switch.shelly1l_badkamerfan', 'on') %}
-          mdi:fan
-          {% else %}
-          mdi:fan
-          {% endif %}
-        icon_color: |-
-          {% if is_state('switch.shelly1l_badkamerfan', 'on') %}
-            green
-          {% endif %}
-        tap_action:
-          action: more-info
-        double_tap_action:
-          action: call-service
-          service: input_boolean.toggle
-          target:
-            entity_id: input_boolean.node_red_badkamer_automations
-          data: {}
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.washok_hue
+            layout: vertical
+            icon: |-
+              {% if is_state('light.washok_hue', 'on') %}
+              hue:bulb-sultan
+              {% else %}
+              hue:bulb-sultan
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.washok_hue', 'on') %}
+                yellow
+              {% endif %}
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              target:
+                entity_id: input_boolean.node_red_washok_automations
+              data: {}
+            card_mod:
+              style:
+                mushroom-shape-icon$: >
+                  {% if is_state('input_boolean.node_red_washok_automations',
+                  'on') %}
+
+                  .shape {
+                    --shape-animation: ping 3s infinite;
+                  }
+
+                  @keyframes ping {
+                    0% {
+                      box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 5px 5px transparent;
+                    }
+                  }
+
+                  {% elif is_state('input_boolean.node_red_washok_automations',
+                  'off') %}
+
+                  {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:washing-machine
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.wasmachine_status
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:tumble-dryer
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                red
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.droger_status
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:motion-sensor
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.washok_motion_hue_occupancy
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:window-closed
+              {% else %}
+              mdi:window-open
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'off') %}
+                green
+                {% else %}
+                red
+                {% endif %}
+            entity: binary_sensor.zolder_washok_raam_aqara_contact
+            tap_action:
+              action: more-info
+        alignment: end
         card_mod:
           style:
-            mushroom-shape-icon$: >
-              {% if is_state('input_boolean.node_red_badkamer_automations',
-              'on') %}
-
-              .shape {
-                --shape-animation: ping 3s infinite;
+            mushroom-template-chip: |
+              ha-card {
+                --ha-card-box-shadow: none;
+                --chip-background: none;
+                --chip-box-shadow: none;
+                --chip-spacing: 0;
+                : -36px;
+              } 
+            mushroom-template-chip:nth-child(1)$: |
+              {% if is_state('binary_sensor.wasmachine_status','on') %}
+              ha-state-icon {
+                animation: shake 400ms ease-in-out infinite, drum 2s ease infinite;
+                transform-origin: 50% 110%;
               }
-
-              @keyframes ping {
-                0% {
-                  box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
-                }
-                
-                100% {
-                  box-shadow: 0 0 5px 5px transparent;
-                }
+              @keyframes shake {
+                0%, 100% { transform: translate(0, 0) rotate(0); }
+                20%  { transform: translate(0.4px, -0.4px) rotate(-4deg); }
+                40%  { transform: translate(-0.4px, 0.4px) rotate(4deg); }
+                60%  { transform: translate(0.4px, 0.4px) rotate(-4deg); }
+                80%  { transform: translate(-0.4px, -0.4px) rotate(4deg); }
               }
-
-              {% elif is_state('input_boolean.node_red_badkamer_automations',
-              'off') %}
+              @keyframes drum {
+                50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 34% 68%, 60% 41%, 71% 56%, 65% 74%, 47% 79%, 32% 69%, 35% 100%, 100% 100%, 100% 0); }
+              }
+              }
+              {% else %}
 
               {% endif %}
-  - type: custom:mushroom-chips-card
-    chips:
-      - type: template
-        icon: mdi:toothbrush-electric
-        icon_color: |2-
-            {% if is_state(entity, 'on') %}
-            green
-            {% else %}
-            grey
-            {% endif %}
-        entity: switch.tandenborstels
-        tap_action:
-          action: more-info
-      - type: template
-        icon: mdi:fan
-        icon_color: |2-
-            {% if is_state(entity, 'on') %}
-            green
-            {% else %}
-            grey
-            {% endif %}
-        entity: switch.shelly1l_badkamerfan
-        tap_action:
-          action: more-info
-      - type: template
-        icon: mdi:shower-head
-        icon_color: |2-
-            {% if is_state(entity, 'on') %}
-            blue
-            {% else %}
-            grey
-            {% endif %}
-        entity: binary_sensor.hot_tap_water
-        tap_action:
-          action: more-info
-      - type: template
-        icon: |-
-          {% if is_state(entity, 'off') %}
-          mdi:window-closed
-          {% else %}
-          mdi:window-open
-          {% endif %}
-        icon_color: |2-
-            {% if is_state(entity, 'off') %}
-            green
-            {% else %}
-            red
-            {% endif %}
-        entity: binary_sensor.badkamer_raam_aqara_contact
-        tap_action:
-          action: more-info
-    alignment: end
-    card_mod:
-      style:
-        mushroom-template-chip: |
-          ha-card {
-            --ha-card-box-shadow: none;
-            --chip-background: none;
-            --chip-box-shadow: none;
-            --chip-spacing: 0;
-            : -36px;
-          } 
-        mushroom-template-chip:nth-child(1)$: |
-          {% if is_state('switch.tandenborstels','on') %}
-          ha-state-icon {
-            animation: charge 1s linear infinite;
-          }
-          @keyframes charge {
-            0%, 10%, 20%, 30%, 40%, 50%, 60%, 70%, 80%, 90%, 100% { transform: translate(0, 0); }
-            5% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            15% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            25% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            35% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            45% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            55% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            65% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            75% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            85% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-            95% { transform: translate({{ range(-10, 10) | random / 10 }}px, {{ range(-10, 10) | random / 10 }}px); }
-          }
-          }
-          {% else %}
+              }
+            mushroom-template-chip:nth-child(2)$: |
+              {% if is_state('binary_sensor.droger_status','on') %}
+              ha-state-icon {
+                animation: shake 400ms ease-in-out infinite, drum 1s infinite;
+                transform-origin: 50% 65%;
+              }
+              @keyframes shake {
+                0%, 100% { transform: rotate(4deg); }
+                50%  { transform: rotate(-4deg); }
+              }
+              @keyframes drum {
+                50%  { clip-path: polygon(0 0, 0 100%, 35% 100%, 36% 74%, 31% 43%, 61% 40%, 71% 69%, 62% 78%, 36% 73%, 35% 100%, 100% 100%, 100% 0); }
+              }
+              }
+              {% else %}
 
-          {% endif %}
-          }
-        mushroom-template-chip:nth-child(2)$: |
-          {% if is_state('switch.shelly1l_badkamerfan','on') %}
-          ha-state-icon {
-            animation: rotation 2s linear infinite;
-          }
-          @keyframes rotation {
-            0% {
-              transform: rotate(0deg);
-            }
-            100% {
-              transform: rotate(360deg);
-            }
-          }
-          }
-          {% else %}
+              {% endif %}
+              }
+            mushroom-template-chip:nth-child(3)$: >
+              {% if is_state('binary_sensor.washok_motion_hue_occupancy','on')
+              %}
 
-          {% endif %}
-          }
-        mushroom-template-chip:nth-child(3)$: |
-          {% if is_state('binary_sensor.hot_tap_water','on') %}
-          ha-state-icon {
-            animation: clip 0.7s ease-out infinite;
-          }
-          @keyframes clip {
-            0% {clip-path: inset(0 0 45% 0); }
-            100% { clip-path: inset(0 0 0 0); }
-          }
-          }
-          {% else %}
+              ha-state-icon {
+                animation: clip 2s linear infinite;
+              }
 
-          {% endif %}
-          }
+              @keyframes clip {
+                50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
+              }
+
+              .shape {
+                --shape-animation: motion 2s linear infinite;
+              }
+
+              @keyframes motion {
+                0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
+                50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
+              }
+
+              }
+
+              {% else %}
+
+
+              {% endif %}
+
+              }
