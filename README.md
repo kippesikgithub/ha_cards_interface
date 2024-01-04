@@ -152,7 +152,8 @@ Room card for the Washok.
 #### features
 Temperature graph in top of card, containing last 24 hours. 
 Current Temperature, Illumination of room statusses.  
-chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
+Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
+chips icon and color changing based on value: motion, washing machine, dryer, window.  
 Navigation to subview from click on card.
 #### devices in room
 Hue Light  
