@@ -14,7 +14,7 @@ Colors and text changing from entities and attributes
 
 # Screenshot per card
 #### Top Chips Current card  
-Build with Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
+Build with custom Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
 ![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
 
 top_chips_card_current_overview.yaml  
@@ -22,7 +22,11 @@ chips icon and color changing based on value: Outside Temperature, Doors, Curren
 chips animated based on value: Solar   
 
 
-#### Top Persons card
+#### Top Persons card  
+Build with custom Mushroom chips and custom Mushroom person cards. Simple overview for persons and car, containing location status, status of ble transmitters on phone (for espresense thoughout the home, will be disbaled when you leave the house, enabled when entering the house), status of charging and battery. Double click on the Tesla to pre-heat the car, will show with blinking red when heating.
+![person_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/435e8671-1b7b-47e0-a1b5-02728fb614df)
+  
+chips icon and color changing based on value: ble transmitter, charging and battery percentage
 top_persons_card.yaml
 
 
@@ -33,7 +37,7 @@ top_button_card.yaml
 
 
 #### Top Chips Today card  
-Build with Mushroom chips, card to show the today statistics, most important things. Shows todays energy total (import-export), todays total usage of gas and water and todays total produced sun-energy.  
+Build with custom Mushroom chips, card to show the today statistics, most important things. Shows todays energy total (import-export), todays total usage of gas and water and todays total produced sun-energy.  
 ![top_chips_today_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8da5b64d-24ae-4ee5-98d4-780b8c6922a5)  
   
 top_chips_today_overview.yaml  
