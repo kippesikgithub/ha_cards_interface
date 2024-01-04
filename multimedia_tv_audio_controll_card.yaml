@@ -1,0 +1,209 @@
+square: false
+columns: 2
+type: grid
+cards:
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            icon: >-
+              {% if states('sensor.woonkamer_multimedia_tv_plug_tuya_power') |
+              float < 1 %} mdi:television-off  {% elif
+              states('sensor.woonkamer_multimedia_tv_plug_tuya_power') | float >
+              0 %} mdi:television  {% else %}  mdi:music-off  {% endif %}
+            icon_color: >-
+              {% if states('sensor.woonkamer_multimedia_tv_plug_tuya_power') |
+              float < 1 %}  disabled  {% elif
+              states('sensor.woonkamer_multimedia_tv_plug_tuya_power') | float >
+              1 %} green  {% else %}  red  {% endif %}
+            layout: horizontal
+            entity: script.tv_philipstv_ir_on_off
+            tap_action:
+              action: toggle
+          - type: custom:mushroom-template-card
+            icon: |-
+              {% if is_state(entity, 'playing') %}
+              mdi:set-top-box
+              {% else %}
+              mdi:set-top-box
+              {% endif %}
+            icon_color: |-
+              {% if is_state(entity, 'playing') %}
+              green
+              {% else %}
+              disabled
+              {% endif %}
+            layout: horizontal
+            entity: media_player.ziggonext
+            tap_action:
+              action: toggle
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'org.droidtv.playtv' %}
+                mdi:hdmi-port
+                {% else %}
+                mdi:hdmi-port
+                {% endif %}
+            icon_color: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'org.droidtv.playtv' %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
+            entity: script.tv_philips_tv_source_hdmi1
+            tap_action:
+              action: toggle
+          - type: template
+            icon: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'YouTube' %}
+                mdi:youtube
+                {% else %}
+                mdi:youtube
+                {% endif %}
+            icon_color: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'YouTube' %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
+            entity: script.tv_philipstv_source_youtube
+            tap_action:
+              action: toggle
+          - type: template
+            icon: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'Netflix' %}
+                mdi:netflix
+                {% else %}
+                mdi:netflix
+                {% endif %}
+            icon_color: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'Netflix' %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
+            entity: script.tv_philipstv_source_netflix
+            tap_action:
+              action: toggle
+          - type: template
+            icon: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'Jellyfin' %}
+                phu:jellyfin
+                {% else %}
+                phu:jellyfin
+                {% endif %}
+            icon_color: |2-
+                {% if state_attr('media_player.philipstv', 'source') == 'Jellyfin' %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
+            entity: script.tv_philipstv_source_jellyfin
+            tap_action:
+              action: toggle
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              --ha-card-box-shadow: none;
+              --chip-background: none;
+              --chip-box-shadow: none;
+              --chip-spacing: 2px;
+              --chip-height: 42px;
+              : -36px;
+            } 
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:mushroom-template-card
+        icon: >-
+          {% if states('sensor.woonkamer_multimedia_audio_plug_tuya_power') |
+          float < 1 %} mdi:music {% elif
+          states('sensor.woonkamer_multimedia_audio_plug_tuya_power') | float >
+          0 %} mdi:music {% else %} mdi:music-off {% endif %}
+        icon_color: >-
+          {% if states('sensor.woonkamer_multimedia_audio_plug_tuya_power') |
+          float < 1 %} disabled {% elif
+          states('sensor.woonkamer_multimedia_audio_plug_tuya_power') | float >
+          1 %} green {% else %} red {% endif %}
+        layout: horizontal
+        entity: script.audio_z5500_on_off
+        tap_action:
+          action: toggle
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: >-
+              {% if is_state('input_select.audio_z5500_last_source', 'optical')
+              %}
+
+              mdi:audio-input-rca
+
+              {% elif is_state('input_select.audio_z5500_last_source', 'stereo')
+              %}
+
+              mdi:audio-input-rca
+
+              {% else %}
+
+              mdi:audio-input-rca
+
+              {% endif %}
+            icon_color: >-
+              {% if is_state('input_select.audio_z5500_last_source', 'optical')
+              %}
+
+              disabled
+
+              {% elif is_state('input_select.audio_z5500_last_source', 'stereo')
+              %}
+
+              green
+
+              {% else %}
+
+              grey
+
+              {% endif %}
+            entity: script.z5500_direct
+            tap_action:
+              action: toggle
+          - type: template
+            icon: >-
+              {% if is_state('input_select.audio_z5500_last_source', 'optical')
+              %} mdi:toslink {% elif
+              is_state('input_select.audio_z5500_last_source', 'stereo') %}
+              mdi:toslink {% else %} mdi:toslink {% endif %}
+            icon_color: >-
+              {% if is_state('input_select.audio_z5500_last_source', 'optical')
+              %} green {% elif is_state('input_select.audio_z5500_last_source',
+              'stereo') %} disabled {% else %} grey {% endif %}
+            entity: script.z5500_optical
+            tap_action:
+              action: toggle
+          - type: template
+            icon: mdi:volume-plus
+            entity: script.audio_z5500_volume_up
+            tap_action:
+              action: toggle
+          - type: template
+            icon: mdi:volume-minus
+            entity: script.audio_z5500_volume_down
+            tap_action:
+              action: toggle
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              --ha-card-box-shadow: none;
+              --chip-background: none;
+              --chip-box-shadow: none;
+              --chip-spacing: 2px;
+              --chip-height: 42px;
+              : -36px;
+            } 
