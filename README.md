@@ -161,6 +161,12 @@ Visualised in Apexcharts. Water usage last week, per day. Color changing bars ba
 #### filename
 energy_water_last_week_card.yaml
 
+## Gas vs Outside temperature per day, last week 
+Visualised in Apexcharts. Gas usage vs outside temperature last week, per day. Color changing bars based on values.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/da36e4cd-287c-4dc6-a68b-c16b57d73c4a)
+#### filename
+energy_gas_last_week_card.yaml
+
 # Subview Audio (navigation from Top Button card)
 ## TV and Audio Card
 Visualised using Mushroom template and Mushroom chips cards. Current status of tv/audio related devices, buttons for controll and color changing icons based on TV/Audio sources and power usage.  
