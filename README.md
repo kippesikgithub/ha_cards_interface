@@ -165,7 +165,7 @@ energy_water_last_week_card.yaml
 Visualised in Apexcharts. Gas usage vs outside temperature last week, per day. Color changing bars based on values.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/da36e4cd-287c-4dc6-a68b-c16b57d73c4a)
 #### filename
-energy_gas_last_week_card.yaml
+energy_gas_vs_temp_last_week_card.yaml
 
 # Subview Audio (navigation from Top Button card)
 ## TV and Audio Card
