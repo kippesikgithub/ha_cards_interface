@@ -120,8 +120,24 @@ Esp32 WLED Commode ledstrip
 kinderkamer_lucas_room_card.yaml
 
 ## Woonkamer Room Card
-![woonkamer_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ccd2267c-a1d9-47f0-b373-a23409d9ea9d)
-
+Room card for the Woonkamer.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/5e0b8316-9594-4ca2-b19b-a743cc76de51)
+#### features
+Temperature graph in top of card, containing last 24 hours. 
+Current Temperature, Humidity, Illumination of room statusses.  
+chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
+Navigation to subview from click on card.
+#### devices in room
+Hue Lights  
+Hue remote dimmers  
+Hue Motion sensors  
+Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
+Esp32 + IR transmitter + IR receiver
+Esp32 + espresense  
+Zigbee Wall socket(s) measuring power usage  
+IRobot Roomba  
+Lenovo Wall Tablet  
+#### filename
 woonkamer_room_card.yaml
 
 # Subview Energy (navigation from Top Button card)
