@@ -12,7 +12,8 @@ blinking rings: Automations for that entity/area are enabled, no ring means disa
 Animated Icons  
 Colors and text changing from entities and attributes   
 
-#### Top Chips Current card
+#### Top Chips Current card  
+Build with Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
 ![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
 
 top_chips_card_current_overview.yaml  
@@ -30,10 +31,13 @@ top_persons_card.yaml
 top_button_card.yaml
 
 
-#### Top Chips Today card
+#### Top Chips Today card  
+Build with Mushroom chips, card to show the today statistics, most important things. Shows todays energy total (import-export), todays total usage of gas and water and todays total produced sun-energy.  
 ![top_chips_today_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8da5b64d-24ae-4ee5-98d4-780b8c6922a5)  
-
-top_chips_today_overview.yaml
+  
+top_chips_today_overview.yaml  
+chips icon and color changing based on value: Total power usage, gas, water and solar    
+chips animated based on value: Solar 
 
 #### Trapkast Room Card
 ![trapkast_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9de6b181-02ae-4656-8920-c9d77cc54fa2)
