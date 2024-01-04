@@ -141,6 +141,12 @@ Lenovo Wall Tablet
 woonkamer_room_card.yaml
 
 # Subview Energy (navigation from Top Button card)
+## Overview Electricity per room
+Visualised with Sankey Diagram.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3e555eb7-0633-4f20-84ac-a111361c6b4b)
+#### repository link
+https://github.com/kippesikgithub/hass_detailed_power_monitoring
+
 ## Current Devices status
 Visualised with Mushroom Chips. Which devices are on and using power. Visualised with colored/animated icons. 
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f095f9dd-80d9-4008-926f-d76976c91073)
