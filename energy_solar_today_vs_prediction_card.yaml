@@ -1,0 +1,68 @@
+type: custom:apexcharts-card
+graph_span: 48h
+update_interval: 1h
+header:
+  show: true
+  title: Zon
+experimental:
+  color_threshold: true
+all_series_config:
+  stroke_width: 2
+  group_by:
+    func: min
+    duration: 1h
+span:
+  start: day
+now:
+  show: true
+  label: Now
+yaxis:
+  - id: estimate
+    decimals: 0
+  - id: actueel
+    decimals: 0
+    show: false
+apex_config:
+  plotOptions:
+    bar:
+      columnWidth: 100%
+series:
+  - entity: sensor.power_production_now
+    name: Voorspelling
+    yaxis_id: estimate
+    color_threshold:
+      - value: 0
+        color: moccasin
+      - value: 500
+        color: khaki
+      - value: 1000
+        color: yellow
+      - value: 1500
+        color: gold
+      - value: 2000
+        color: orange
+      - value: 2500
+        color: darkorange
+      - value: 3000
+        color: tomato
+      - value: 3500
+        color: sandybrown
+      - value: 4000
+        color: peru
+      - value: 4500
+        color: orangered
+      - value: 5000
+        color: maroon
+      - value: 5500
+        color: purple
+      - value: 6000
+        color: darkred
+    type: column
+    show:
+      extremas: true
+  - entity: sensor.envoy_122217065650_current_power_production
+    yaxis_id: actueel
+    type: line
+    name: Actueel
+    extend_to: false
+    color: red
