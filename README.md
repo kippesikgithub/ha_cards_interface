@@ -219,7 +219,7 @@ Visualised in Apexcharts. Gas usage vs outside temperature last week, per day. C
 energy_gas_vs_temp_last_week_card.yaml
 
 ## Gas vs Outside temperature per day, last week 
-Visualised in Apexcharts. Solar production today's current vs yesterday's current same time vs prediction last week, per day. Color changing bars based on values.  
+Visualised in Apexcharts. Solar production today's current vs yesterday's current same time vs prediction last week, per day. Color changing bars based on values,  including upcoming sunset, sunrise lines.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ae78dde2-987b-40c6-aa6c-5b8e11e93cd7)
 #### filename
 energy_solar_today_vs_yesterday_vs_prediction_card.yaml
