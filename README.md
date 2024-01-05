@@ -57,7 +57,7 @@ chips animated based on value: Solar
 Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
 ![trapkast_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9de6b181-02ae-4656-8920-c9d77cc54fa2)
 #### features
-Temperature graph in top of card, containing last 24 hours.  
+Color changing Temperature graph in top of card, containing last 24 hours.  
 Current Temperature status.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
@@ -74,7 +74,7 @@ trapkast_room_card.yaml
 Room card for the Badkamer.  
 ![badkamer_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/637caac6-3d99-4ecf-80e3-45628e5833d1)
 #### features
-Temperature and Humidity graph in top of card, containing last 24 hours.  
+Color changing Temperature and Humidity graph in top of card, containing last 24 hours.  
 Current Temperature and Humidity statusses.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: fan, toothbrushes charging, shower status, window.
@@ -92,7 +92,7 @@ badkamer_room_card.yaml
 Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
 ![sophie_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/110e952c-5979-4731-8029-3b6d862b0966)
 #### features
-Temperature and Humidity graph in top of card, containing last 24 hours.  
+Color changing Temperature and Humidity graph in top of card, containing last 24 hours.  
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
 Chips icon and color changing based on value: motion, window, airco.  
 Navigation to subview from click on card.
@@ -113,7 +113,7 @@ kinderkamer_sophie_room_card.yaml
 Room card for sons room. Offcourse including babyicons, controlls for the led-lighting (commode), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
 ![lucas_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/c3ace65b-76e9-4c74-b12e-f5beb4321e57)
 #### features
-Temperature and Humidity graph in top of card, containing last 24 hours. 
+Color changing Temperature and Humidity graph in top of card, containing last 24 hours. 
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
 chips icon and color changing based on value: motion, window, airco.  
 Navigation to subview from click on card.
@@ -132,7 +132,7 @@ kinderkamer_lucas_room_card.yaml
 Room card for the Woonkamer.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/5e0b8316-9594-4ca2-b19b-a743cc76de51)
 #### features
-Temperature graph in top of card, containing last 24 hours. 
+Color changing Temperature graph in top of card, containing last 24 hours. 
 Current Temperature, Humidity, Illumination of room statusses.  
 chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
 Navigation to subview from click on card.
@@ -153,7 +153,7 @@ woonkamer_room_card.yaml
 Room card for the Washok.  
 ![washok_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/a68dad4d-edd4-4f24-843a-7d860de0f9b5)
 #### features
-Temperature graph in top of card, containing last 24 hours. 
+Color changing Temperature graph in top of card, containing last 24 hours. 
 Current Temperature, Illumination of room statusses.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 chips icon and color changing based on value: motion, washing machine, dryer, window.  
