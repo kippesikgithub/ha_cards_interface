@@ -1,0 +1,72 @@
+type: custom:config-template-card
+entities:
+  - sensor.sun_next_setting
+  - sensor.sun_next_noon
+  - sensor.sun_next_rising
+  - sensor.envoy_122217065650_current_power_production
+  - sensor.power_production_now
+card:
+  type: custom:apexcharts-card
+  header:
+    title: Solar generation today
+  span:
+    start: day
+  graph_span: 24h
+  update_interval: 10mins
+  all_series_config:
+    type: area
+    group_by:
+      func: avg
+      duration: 10mins
+  color_list:
+    - yellow
+    - orange
+    - blue
+  series:
+    - entity: sensor.envoy_122217065650_current_power_production
+      name: Vandaag
+      type: line
+      opacity: 1
+      stroke_width: 2
+    - entity: sensor.envoy_122217065650_current_power_production
+      name: Gisteren
+      offset: '-24h'
+      type: line
+      opacity: 1
+      stroke_width: 2
+      show:
+        in_header: true
+    - entity: sensor.power_production_now
+      name: Voorspelling
+      type: line
+      opacity: 1
+      stroke_width: 2
+      show:
+        in_header: false
+  apex_config:
+    yaxis:
+      min: 0
+      forceNiceScale: true
+      decimalsInFloat: false
+    annotations:
+      xaxis:
+        - x: ${new Date(states['sensor.sun_next_rising'].state).getTime()}
+          label:
+            text: Sunrise ☀️
+            borderWidth: 0
+            style:
+              background: '#0000'
+        - x: ${new Date(states['sensor.sun_next_noon'].state).getTime()}
+          label:
+            text: 😎
+            borderWidth: 0
+            style:
+              background: '#0000'
+        - x: ${new Date(states['sensor.sun_next_setting'].state).getTime()}
+          label:
+            text: Sunset 🌙
+            borderWidth: 0
+            style:
+              background: '#0000'
+    chart:
+      height: 150
