@@ -1,0 +1,56 @@
+type: custom:mushroom-climate-card
+entity: climate.airco_lucas
+hvac_modes:
+  - heat_cool
+  - heat
+  - cool
+  - fan_only
+  - dry
+show_temperature_control: true
+collapsible_controls: false
+name: Airco Lucas
+card_mod:
+  style: |
+    mushroom-shape-icon {
+      {% if is_state(config.entity, 'heat_cool') %}
+        --card-mod-icon: mdi:autorenew;
+        animation: spin 3s ease-in-out infinite alternate;
+      {% elif is_state(config.entity, 'heat') %}
+        --card-mod-icon: mdi:fire;
+        animation: heat 2s infinite;
+      {% elif is_state(config.entity, 'cool') %}
+        --card-mod-icon: mdi:snowflake;
+        animation: cool 6s ease-in-out infinite;
+      {% elif is_state(config.entity, 'dry') %}
+        --card-mod-icon: mdi:water-percent;
+        animation: dry 1.5s linear infinite;
+      {% elif is_state(config.entity, 'fan_only') %}
+        --card-mod-icon: mdi:fan;
+        animation: spin 1s linear infinite;
+      {% else %}
+        --card-mod-icon: mdi:air-conditioner;
+      {% endif %}
+      display: flex;
+    }
+    @keyframes cool {
+      0%, 100% { transform: rotate(25deg); }
+      25% { transform: rotate(-25deg); }
+      50% { transform: rotate(50deg); }
+      75% { transform: rotate(-50deg); }
+    }
+    @keyframes heat {
+      0%, 100% { --icon-color: rgba(var(--rgb-red), 1); }
+      10%, 90% { --icon-color: rgba(var(--rgb-red), 0.8); }
+      20%, 80% { --icon-color: rgba(var(--rgb-red), 0.6); }
+      30%, 70% { --icon-color: rgba(var(--rgb-red), 0.4); }
+      40%, 60% { --icon-color: rgba(var(--rgb-red), 0.2); }
+      50% { --icon-color: rgba(var(--rgb-red), 0); }
+    }
+    @keyframes dry {
+      0%, 100% { --icon-symbol-size: 21px; }
+      10%, 90% { --icon-symbol-size: 22px; }
+      20%, 80% { --icon-symbol-size: 23px; }
+      30%, 70% { --icon-symbol-size: 24px; }
+      40%, 60% { --icon-symbol-size: 25px; }
+      50% { --icon-symbol-size: 26px; }
+    }
