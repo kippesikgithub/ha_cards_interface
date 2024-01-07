@@ -6,6 +6,7 @@ I will also include a short Guide later, on howto setup your first room card fro
 
 # Overview
 ![total_room_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/c373e5c2-f11b-46e0-8a9e-df0729510afc)
+![mobile_overview_front](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/b91ef952-08ee-494a-a057-ce32c8d9003d)
 
 Custom made mostly using Mushroom cards and Card Mod  
 blinking rings: Automations for that entity/area are enabled, no ring means disabled. Double click to toggle.  
