@@ -144,6 +144,7 @@ Hue Motion sensors
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
 Esp32 + IR transmitter + IR receiver
 Esp32 + espresense  
+WLED Esp vuilniswagen (garbage collection light/notifier) https://github.com/kippesikgithub/wled_garbagetruck  
 Zigbee Wall socket(s) measuring power usage  
 IRobot Roomba  
 Lenovo Wall Tablet  
