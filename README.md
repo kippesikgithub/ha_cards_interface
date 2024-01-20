@@ -186,7 +186,8 @@ energy_current_devices_status_card.yaml
 
 ## Netto Electricity per day, last3 days
 Visualised in Apexcharts. Import electricity from net - exported electricity to net, per day-start, start at 0 (utility meter helper).    
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/54edec09-d756-4430-a497-c117ce7f7e0c)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8f56a9e7-ecc4-43c2-b348-c82a4d4667cd)
+
 #### filename
 energy_electricity_netto_last_week_card.yaml
 
