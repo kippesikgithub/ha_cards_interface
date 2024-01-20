@@ -180,7 +180,7 @@ https://github.com/kippesikgithub/hass_detailed_power_monitoring
 
 ## Current Devices status
 Visualised with Mushroom Chips. Which devices are on and using power. Visualised with colored/animated icons. 
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f095f9dd-80d9-4008-926f-d76976c91073)
+![mobile_devices](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1a3ffd15-78fe-4b4f-8fe3-9823315c4030)
 #### filename
 energy_current_devices_status_card.yaml
 
