@@ -1,0 +1,19 @@
+type: grid
+title: Screens Verdieping 1
+cards:
+  - type: custom:mushroom-cover-card
+    entity: cover.screen_lucas
+    name: Lucas
+    show_buttons_control: true
+    icon: mdi:window-shutter
+    tap_action:
+      action: more-info
+  - type: custom:mushroom-cover-card
+    entity: cover.screen_sophie
+    name: Sophie
+    show_buttons_control: true
+    tap_action:
+      action: more-info
+    icon: mdi:window-shutter
+columns: 2
+square: false
