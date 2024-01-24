@@ -253,6 +253,12 @@ Visualised using Mushroom climate card. Color changing and animated icons.
 #### filename
 temperatures_climate_card.yaml
 
+# Subview Screens
+Visualised using the Mushroom cards.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/11e013a6-1dbd-4b93-901b-c79d8e3c87ef)
+#### filename
+screens_card.yaml
+
 # Outside Projects
 ## ESP Butterfly House
 Butterfly House supplying data from a temp/baro sensor, solar panel and 2x 18650 cells, completely self sufficient.  
