@@ -255,7 +255,14 @@ temperatures_climate_card.yaml
 
 # Outside Projects
 ## ESP Butterfly House
-Butterfly House supplying data from a temp/baro sensor, completely sefl sufficient.  
+Butterfly House supplying data from a temp/baro sensor, solar panel and 2x 18650 cells, completely self sufficient.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/fbea9fce-ced5-49e4-873a-ef377a7b3860)
 #### filename
-temperatures_climate_card.yaml
+vlinderhuis_room_card.yaml
+
+## ESP Pump House
+Pump House supplying data from a temp/baro, illuminance sensors a waterpump for plants, solar panel and 2x 18650 cells, completely self sufficient.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/2f5760c4-7853-47a4-a08d-0b4fb7adb1a9)
+#### filename
+pomphuis_room_card.yaml
+
