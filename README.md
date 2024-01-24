@@ -16,7 +16,7 @@ Colors and text changing from entities and attributes
 # Wall Tablet Overview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/7a58060c-08d9-4722-9c6f-4b4439ec1e30)
 #### repository link
-[https://github.com/kippesikgithub/hass_detailed_power_monitoring](https://github.com/kippesikgithub/hass_walltablet)  
+https://github.com/kippesikgithub/hass_walltablet  
 Documentation still has to be updated
 
 # Screenshot per card
