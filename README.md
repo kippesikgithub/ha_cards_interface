@@ -266,3 +266,28 @@ Pump House supplying data from a temp/baro, illuminance sensors a waterpump for 
 #### filename
 pomphuis_room_card.yaml
 
+# RoomSubviews
+
+## Woonkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+
+## Hal Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/38c4b3ec-daa1-4811-b500-d963faf210c5)
+
+## Keuken Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)
+
+## Badkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)
+
+## Kinderkamer Sophie Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d2e65070-c22e-4dd8-87dd-adc686aeac65)
+
+## Washok Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ea578098-c51f-422e-b6e4-4af0ada32c17)
+
+## Overloop1 Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1c8c3a09-5c5f-433d-a7b3-edf22d8cb34b)
+
+## Overloop2 Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/164fb350-a29b-4a64-be07-eeef40309561)
