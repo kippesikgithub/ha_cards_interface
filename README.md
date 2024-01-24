@@ -284,7 +284,7 @@ pomphuis_room_card.yaml
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d2e65070-c22e-4dd8-87dd-adc686aeac65)
 
 ## Washok Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ea578098-c51f-422e-b6e4-4af0ada32c17)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/91a3be6a-33a8-4179-9e1c-c4d5502b68d7)
 
 ## Overloop1 Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1c8c3a09-5c5f-433d-a7b3-edf22d8cb34b)
