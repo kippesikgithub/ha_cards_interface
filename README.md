@@ -252,3 +252,10 @@ Visualised using Mushroom climate card. Color changing and animated icons.
 ![airco_lucas](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1d4067cb-63e0-40e7-8782-1e111b1644a9)
 #### filename
 temperatures_climate_card.yaml
+
+# Outside Projects
+## ESP Butterfly House
+Butterfly House supplying data from a temp/baro sensor, completely sefl sufficient.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/fbea9fce-ced5-49e4-873a-ef377a7b3860)
+#### filename
+temperatures_climate_card.yaml
