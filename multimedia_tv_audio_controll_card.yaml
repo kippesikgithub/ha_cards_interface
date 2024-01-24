@@ -45,9 +45,9 @@ cards:
           - type: template
             icon: |2-
                 {% if state_attr('media_player.philipstv', 'source') == 'org.droidtv.playtv' %}
-                mdi:hdmi-port
+                phu:ziggo
                 {% else %}
-                mdi:hdmi-port
+                phu:ziggo
                 {% endif %}
             icon_color: |2-
                 {% if state_attr('media_player.philipstv', 'source') == 'org.droidtv.playtv' %}
