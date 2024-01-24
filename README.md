@@ -66,7 +66,7 @@ Chips icon and color changing based on value: motion, main water usage, floor he
 Hue light  
 Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)  
 Wemos D1 + proximity sensor (measure watermeter)  
-Esp32 + LD2410 (mmwave) + BMP180 (temp and baro)  
+Esp32 + LD2410 (mmwave) + BMP180 (temp and baro) https://github.com/kippesikgithub/esp_motion_mmwave  
 Zigbee Wall socket for controlling floor heating pump
 #### filename
 trapkast_room_card.yaml
@@ -100,7 +100,7 @@ Navigation to subview from click on card.
 #### devices in room
 Hue Light  
 Hue remote dimmer  
-Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
+Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination) https://github.com/kippesikgithub/esp_motion_mmwave  
 Zigbee Wall socket(s) measuring power usage  
 Mitsubishi Heavy Industries Airco (cooling/heating)  
 Esp32 WLED Desk ledstrip  
@@ -121,7 +121,7 @@ Navigation to subview from click on card.
 #### devices in room
 Hue Light  
 Hue remote dimmer  
-Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
+Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination) https://github.com/kippesikgithub/esp_motion_mmwave  
 Zigbee Wall socket(s) measuring power usage  
 Mitsubishi Heavy Industries Airco (cooling/heating)  
 Esp32 WLED Commode ledstrip  
