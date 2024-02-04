@@ -91,7 +91,7 @@ badkamer_room_card.yaml
 
 ## Kinderkamer Sophie Room Card
 Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
-![sophie_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/110e952c-5979-4731-8029-3b6d862b0966)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ae3cd92d-9214-4f29-bc3a-5eb9319ba205)
 #### features
 Color changing Temperature and Humidity graph in top of card, containing last 24 hours.  
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
@@ -103,7 +103,8 @@ Hue remote dimmer
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination) https://github.com/kippesikgithub/esp_motion_mmwave  
 Zigbee Wall socket(s) measuring power usage  
 Mitsubishi Heavy Industries Airco (cooling/heating)  
-Esp32 WLED Desk ledstrip  
+Esp32 WLED Desk ledstrip
+Esp8266 Sleeptrainer/Slaapwekker (3d print, esp8266, some ws2812b leds)  
 Wemos D1 mini WLED Unicorn light  
 Esp32 Somfy RTS for controlling screens  
 Aqara Zigbee window sensor
