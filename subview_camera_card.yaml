@@ -1,0 +1,3 @@
+type: custom:webrtc-camera
+url: rtsp://127.0.0.1:8560/sophie
+muted: true
