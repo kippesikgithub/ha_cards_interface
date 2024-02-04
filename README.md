@@ -11,7 +11,9 @@ I will also include a short Guide later, on howto setup your first room card fro
 Custom made mostly using Mushroom cards and Card Mod  
 blinking rings: Automations for that entity/area are enabled, no ring means disabled. Double click to toggle.  
 Animated Icons  
-Colors and text changing from entities and attributes   
+Colors and text changing from entities and attributes  
+## Subviews Documentation
+https://github.com/kippesikgithub/ha_cards_interface/blob/main/subviews_rooms.md
 
 # Wall Tablet Overview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/7a58060c-08d9-4722-9c6f-4b4439ec1e30)
