@@ -1,0 +1,28 @@
+type: custom:vertical-stack-in-card
+mode: vertical
+cards:
+  - type: energy-date-selection
+  - type: custom:sankey-chart
+    height: 200
+    unit_prefix: k
+    round: 1
+    min_box_height: 20
+    min_box_distance: 5
+    show_states: true
+    show_units: true
+    show_names: true
+    show_icons: true
+    energy_date_selection: true
+    wide: true
+    sections:
+      - entities:
+          - entity_id: sensor.kinderkamer_sophie_total_energy_kwh
+            type: remaining_child_state
+            name: Sophie
+            color: red
+            children:
+              - sensor.kinderkamer_sophie_elektronica_plug_tuya_energy
+      - entities:
+          - entity_id: sensor.kinderkamer_sophie_elektronica_plug_tuya_energy
+            type: entity
+            color: blue
