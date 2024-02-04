@@ -1,0 +1,89 @@
+type: custom:vertical-stack-in-card
+horizontal: false
+title: Slaapwekker👀
+cards:
+  - type: custom:vertical-stack-in-card
+    horizontal: false
+    cards:
+      - type: custom:mushroom-light-card
+        entity: light.wled_night_sophie_master
+        primary_info: none
+        secondary_info: state
+        layout: vertical
+        fill_container: false
+        show_brightness_control: true
+        show_color_temp_control: true
+        show_color_control: true
+        collapsible_controls: false
+        use_light_color: true
+        double_tap_action:
+          action: call-service
+          service: input_boolean.toggle
+          target:
+            entity_id: input_boolean.node_red_kinderkamer_sophie_oogjes_automations
+          data: {}
+        card_mod:
+          style:
+            mushroom-shape-icon$: >
+              {% if
+              is_state('input_boolean.node_red_kinderkamer_sophie_oogjes_automations',
+              'on') %}
+
+              .shape {
+                --shape-animation: ping 3s infinite;
+              }
+
+              @keyframes ping {
+                0% {
+                  box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                }
+                
+                100% {
+                  box-shadow: 0 0 5px 5px transparent;
+                }
+              }
+
+              {% elif
+              is_state('input_boolean.node_red_kinderkamer_sophie_oogjes_automations',
+              'off') %}
+
+              {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:eye-closed
+            icon_color: white
+            entity: script.wled_night_sophie_preset_eyesclosed
+            tap_action:
+              action: toggle
+          - type: template
+            icon: mdi:eye-closed
+            icon_color: white
+            entity: input_datetime.wled_night_sophie_inbed
+            content: '{{ states("input_datetime.wled_night_sophie_inbed") }}'
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:eye-outline
+            icon_color: white
+            entity: input_datetime.wled_night_sophie_uitbed
+            content: '{{ states("input_datetime.wled_night_sophie_uitbed") }}'
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:eye-outline
+            icon_color: white
+            entity: script.wled_night_sophie_preset_eyesopen
+            tap_action:
+              action: toggle
+        alignment: center
+    card_mod:
+      style:
+        mushroom-template-chip: |
+          ha-card {
+            --ha-card-box-shadow: none;
+            --chip-background: none;
+            --chip-box-shadow: none;
+            --chip-spacing: 0;
+            : -36px;
+          } 
