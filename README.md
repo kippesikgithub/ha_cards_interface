@@ -276,7 +276,8 @@ Pump House supplying data from a temp/baro, illuminance sensors a waterpump for 
 pomphuis_room_card.yaml
 
 # RoomSubviews
-
+For documentation for the subviews of rooms  
+https://github.com/kippesikgithub/ha_cards_interface/blob/main/subviews_rooms.md  
 ## Woonkamer Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
 
