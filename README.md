@@ -287,7 +287,7 @@ pomphuis_room_card.yaml
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)
 
 ## Kinderkamer Sophie Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d2e65070-c22e-4dd8-87dd-adc686aeac65)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/60ebba17-dab4-4afa-98ac-14b68458c7b2)
 
 ## Washok Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/91a3be6a-33a8-4179-9e1c-c4d5502b68d7)
