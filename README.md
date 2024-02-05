@@ -82,6 +82,30 @@ IRobot Roomba
 Lenovo Wall Tablet
 #
 
+# Keuken
+## Keuken Room Card
+Room card for the Badkamer.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/033be75a-9302-402c-af83-bf5e01b5e40d)
+#### features
+Current Temperature and Humidity statusses.  
+Chips icon and color changing based on value: dishwasher, coffeemachine, window.  
+Navigation to subview from click on card.
+#### filename(s)
+keuken_room_card.yaml
+
+## Keuken Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)  
+
+#### devices in room
+Aqara Zigbee Temperature and Humidity sensor  
+ESP32 Espresense beacon  
+ESP32 Based Speaker  
+Zigbee Wall socket(s) (oven, microwave)  
+EcoDimm007 Zigbee Dimmer for spots  
+Shelly Plug-s(s) (Quooker, Dishwasher, Coffemachine)  
+Aqara Zigbee window sensor
+#
+  
 # Trapkast
 ## Trapkast Room Card
 Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
@@ -124,29 +148,7 @@ Shelly RGBW2 + 12v Ledstrip behind coat rack
 Zigbee Smoke Sensor  
 Philips Hue Zigbee Motion (+ temp and illumination)  
 #
-
-# Keuken
-## Keuken Room Card
-Room card for the Badkamer.  
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/033be75a-9302-402c-af83-bf5e01b5e40d)
-#### features
-Current Temperature and Humidity statusses.  
-Chips icon and color changing based on value: dishwasher, coffeemachine, window.  
-Navigation to subview from click on card.
-#### filename(s)
-keuken_room_card.yaml
-
-## Keuken Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)  
-
-#### devices in room
-Aqara Zigbee Temperature and Humidity sensor  
-Zigbee Wall socket for controlling charging electric toothbrushes  
-Shelly 1L for controlling the Fan (based on humidity level)  
-Toon integration for reading shower/warm water status  
-Aqara Zigbee window sensor
-#
-
+  
 # Badkamer
 ## Badkamer Room Card
 Room card for the Badkamer.  
