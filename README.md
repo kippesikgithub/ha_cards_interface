@@ -172,7 +172,8 @@ Zigbee Wall socket(s) measuring power usage
 Aqara Zigbee window sensor
 #### filename
 washok_room_card.yaml
-
+#### Related projects
+How to monitor washing machine and tumble dryer state with powerplug/shelly: https://github.com/kippesikgithub/hass_washing_dryer
 
 # Subview Energy (navigation from Top Button card)
 ## Overview Electricity per room
