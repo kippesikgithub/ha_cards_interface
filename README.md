@@ -51,8 +51,37 @@ Build with custom Mushroom chips, card to show the today statistics, most import
   
 top_chips_today_overview.yaml  
 chips icon and color changing based on value: Total power usage, gas, water and solar    
-chips animated based on value: Solar 
+chips animated based on value: Solar
+#
   
+# Woonkamer
+## Woonkamer Room Card
+Room card for the Woonkamer.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/5e0b8316-9594-4ca2-b19b-a743cc76de51)
+#### features
+Color changing Temperature graph in top of card, containing last 24 hours. 
+Current Temperature, Humidity, Illumination of room statusses.  
+chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
+Navigation to subview from click on card.
+#### filename(s)
+woonkamer_room_card.yaml
+
+## Woonkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+
+#### devices in room
+Hue Lights  
+Hue remote dimmers  
+Hue Motion sensors  
+Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
+Esp32 + IR transmitter + IR receiver
+Esp32 + espresense  
+WLED Esp vuilniswagen (garbage collection light/notifier) https://github.com/kippesikgithub/wled_garbagetruck  
+Zigbee Wall socket(s) measuring power usage  
+IRobot Roomba  
+Lenovo Wall Tablet
+#
+
 #
 # Trapkast
 ## Trapkast Room Card
@@ -73,6 +102,27 @@ Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)
 Wemos D1 + proximity sensor (measure watermeter)  
 Esp32 + LD2410 (mmwave) + BMP180 (temp and baro) https://github.com/kippesikgithub/esp_motion_mmwave  
 Zigbee Wall socket for controlling floor heating pump
+#
+
+# Hal
+## Hal Room Card
+Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f55593fb-2b6b-4237-81be-10dda64891ad)
+#### features
+Color changing Temperature graph in top of card, containing last 24 hours.  
+Current Temperature status.  
+Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
+Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
+#### filename(s)
+hal_room_card.yaml
+
+## Hal Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/40f9c2ea-b643-4251-aeca-1ce2225b3c37)  
+
+#### devices in room
+Shelly RGBW2 + 12v Ledstrip behind coat rack   
+Zigbee Smoke Sensor  
+Philips Hue Zigbee Motion (+ temp and illumination)  
 #
   
 # Badkamer
@@ -169,34 +219,6 @@ Esp32 WLED Commode ledstrip
 Aqara Zigbee window sensor
 #
   
-# Woonkamer
-## Woonkamer Room Card
-Room card for the Woonkamer.  
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/5e0b8316-9594-4ca2-b19b-a743cc76de51)
-#### features
-Color changing Temperature graph in top of card, containing last 24 hours. 
-Current Temperature, Humidity, Illumination of room statusses.  
-chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
-Navigation to subview from click on card.
-#### filename(s)
-woonkamer_room_card.yaml
-
-## Woonkamer Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
-
-#### devices in room
-Hue Lights  
-Hue remote dimmers  
-Hue Motion sensors  
-Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)  
-Esp32 + IR transmitter + IR receiver
-Esp32 + espresense  
-WLED Esp vuilniswagen (garbage collection light/notifier) https://github.com/kippesikgithub/wled_garbagetruck  
-Zigbee Wall socket(s) measuring power usage  
-IRobot Roomba  
-Lenovo Wall Tablet
-#
-
 # Washok
 ## Washok Room Card
 Room card for the Washok.  
