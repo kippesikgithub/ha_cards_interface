@@ -47,7 +47,7 @@ top_persons_with_popup.yaml
 
 ## Top Button card
 Build with custom Mushroom template cards. Just some simple buttons to navigate to subviews with summaries and statistics about Energy, Temperatures, Mediaplayers incl volumes and sources, 3d printing and outside screens. every button navigates to a subview.
-![top_button_navigation](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f1ade95c-a77d-4a4b-b31f-af099f8c1018)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3dc30425-2cab-496f-a07b-e2f7dc2fbfb5)
 #### features
 nothing special, just some color changing and animated icons
 #### filename(s)
