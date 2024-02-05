@@ -1,0 +1,1560 @@
+square: false
+columns: 3
+type: grid
+cards:
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:mushroom-person-card
+        icon_type: entity-picture
+        layout: horizontal
+        entity: person.sander
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Sander
+              content:
+                type: vertical-stack
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: person.sander
+                    layout: horizontal
+                    icon_type: entity-picture
+                    primary_info: state
+                    secondary_info: last-changed
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    card_mod:
+                      style:
+                        mushroom-shape-avatar$: |
+                          .picture {
+
+                            /* Style shadow ring around person avatar */                              
+                            box-shadow: 0px 0px 4px 2px var(--state-person);
+                            margin-right: var(--mush-title-spacing, 12px);
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling */
+                            --ha-card-background: none;
+                            box-shadow: none;
+                            --ha-card-border-width: 0;
+
+                            /* Increase icon size */
+                            --icon-size: 72px;
+
+                            /* Center card */
+                            margin: auto;
+                            width: fit-content;
+
+                            /* Add padding to bottom of card */
+                            padding: 0px 0px var(--mush-title-spacing, 12px) 0px !important;
+                            
+                            /* Make card non-responsive to select and pointer */
+                            user-select: none;
+                            pointer-events: none;
+                            
+                            transition: all 0s;
+                          }
+                          :host {
+
+                            /* Define Person State colors. Can be added to theme */
+                            --state-person-home: var(--green-color);
+                            --state-person-not-home: var(--red-color);
+                            --state-person-zone: var(--blue-color);
+                            --state-person-unknown: var(--grey-color);
+
+                            /* Set Person State color */
+                            --state-person:
+                            {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                              var(--state-person-{{ states(config.entity) | replace('_', '-') }})
+                            {% else %}
+                              var(--state-person-zone)
+                            {% endif %};
+
+                            /* Match styling to Mushroom Title */
+                            --mush-card-primary-font-size: var(--mush-title-font-size, 24px);
+                            --mush-card-primary-font-weight: var(--mush-title-font-weight, normal);
+                            --mush-card-primary-line-height: var(--ush-title-line-height, 1.2);
+                            --mush-card-secondary-font-size: var(--mush-title-font-size, 16px);
+                            --mush-card-secondary-font-weight: var(--mush-title-font-weight, normal);
+                            --mush-card-secondary-line-height: var(--ush-title-line-height, 1.2);
+                          }
+                  - type: history-graph
+                    entities:
+                      - entity: person.sander
+                        name: ' '
+                    hours_to_show: 12
+                    title: Buiten
+                    card_mod:
+                      style:
+                        $: |
+                          .card-header {
+
+                            /* Style timeline title */
+                            padding: 0px 24px !important;
+                            font-size: var(--mush-card-primary-font-size, 14px) !important;
+                            font-weight: var(--mush-card-primary-font-weight, bold) !important;
+                            line-height: var(--mush-card-primary-line-height, 1.5) !important;
+                            color: var(--primary-text-color) !important;
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling */
+                            --ha-card-box-shadow: none;
+                            --ha-card-background: none;
+                            --ha-card-border-width: 0;
+                            user-select: none;
+                          }
+                          .content {
+
+                            /* Add padding on right */
+                            padding: 0px 24px !important;
+                          }
+                  - type: history-graph
+                    entities:
+                      - entity: sensor.pixel6proble
+                        name: ' '
+                    hours_to_show: 4
+                    title: Binnen
+                    card_mod:
+                      style:
+                        $: |
+                          .card-header {
+
+                            /* Style timeline title */
+                            padding: 0px 24px !important;
+                            font-size: var(--mush-card-primary-font-size, 14px) !important;
+                            font-weight: var(--mush-card-primary-font-weight, bold) !important;
+                            line-height: var(--mush-card-primary-line-height, 1.5) !important;
+                            color: var(--primary-text-color) !important;
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling */
+                            --ha-card-box-shadow: none;
+                            --ha-card-background: none;
+                            --ha-card-border-width: 0;
+                            user-select: none;
+                          }
+                          .content {
+
+                            /* Add padding on right */
+                            padding: 0px 24px !important;
+                          }
+                  - type: horizontal-stack
+                    cards:
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.pixel6proble
+                            state_not: not_home
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: '{{ states(entity) }}'
+                          secondary: '{{ state_attr(entity, ''distance'') | round(4) }} m'
+                          icon: mdi:bluetooth-connect
+                          entity: sensor.pixel6proble
+                          layout: vertical
+                          icon_color: purple
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+                                  /* Add destination details */
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.pixel_6_pro_wifi_connection
+                            state_not: <not connected>
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: '{{ states(''sensor.pixel_6_pro_wifi_connection'') }}'
+                          secondary: >-
+                            {% set signal_level = states(entity) | int %} {% if
+                            signal_level != -1 %} 
+                              {{ signal_level }} dBm
+                            {% endif %}
+                          icon: >-
+                            {% set signal_level = states(entity) | int | abs %}
+                            {% if signal_level > 90 %} 
+                              mdi:wifi-strength-outline
+                            {% elif signal_level > 80 %} 
+                              mdi:wifi-strength-1
+                            {% elif signal_level > 70 %}
+                              mdi:wifi-strength-2
+                            {% elif signal_level > 60 %}
+                              mdi:wifi-strength-3
+                            {% elif signal_level > 1 %}
+                              mdi:wifi-strength-4
+                            {% else %}
+                              mdi:wifi-strength-off
+                            {% endif %}
+                          entity: sensor.pixel_6_pro_wifi_signal_strength
+                          layout: vertical
+                          fill_container: false
+                          icon_color: cyan
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style: |
+                              ha-card {
+                                /* Remove default card styling */
+                                --ha-card-background: none;
+                                --ha-card-box-shadow: none;
+                                --ha-card-border-width: 0;
+
+                                /* Center card on row */
+                                width: fit-content;
+                                margin: auto;
+
+                                /* Make card non-responsive to select and pointer */
+                                user-select: none;
+                                pointer-events: none;
+                              }
+                      - type: custom:mushroom-template-card
+                        primary: '{{ states(entity) }}%'
+                        secondary: >
+                          {{ 'charging' if
+                          is_state('binary_sensor.pixel_6_pro_is_charging', 'on'
+                          ) else 'discharging' }}
+                        icon: >
+                          {% set battery_level = (states(entity) | int / 10) |
+                          round(0) | int * 10 %}
+
+                          {% if battery_level == 100 %}
+                            mdi:battery
+                          {% elif battery_level > 0 %}
+                            mdi:battery-{{ battery_level }}
+                          {% else %}
+                            mdi:battery-alert-variant-outline
+                          {% endif %}
+                        icon_color: |-
+                          {% set battery_level = states(entity) | int %}
+                          {% if battery_level > 90 %} 
+                            green
+                          {% elif battery_level > 60 %}
+                            light-green
+                          {% elif battery_level > 50 %}
+                            lime
+                          {% elif battery_level > 40 %}
+                            yellow
+                          {% elif battery_level > 30 %}
+                            amber
+                          {% elif battery_level > 20 %}
+                            orange
+                          {% elif battery_level > 10 %}
+                            deep-orange
+                          {% else %}
+                            red
+                          {% endif %} 
+                        entity: sensor.pixel_6_pro_battery_level
+                        layout: vertical
+                        badge_icon: >-
+                          {% if
+                          is_state('binary_sensor.pixel_6_pro_is_charging',
+                          'on') %}
+                            mdi:lightning-bolt
+                          {% elif states(entity) | int < 10 %} 
+                            mdi:exclamation-thick
+                          {% endif %}
+                        badge_color: >-
+                          {{ 'red' if states(entity) | int < 10 else
+                          'light-blue' }}
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+                        double_tap_action:
+                          action: none
+                        card_mod:
+                          style:
+                            mushroom-shape-icon$: |
+                              .shape {
+
+                                /* Radial progress bar */
+                                background: radial-gradient(var(--card-background-color) 60%, 
+                                                            transparent calc(60% + 1px)), 
+                                            conic-gradient(var(--icon-color) {{ states(config.entity) }}% 0%, 
+                                                            var(--card-background-color) 0% 100%);
+                              }
+                              .shape:after {
+
+                                /* Add back icon shape */
+                                content: "";
+                                height: 100%;
+                                width: 100%;
+                                position: absolute;
+                                border-radius: var(--icon-border-radius);
+                                background: var(--shape-color);
+                              }
+                              ha-icon {
+
+                                /* Icon charging animation */
+                                {{ '--icon-animation: charge 3s linear infinite;' if is_state('binary_sensor.pixel_6_pro_is_charging', 'on') }}
+                              }
+                              @keyframes charge {
+                                0%, 80% { clip-path: inset(0 0 0 0); }
+                                10% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 84%, 34% 84%, 34% 100%, 100% 100%, 100% 0%); }
+                                20% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 74%, 34% 74%, 34% 100%, 100% 100%, 100% 0%); }
+                                30% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 64%, 34% 64%, 34% 100%, 100% 100%, 100% 0%); }
+                                40% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 54%, 34% 54%, 34% 100%, 100% 100%, 100% 0%); }
+                                50% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 44%, 34% 44%, 34% 100%, 100% 100%, 100% 0%); }
+                                60% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 34%, 34% 34%, 34% 100%, 100% 100%, 100% 0%); }
+                                70% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 24%, 34% 24%, 34% 100%, 100% 100%, 100% 0%); }
+                              }
+                            .: |
+                              ha-card {
+
+                                /* Remove default card styling */
+                                --ha-card-background: none;
+                                --ha-card-box-shadow: none;
+                                --ha-card-border-width: 0;
+
+                                /* Center card on row */
+                                width: fit-content;
+                                margin: auto;
+
+                                /* Make card non-responsive to select and pointer */
+                                user-select: none;
+                                pointer-events: none;
+                              }
+                  - type: horizontal-stack
+                    cards:
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.home_sander
+                            state_not: '0'
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: >-
+                            {{ states(entity) }} {{ state_attr(entity,
+                            'unit_of_measurement') }}
+                          secondary: '{{ state_attr(entity, ''distance'') | round(1) }} km'
+                          icon: mdi:map-marker-path
+                          entity: proximity.home_sander
+                          layout: vertical
+                          icon_color: purple
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+
+                                  /* Add destination details */
+                                  content: "\Anaar Huis";
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.work_sander
+                            state_not: '0'
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: >-
+                            {{ states(entity) }} {{ state_attr(entity,
+                            'unit_of_measurement') }}
+                          secondary: '{{ state_attr(entity, ''distance'') | round(1) }} km'
+                          icon: mdi:map-marker-path
+                          entity: proximity.work_sander
+                          layout: vertical
+                          icon_color: purple
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+
+                                  /* Add destination details */
+                                  content: "\Anaar Werk";
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                  - type: custom:mushroom-chips-card
+                    chips:
+                      - type: template
+                        tap_action:
+                          action: none;
+                        hold_action:
+                          action: call-service
+                          service: notify.mobile_app_pixel_6_pro
+                          data:
+                            message: Ringing phone...
+                            title: Find Phone
+                            data:
+                              ttl: 0
+                              importance: high
+                              priority: high
+                              tag: Find
+                              channel: alarm_stream
+                        icon: mdi:target
+                        icon_color: red
+                        content: Find Phone
+                    alignment: center
+                    card_mod:
+                      style: |
+                        ha-card {
+
+                          /* Style Chip like Mushroom button */
+                          --chip-background: rgba(var(--rgb-red), 0.2);
+                          --chip-border-radius: var(--mush-control-border-radius, 12px);
+                          --chip-height: var(--mush-control-height, 42px);
+                          --chip-box-shadow: none;
+                          user-select: none;
+                        }
+                        ha-card:active {
+
+                          /* Add effect to give feedback on button press */
+                          --chip-background: rgba(var(--rgb-red), 0.4);
+                        }
+                  - type: map
+                    entities:
+                      - entity: person.sander
+                    dark_mode: false
+                    hours_to_show: 24
+                    aspect_ratio: '4:3'
+                    card_mod:
+                      style:
+                        ha-map $ ha-entity-marker $: |
+                          .marker {
+
+                            /* Style person marker & adjust position to avoid blocking waypoints */
+                            border: 3px solid var(--state-person) !important;
+                            border-radius: 50% 50% 50% 0px !important;
+                            transform: rotate(-45deg) translate(50%, -50%);
+                            overflow: visible !important;
+                            background: var(--state-person) !important;
+                          }
+                          .entity-picture {
+
+                            /* Correct orientation of person avatar */
+                            transform: rotate(45deg);
+                            border-radius: 50%;
+                          }
+                        ha-map $: |
+                          path:first-child { 
+
+                            /* Style accuracy radius */
+                            stroke: var(--state-person);
+                            fill: color-mix(in srgb, var(--state-person) 50%, transparent);
+                            stroke-width: 0px;
+                          }
+                          path:nth-child(even) {
+
+                            /* Styling for waypoints */
+                            stroke: var(--purple-color);
+                            stroke-width: 4px;
+                          }
+                          path:nth-child(odd):not(:first-child) { 
+
+                            /* Styling for lines */
+                            stroke: var(--purple-color);
+                            stroke-width: 4px;
+                          }
+
+                          .leaflet-control-attribution {
+
+                            /* Style attribution text */
+                            background: rgba(var(--rgb-card-background-color), 0.4) !important;
+                            font-size: 10px;
+                          }
+                          .leaflet-container a {
+
+                            /* Set color of zoom icons & attribution text */
+                            color: var(--secondary-text-color);
+                          }
+
+                          .leaflet-control-zoom-in,
+                          .leaflet-control-zoom-out {
+
+                            /* Style zoom buttons like Chips */
+                            border-radius: var(--mush-chip-border-radius, 19px) !important;
+                            padding: 3px;
+                            background: rgb(var(--rgb-secondary-text-color), 0.2) !important;
+                            margin: 8px 12px 0px;
+                            border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                          } 
+                          .leaflet-top {
+
+                            /* Move zoom buttons to bottom of map */
+                            bottom: 0px !important;
+                          }
+                          .leaflet-control-zoom {
+
+                            /* Allow buttons to be moved */
+                            position: absolute !important;
+
+                            /* Adjust spacing for border */
+                            bottom: calc(2 * var(--ha-card-border-width, 1px) + 56px);
+                            
+                            /* Remove extra margin */
+                            margin: 0px !important;
+
+                            /* Remove zoom control border */
+                            border: none !important;
+                          }
+                          .leaflet-container:after {
+
+                            /* Fade out map at top */
+                            content: "";
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            background: linear-gradient(to top, transparent 65%, var(--card-background-color));
+                          }
+                        ha-icon-button $ mwc-icon-button $: |
+                          button {
+
+                            /* Size center button to match Chip */
+                            height: var(--mush-chip-height, 36px) !important;
+                            width: var(--mush-chip-height, 36px) !important;
+                            --mdc-icon-size: 22px;
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling without affecting child elements */
+                            box-shadow: none;
+                            border-width: 0;
+                            border-radius: 0px 0px var(--ha-card-border-radius, 12px) var(--ha-card-border-radius, 12px);
+                            
+                            transition: all 0s;
+                          }
+                          :host {
+
+                            /* Define Person State colors. Can be added to theme */
+                            --state-person-home: var(--green-color);
+                            --state-person-not-home: var(--red-color);
+                            --state-person-zone: var(--blue-color);
+                            --state-person-unknown: var(--grey-color);
+
+                            /* Set person state color */
+                            --state-person:
+                            {% if is_state(config.entities[0].entity, ['home', 'not_home', 'unknown']) %}
+                              var(--state-person-{{ states(config.entities[0].entity) | replace('_', '-') }})
+                            {% else %}
+                              var(--state-person-zone)
+                            {% endif %};
+                          }
+                          ha-icon-button {
+
+                            /* Position center button */
+                            bottom: 12px;
+                            left: 12px !important;
+                            top: auto !important;
+
+                            /* Style center button to match Chip */
+                            color: var(--deep-orange-color) !important;
+                            background: color-mix(in srgb, var(--deep-orange-color) 20%, transparent);
+                            border-radius: var(--mush-chip-border-radius, 19px);
+                            border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                          }
+              card_mod:
+                style: |
+                  :host {
+
+                    /* Remove border from poup */
+                    --popup-padding-x: 0px;
+                    --popup-padding-y: 0px;
+                    --popup-min-width: 450px;
+                  }
+                  .content {
+
+                    /* Remove extra bottom border */
+                    margin: -18px -24px -24px !important;
+                  }
+        card_mod:
+          style: |
+
+            /* Color border around avatar to show person status */
+            ha-card {
+              --chip-background:
+              {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                rgb(var(--rgb-state-person-{{ states(config.entity) | replace('_', '-') }} ))
+              {% else %}
+                rgb(var(--rgb-state-person-zone))
+              {% endif %};
+            } 
+
+            /* Slightly enlarge & bring to front on hover */
+            ha-card:hover {
+              transform: scale(1.2);
+              transform-origin: top center;
+              z-index: 1;
+              transition: all 1s;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: |2-
+                {% if is_state(entity, 'on') %}
+                mdi:power-plug
+                {% else %}
+                mdi:power-plug-off
+                {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                green
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.pixel_6_pro_is_charging
+            tap_action:
+              action: more-info
+          - type: template
+            entity: sensor.pixel_6_pro_battery_level
+            icon: |2
+                        {% set bl = states('sensor.pixel_6_pro_battery_level') | int %}
+                        {% if bl < 10 %} mdi:battery-outline
+                        {% elif bl < 20 %} mdi:battery-10
+                        {% elif bl < 30 %} mdi:battery-20
+                        {% elif bl < 40 %} mdi:battery-30
+                        {% elif bl < 50 %} mdi:battery-40
+                        {% elif bl < 60 %} mdi:battery-50
+                        {% elif bl < 70 %} mdi:battery-60
+                        {% elif bl < 80 %} mdi:battery-70
+                        {% elif bl < 90 %} mdi:battery-80
+                        {% elif bl < 100 %} mdi:battery-90
+                        {% elif bl == 100 %} mdi:battery
+                        {% else %} mdi:battery-unknown
+                        {% endif %}
+            icon_color: |2-
+                        {% set bl = states('sensor.pixel_6_pro_battery_level') | int %}
+                        {% if bl < 10 %} red
+                        {% elif bl < 20 %} red
+                        {% elif bl < 30 %} red
+                        {% elif bl < 40 %} orange
+                        {% elif bl < 50 %} orange
+                        {% elif bl < 60 %} green
+                        {% elif bl < 70 %} green
+                        {% elif bl < 80 %} green
+                        {% elif bl < 90 %} green
+                        {% elif bl < 100 %} green
+                        {% elif bl == 100 %} green
+                        {% else %} grey
+                        {% endif %}
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |2-
+                {% if is_state(entity, 'Transmitting') %}
+                mdi:bluetooth
+                {% else %}
+                mdi:bluetooth-off
+                {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'Transmitting') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: sensor.pixel_6_pro_ble_transmitter
+            tap_action:
+              action: more-info
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              --ha-card-box-shadow: none;
+              --chip-background: none;
+              --chip-box-shadow: none;
+              --chip-spacing: 0;
+              : -36px;
+            } 
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:mushroom-person-card
+        icon_type: entity-picture
+        layout: horizontal
+        entity: person.jolanda
+        tap_action:
+          action: fire-dom-event
+          browser_mod:
+            service: browser_mod.popup
+            data:
+              title: Jolanda
+              content:
+                type: vertical-stack
+                cards:
+                  - type: custom:mushroom-entity-card
+                    entity: person.jolanda
+                    layout: horizontal
+                    icon_type: entity-picture
+                    primary_info: state
+                    secondary_info: last-changed
+                    tap_action:
+                      action: none
+                    hold_action:
+                      action: none
+                    card_mod:
+                      style:
+                        mushroom-shape-avatar$: |
+                          .picture {
+
+                            /* Style shadow ring around person avatar */                              
+                            box-shadow: 0px 0px 4px 2px var(--state-person);
+                            margin-right: var(--mush-title-spacing, 12px);
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling */
+                            --ha-card-background: none;
+                            box-shadow: none;
+                            --ha-card-border-width: 0;
+
+                            /* Increase icon size */
+                            --icon-size: 72px;
+
+                            /* Center card */
+                            margin: auto;
+                            width: fit-content;
+
+                            /* Add padding to bottom of card */
+                            padding: 0px 0px var(--mush-title-spacing, 12px) 0px !important;
+                            
+                            /* Make card non-responsive to select and pointer */
+                            user-select: none;
+                            pointer-events: none;
+                            
+                            transition: all 0s;
+                          }
+                          :host {
+
+                            /* Define Person State colors. Can be added to theme */
+                            --state-person-home: var(--green-color);
+                            --state-person-not-home: var(--red-color);
+                            --state-person-zone: var(--blue-color);
+                            --state-person-unknown: var(--grey-color);
+
+                            /* Set Person State color */
+                            --state-person:
+                            {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                              var(--state-person-{{ states(config.entity) | replace('_', '-') }})
+                            {% else %}
+                              var(--state-person-zone)
+                            {% endif %};
+
+                            /* Match styling to Mushroom Title */
+                            --mush-card-primary-font-size: var(--mush-title-font-size, 24px);
+                            --mush-card-primary-font-weight: var(--mush-title-font-weight, normal);
+                            --mush-card-primary-line-height: var(--ush-title-line-height, 1.2);
+                            --mush-card-secondary-font-size: var(--mush-title-font-size, 16px);
+                            --mush-card-secondary-font-weight: var(--mush-title-font-weight, normal);
+                            --mush-card-secondary-line-height: var(--ush-title-line-height, 1.2);
+                          }
+                  - type: history-graph
+                    entities:
+                      - entity: person.jolanda
+                        name: ' '
+                    hours_to_show: 12
+                    title: Buiten
+                    card_mod:
+                      style:
+                        $: |
+                          .card-header {
+
+                            /* Style timeline title */
+                            padding: 0px 24px !important;
+                            font-size: var(--mush-card-primary-font-size, 14px) !important;
+                            font-weight: var(--mush-card-primary-font-weight, bold) !important;
+                            line-height: var(--mush-card-primary-line-height, 1.5) !important;
+                            color: var(--primary-text-color) !important;
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling */
+                            --ha-card-box-shadow: none;
+                            --ha-card-background: none;
+                            --ha-card-border-width: 0;
+                            user-select: none;
+                          }
+                          .content {
+
+                            /* Add padding on right */
+                            padding: 0px 24px !important;
+                          }
+                  - type: history-graph
+                    entities:
+                      - entity: sensor.pixel6pro2ble
+                        name: ' '
+                    hours_to_show: 4
+                    title: Binnen
+                    card_mod:
+                      style:
+                        $: |
+                          .card-header {
+
+                            /* Style timeline title */
+                            padding: 0px 24px !important;
+                            font-size: var(--mush-card-primary-font-size, 14px) !important;
+                            font-weight: var(--mush-card-primary-font-weight, bold) !important;
+                            line-height: var(--mush-card-primary-line-height, 1.5) !important;
+                            color: var(--primary-text-color) !important;
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling */
+                            --ha-card-box-shadow: none;
+                            --ha-card-background: none;
+                            --ha-card-border-width: 0;
+                            user-select: none;
+                          }
+                          .content {
+
+                            /* Add padding on right */
+                            padding: 0px 24px !important;
+                          }
+                  - type: horizontal-stack
+                    cards:
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.pixel6pro2ble
+                            state_not: not_home
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: '{{ states(entity) }}'
+                          secondary: '{{ state_attr(entity, ''distance'') | round(4) }} m'
+                          icon: mdi:bluetooth-connect
+                          entity: sensor.pixel6pro2ble
+                          layout: vertical
+                          icon_color: purple
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+                                  /* Add destination details */
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.pixel_6_pro_2_wifi_connection
+                            state_not: <not connected>
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: '{{ states(''sensor.pixel_6_pro_2_wifi_connection'') }}'
+                          secondary: >-
+                            {% set signal_level = states(entity) | int %} {% if
+                            signal_level != -1 %} 
+                              {{ signal_level }} dBm
+                            {% endif %}
+                          icon: >-
+                            {% set signal_level = states(entity) | int | abs %}
+                            {% if signal_level > 90 %} 
+                              mdi:wifi-strength-outline
+                            {% elif signal_level > 80 %} 
+                              mdi:wifi-strength-1
+                            {% elif signal_level > 70 %}
+                              mdi:wifi-strength-2
+                            {% elif signal_level > 60 %}
+                              mdi:wifi-strength-3
+                            {% elif signal_level > 1 %}
+                              mdi:wifi-strength-4
+                            {% else %}
+                              mdi:wifi-strength-off
+                            {% endif %}
+                          entity: sensor.pixel_6_pro_2_wifi_signal_strength
+                          layout: vertical
+                          fill_container: false
+                          icon_color: cyan
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style: |
+                              ha-card {
+
+                                /* Remove default card styling */
+                                --ha-card-background: none;
+                                --ha-card-box-shadow: none;
+                                --ha-card-border-width: 0;
+
+                                /* Center card on row */
+                                width: fit-content;
+                                margin: auto;
+
+                                /* Make card non-responsive to select and pointer */
+                                user-select: none;
+                                pointer-events: none;
+                              }
+                      - type: custom:mushroom-template-card
+                        primary: '{{ states(entity) }}%'
+                        secondary: >
+                          {{ 'charging' if
+                          is_state('binary_sensor.pixel_6_pro_2_is_charging',
+                          'on' ) else 'discharging' }}
+                        icon: >
+                          {% set battery_level = (states(entity) | int / 10) |
+                          round(0) | int * 10 %}
+
+                          {% if battery_level == 100 %}
+                            mdi:battery
+                          {% elif battery_level > 0 %}
+                            mdi:battery-{{ battery_level }}
+                          {% else %}
+                            mdi:battery-alert-variant-outline
+                          {% endif %}
+                        icon_color: |-
+                          {% set battery_level = states(entity) | int %}
+                          {% if battery_level > 90 %} 
+                            green
+                          {% elif battery_level > 60 %}
+                            light-green
+                          {% elif battery_level > 50 %}
+                            lime
+                          {% elif battery_level > 40 %}
+                            yellow
+                          {% elif battery_level > 30 %}
+                            amber
+                          {% elif battery_level > 20 %}
+                            orange
+                          {% elif battery_level > 10 %}
+                            deep-orange
+                          {% else %}
+                            red
+                          {% endif %} 
+                        entity: sensor.pixel_6_pro_2_battery_level
+                        layout: vertical
+                        badge_icon: >-
+                          {% if
+                          is_state('binary_sensor.pixel_6_pro_2_is_charging',
+                          'on') %}
+                            mdi:lightning-bolt
+                          {% elif states(entity) | int < 10 %} 
+                            mdi:exclamation-thick
+                          {% endif %}
+                        badge_color: >-
+                          {{ 'red' if states(entity) | int < 10 else
+                          'light-blue' }}
+                        tap_action:
+                          action: none
+                        hold_action:
+                          action: none
+                        double_tap_action:
+                          action: none
+                        card_mod:
+                          style:
+                            mushroom-shape-icon$: |
+                              .shape {
+
+                                /* Radial progress bar */
+                                background: radial-gradient(var(--card-background-color) 60%, 
+                                                            transparent calc(60% + 1px)), 
+                                            conic-gradient(var(--icon-color) {{ states(config.entity) }}% 0%, 
+                                                            var(--card-background-color) 0% 100%);
+                              }
+                              .shape:after {
+
+                                /* Add back icon shape */
+                                content: "";
+                                height: 100%;
+                                width: 100%;
+                                position: absolute;
+                                border-radius: var(--icon-border-radius);
+                                background: var(--shape-color);
+                              }
+                              ha-icon {
+
+                                /* Icon charging animation */
+                                {{ '--icon-animation: charge 3s linear infinite;' if is_state('binary_sensor.pixel_6_pro_2_is_charging', 'on') }}
+                              }
+                              @keyframes charge {
+                                0%, 80% { clip-path: inset(0 0 0 0); }
+                                10% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 84%, 34% 84%, 34% 100%, 100% 100%, 100% 0%); }
+                                20% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 74%, 34% 74%, 34% 100%, 100% 100%, 100% 0%); }
+                                30% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 64%, 34% 64%, 34% 100%, 100% 100%, 100% 0%); }
+                                40% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 54%, 34% 54%, 34% 100%, 100% 100%, 100% 0%); }
+                                50% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 44%, 34% 44%, 34% 100%, 100% 100%, 100% 0%); }
+                                60% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 34%, 34% 34%, 34% 100%, 100% 100%, 100% 0%); }
+                                70% { clip-path: polygon(0% 0%, 0% 100%, 34% 100%, 34% 24%, 67% 24%, 67% 24%, 34% 24%, 34% 100%, 100% 100%, 100% 0%); }
+                              }
+                            .: |
+                              ha-card {
+
+                                /* Remove default card styling */
+                                --ha-card-background: none;
+                                --ha-card-box-shadow: none;
+                                --ha-card-border-width: 0;
+
+                                /* Center card on row */
+                                width: fit-content;
+                                margin: auto;
+
+                                /* Make card non-responsive to select and pointer */
+                                user-select: none;
+                                pointer-events: none;
+                              }
+                  - type: horizontal-stack
+                    cards:
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.home_jolanda
+                            state_not: '0'
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: >-
+                            {{ states(entity) }} {{ state_attr(entity,
+                            'unit_of_measurement') }}
+                          secondary: '{{ state_attr(entity, ''distance'') | round(1) }} km'
+                          icon: mdi:map-marker-path
+                          entity: proximity.home_jolanda
+                          layout: vertical
+                          icon_color: purple
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+
+                                  /* Add destination details */
+                                  content: "\Anaar Huis";
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.work_jolanda
+                            state_not: '0'
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: >-
+                            {{ states(entity) }} {{ state_attr(entity,
+                            'unit_of_measurement') }}
+                          secondary: '{{ state_attr(entity, ''distance'') | round(1) }} km'
+                          icon: mdi:map-marker-path
+                          entity: proximity.work_jolanda
+                          layout: vertical
+                          icon_color: purple
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+
+                                  /* Add destination details */
+                                  content: "\Anaar Werk";
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                  - type: custom:mushroom-chips-card
+                    chips:
+                      - type: template
+                        tap_action:
+                          action: none;
+                        hold_action:
+                          action: call-service
+                          service: notify.mobile_app_pixel_6_pro_2
+                          data:
+                            message: Ringing phone...
+                            title: Find Phone
+                            data:
+                              ttl: 0
+                              importance: high
+                              priority: high
+                              tag: Find
+                              channel: alarm_stream
+                        icon: mdi:target
+                        icon_color: red
+                        content: Find Phone
+                    alignment: center
+                    card_mod:
+                      style: |
+                        ha-card {
+
+                          /* Style Chip like Mushroom button */
+                          --chip-background: rgba(var(--rgb-red), 0.2);
+                          --chip-border-radius: var(--mush-control-border-radius, 12px);
+                          --chip-height: var(--mush-control-height, 42px);
+                          --chip-box-shadow: none;
+                          user-select: none;
+                        }
+                        ha-card:active {
+
+                          /* Add effect to give feedback on button press */
+                          --chip-background: rgba(var(--rgb-red), 0.4);
+                        }
+                  - type: map
+                    entities:
+                      - entity: person.jolanda
+                    dark_mode: false
+                    hours_to_show: 24
+                    aspect_ratio: '4:3'
+                    card_mod:
+                      style:
+                        ha-map $ ha-entity-marker $: |
+                          .marker {
+
+                            /* Style person marker & adjust position to avoid blocking waypoints */
+                            border: 3px solid var(--state-person) !important;
+                            border-radius: 50% 50% 50% 0px !important;
+                            transform: rotate(-45deg) translate(50%, -50%);
+                            overflow: visible !important;
+                            background: var(--state-person) !important;
+                          }
+                          .entity-picture {
+
+                            /* Correct orientation of person avatar */
+                            transform: rotate(45deg);
+                            border-radius: 50%;
+                          }
+                        ha-map $: |
+                          path:first-child { 
+
+                            /* Style accuracy radius */
+                            stroke: var(--state-person);
+                            fill: color-mix(in srgb, var(--state-person) 50%, transparent);
+                            stroke-width: 0px;
+                          }
+                          path:nth-child(even) {
+
+                            /* Styling for waypoints */
+                            stroke: var(--purple-color);
+                            stroke-width: 4px;
+                          }
+                          path:nth-child(odd):not(:first-child) { 
+
+                            /* Styling for lines */
+                            stroke: var(--purple-color);
+                            stroke-width: 4px;
+                          }
+
+                          .leaflet-control-attribution {
+
+                            /* Style attribution text */
+                            background: rgba(var(--rgb-card-background-color), 0.4) !important;
+                            font-size: 10px;
+                          }
+                          .leaflet-container a {
+
+                            /* Set color of zoom icons & attribution text */
+                            color: var(--secondary-text-color);
+                          }
+
+                          .leaflet-control-zoom-in,
+                          .leaflet-control-zoom-out {
+
+                            /* Style zoom buttons like Chips */
+                            border-radius: var(--mush-chip-border-radius, 19px) !important;
+                            padding: 3px;
+                            background: rgb(var(--rgb-secondary-text-color), 0.2) !important;
+                            margin: 8px 12px 0px;
+                            border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                          } 
+                          .leaflet-top {
+
+                            /* Move zoom buttons to bottom of map */
+                            bottom: 0px !important;
+                          }
+                          .leaflet-control-zoom {
+
+                            /* Allow buttons to be moved */
+                            position: absolute !important;
+
+                            /* Adjust spacing for border */
+                            bottom: calc(2 * var(--ha-card-border-width, 1px) + 56px);
+                            
+                            /* Remove extra margin */
+                            margin: 0px !important;
+
+                            /* Remove zoom control border */
+                            border: none !important;
+                          }
+                          .leaflet-container:after {
+
+                            /* Fade out map at top */
+                            content: "";
+                            position: absolute;
+                            height: 100%;
+                            width: 100%;
+                            background: linear-gradient(to top, transparent 65%, var(--card-background-color));
+                          }
+                        ha-icon-button $ mwc-icon-button $: |
+                          button {
+
+                            /* Size center button to match Chip */
+                            height: var(--mush-chip-height, 36px) !important;
+                            width: var(--mush-chip-height, 36px) !important;
+                            --mdc-icon-size: 22px;
+                          }
+                        .: |
+                          ha-card {
+
+                            /* Remove default card styling without affecting child elements */
+                            box-shadow: none;
+                            border-width: 0;
+                            border-radius: 0px 0px var(--ha-card-border-radius, 12px) var(--ha-card-border-radius, 12px);
+                            
+                            transition: all 0s;
+                          }
+                          :host {
+
+                            /* Define Person State colors. Can be added to theme */
+                            --state-person-home: var(--green-color);
+                            --state-person-not-home: var(--red-color);
+                            --state-person-zone: var(--blue-color);
+                            --state-person-unknown: var(--grey-color);
+
+                            /* Set person state color */
+                            --state-person:
+                            {% if is_state(config.entities[0].entity, ['home', 'not_home', 'unknown']) %}
+                              var(--state-person-{{ states(config.entities[0].entity) | replace('_', '-') }})
+                            {% else %}
+                              var(--state-person-zone)
+                            {% endif %};
+                          }
+                          ha-icon-button {
+
+                            /* Position center button */
+                            bottom: 12px;
+                            left: 12px !important;
+                            top: auto !important;
+
+                            /* Style center button to match Chip */
+                            color: var(--deep-orange-color) !important;
+                            background: color-mix(in srgb, var(--deep-orange-color) 20%, transparent);
+                            border-radius: var(--mush-chip-border-radius, 19px);
+                            border: var(--ha-card-border-width, 1px) solid var(--ha-card-border-color, var(--divider-color, #e0e0e0)) !important;
+                          }
+              card_mod:
+                style: |
+                  :host {
+
+                    /* Remove border from poup */
+                    --popup-padding-x: 0px;
+                    --popup-padding-y: 0px;
+                    --popup-min-width: 450px;
+                  }
+                  .content {
+
+                    /* Remove extra bottom border */
+                    margin: -18px -24px -24px !important;
+                  }
+        card_mod:
+          style: |
+
+            /* Color border around avatar to show person status */
+            ha-card {
+              --chip-background:
+              {% if is_state(config.entity, ['home', 'not_home', 'unknown']) %}
+                rgb(var(--rgb-state-person-{{ states(config.entity) | replace('_', '-') }} ))
+              {% else %}
+                rgb(var(--rgb-state-person-zone))
+              {% endif %};
+            } 
+
+            /* Slightly enlarge & bring to front on hover */
+            ha-card:hover {
+              transform: scale(1.2);
+              transform-origin: top center;
+              z-index: 1;
+              transition: all 1s;
+            }
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: |2-
+                {% if is_state(entity, 'on') %}
+                mdi:power-plug
+                {% else %}
+                mdi:power-plug-off
+                {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                green
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.pixel_6_pro_2_is_charging
+            tap_action:
+              action: more-info
+          - type: template
+            entity: sensor.pixel_6_pro_2_battery_level
+            icon: |2
+                        {% set bl = states('sensor.pixel_6_pro_2_battery_level') | int %}
+                        {% if bl < 10 %} mdi:battery-outline
+                        {% elif bl < 20 %} mdi:battery-10
+                        {% elif bl < 30 %} mdi:battery-20
+                        {% elif bl < 40 %} mdi:battery-30
+                        {% elif bl < 50 %} mdi:battery-40
+                        {% elif bl < 60 %} mdi:battery-50
+                        {% elif bl < 70 %} mdi:battery-60
+                        {% elif bl < 80 %} mdi:battery-70
+                        {% elif bl < 90 %} mdi:battery-80
+                        {% elif bl < 100 %} mdi:battery-90
+                        {% elif bl == 100 %} mdi:battery
+                        {% else %} mdi:battery-unknown
+                        {% endif %}
+            icon_color: |2-
+                        {% set bl = states('sensor.pixel_6_pro_2_battery_level') | int %}
+                        {% if bl < 10 %} red
+                        {% elif bl < 20 %} red
+                        {% elif bl < 30 %} red
+                        {% elif bl < 40 %} orange
+                        {% elif bl < 50 %} orange
+                        {% elif bl < 60 %} green
+                        {% elif bl < 70 %} green
+                        {% elif bl < 80 %} green
+                        {% elif bl < 90 %} green
+                        {% elif bl < 100 %} green
+                        {% elif bl == 100 %} green
+                        {% else %} grey
+                        {% endif %}
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |2-
+                {% if is_state(entity, 'Transmitting') %}
+                mdi:bluetooth
+                {% else %}
+                mdi:bluetooth-off
+                {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'Transmitting') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: sensor.pixel_6_pro_2_ble_transmitter
+            tap_action:
+              action: more-info
+        alignment: center
+        card_mod:
+          style: |
+            ha-card {
+              --ha-card-box-shadow: none;
+              --chip-background: none;
+              --chip-box-shadow: none;
+              --chip-spacing: 0;
+            } 
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:mushroom-person-card
+        icon_type: entity-picture
+        layout: horizontal
+        entity: person.tesla_m3
+        tap_action:
+          action: more-info
+        double_tap_action:
+          action: call-service
+          service: script.tesla_m3_pre_heat_on
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: |2-
+                {% if is_state('switch.tesla_model_3_charger', 'on') %}
+                mdi:ev-station
+                {% else %}
+                mdi:ev-station
+                {% endif %}
+            icon_color: |2-
+                {% if is_state('switch.tesla_model_3_charger', 'on') %}
+                green
+                {% else %}
+                grey
+                {% endif %}
+            entity: sensor.tesla_model_3_charger_power
+            content: '{{ states("sensor.tesla_model_3_charger_power") }} kWh'
+            tap_action:
+              action: more-info
+          - type: template
+            entity: sensor.tesla_model_3_battery
+            icon: |2
+                        {% set bl = states('sensor.tesla_model_3_battery') | int %}
+                        {% if bl < 10 %} mdi:battery-outline
+                        {% elif bl < 20 %} mdi:battery-10
+                        {% elif bl < 30 %} mdi:battery-20
+                        {% elif bl < 40 %} mdi:battery-30
+                        {% elif bl < 50 %} mdi:battery-40
+                        {% elif bl < 60 %} mdi:battery-50
+                        {% elif bl < 70 %} mdi:battery-60
+                        {% elif bl < 80 %} mdi:battery-70
+                        {% elif bl < 90 %} mdi:battery-80
+                        {% elif bl < 100 %} mdi:battery-90
+                        {% elif bl == 100 %} mdi:battery
+                        {% else %} mdi:battery-unknown
+                        {% endif %}
+            icon_color: |2-
+                        {% set bl = states('sensor.tesla_model_3_battery') | int %}
+                        {% if bl < 10 %} red
+                        {% elif bl < 20 %} red
+                        {% elif bl < 30 %} red
+                        {% elif bl < 40 %} orange
+                        {% elif bl < 50 %} orange
+                        {% elif bl < 60 %} green
+                        {% elif bl < 70 %} green
+                        {% elif bl < 80 %} green
+                        {% elif bl < 90 %} green
+                        {% elif bl < 100 %} green
+                        {% elif bl == 100 %} green
+                        {% else %} grey
+                        {% endif %}
+            tap_action:
+              action: more-info
+        alignment: center
+        card_mod:
+          style: >
+            {% if is_state('climate.tesla_model_3_hvac_climate_system',
+            'heat_cool') %}
+
+            ha-card {
+              border-radius: 20px !important;
+              animation: ping 2s infinite;
+            }
+
+            @keyframes ping {
+                0% {box-shadow: 0 0 0 0 rgba(var(--rgb-red), 0.7);}
+                70% {box-shadow: 0 0 0 10px transparent;}
+                100% {box-shadow: 0 0 0 0 transparent;}
+            }  {% elif is_state('climate.tesla_model_3_hvac_climate_system',
+            'off') %}
+
+            {% endif %}
