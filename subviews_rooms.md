@@ -11,6 +11,9 @@
 5: subview_camera_card.yaml  
 6: subview_energy_distribution_card.yaml
 
+#### Projects
+WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight  
+
 ## Subview Kinderkamer Lucas
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/18f4bc5e-8276-4aa4-8c3c-7faf6e8e2adf)
 
