@@ -33,6 +33,8 @@ top_chips_card_current_overview.yaml
 Build with custom Mushroom chips and custom Mushroom person cards. Simple overview for persons and car, containing location status, status of ble transmitters on phone (for espresense thoughout the home, will be disbaled when you leave the house, enabled when entering the house), status of charging and battery. Double click on the Tesla to pre-heat the car, will show with blinking red when heating.  
 Clicking on one of the persons, brings up a fully styled popup card with details  
 ![person_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/435e8671-1b7b-47e0-a1b5-02728fb614df)
+#### filename(s)
+top_persons_without_popup.yaml
 #### Popup Cards
 First one 'When Home' second one 'When Not Home'  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/04420f58-f6c9-470a-879c-4825ff6f0cbb)
@@ -41,10 +43,7 @@ First one 'When Home' second one 'When Not Home'
 chips icon and color changing based on value: ble transmitter, charging and battery percentage  
 Fully styled Popup card mod when clicking on the person
 #### filename(s)
-top_persons_card.yaml
-
-
-
+top_persons_with_popup.yaml  
 
 ## Top Button card
 Build with custom Mushroom template cards. Just some simple buttons to navigate to subviews with summaries and statistics about Energy, Temperatures, Mediaplayers incl volumes and sources, 3d printing and outside screens. every button navigates to a subview.
