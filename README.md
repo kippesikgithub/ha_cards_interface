@@ -48,7 +48,7 @@ Fully styled Popup card mod when clicking on the person
 top_persons_with_popup.yaml  
 
 ## Top Navigation Button card
-Build with custom Mushroom template cards. Just some simple buttons to navigate to subviews with summaries and statistics about Energy, Temperatures, Mediaplayers incl volumes and sources, 3d printing and outside screens. every button navigates to a subview.  
+Build with custom Mushroom template cards. Just some simple buttons to navigate to subviews with summaries and statistics about Energy, Temperatures, Mediaplayers incl volumes and sources, 3d printing, server management and outside screens. every button navigates to a subview.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3dc30425-2cab-496f-a07b-e2f7dc2fbfb5)
 #### features
 nothing special, just some color changing and animated icons
