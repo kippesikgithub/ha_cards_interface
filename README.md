@@ -26,7 +26,7 @@ Build with custom Mushroom chips, card to show the current situation, most impor
 #### features 
 chips icon and color changing based on value: Outside Temperature, Doors, Current power usage, Solar, Garbage Bin notification  
 chips animated based on value: Solar
-#### filename
+#### filename(s)
 top_chips_card_current_overview.yaml 
 
 ## Top Persons card  
@@ -34,7 +34,7 @@ Build with custom Mushroom chips and custom Mushroom person cards. Simple overvi
 ![person_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/435e8671-1b7b-47e0-a1b5-02728fb614df)
 #### features
 chips icon and color changing based on value: ble transmitter, charging and battery percentage
-#### filename
+#### filename(s)
 top_persons_card.yaml
 
 ## Top Button card
@@ -42,7 +42,7 @@ Build with custom Mushroom template cards. Just some simple buttons to navigate 
 ![top_button_navigation](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f1ade95c-a77d-4a4b-b31f-af099f8c1018)
 #### features
 nothing special, just some color changing and animated icons
-#### filename
+#### filename(s)
 top_button_card.yaml
 
 ## Top Chips Today card  
@@ -63,16 +63,18 @@ Color changing Temperature graph in top of card, containing last 24 hours.
 Current Temperature status.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
+
+#### filename(s)
+trapkast_room_card.yaml
+
 #### devices in room
 Hue light  
 Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)  
 Wemos D1 + proximity sensor (measure watermeter)  
 Esp32 + LD2410 (mmwave) + BMP180 (temp and baro) https://github.com/kippesikgithub/esp_motion_mmwave  
 Zigbee Wall socket for controlling floor heating pump
-#### filename
-trapkast_room_card.yaml
-  
 #
+  
 # Badkamer
 ## Badkamer Room Card
 Room card for the Badkamer.  
@@ -83,17 +85,18 @@ Current Temperature and Humidity statusses.
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: fan, toothbrushes charging, shower status, window.
 Navigation to subview from click on card.
+#### filename(s)
+badkamer_room_card.yaml
+
+## Badkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)  
+
 #### devices in room
 Aqara Zigbee Temperature and Humidity sensor  
 Zigbee Wall socket for controlling charging electric toothbrushes  
 Shelly 1L for controlling the Fan (based on humidity level)  
 Toon integration for reading shower/warm water status  
 Aqara Zigbee window sensor
-#### filename
-badkamer_room_card.yaml
-
-## Badkamer Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)  
 #
   
 # Kinderkamer Sophie
@@ -204,6 +207,12 @@ Current Temperature, Illumination of room statusses.
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 chips icon and color changing based on value: motion, washing machine, dryer, window.  
 Navigation to subview from click on card.
+#### filename(s)
+washok_room_card.yaml
+
+## Washok Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/91a3be6a-33a8-4179-9e1c-c4d5502b68d7)
+
 #### devices in room
 Hue Light  
 Hue Motion sensors  
@@ -211,14 +220,11 @@ Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination)
 Shelly 1PM Power measuring (washing machine, dryer)  
 Zigbee Wall socket(s) measuring power usage  
 Aqara Zigbee window sensor
-#### filename
-washok_room_card.yaml
+
 #### Related projects
 How to monitor washing machine and tumble dryer state with powerplug/shelly: https://github.com/kippesikgithub/hass_washing_dryer
-
-## Washok Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/91a3be6a-33a8-4179-9e1c-c4d5502b68d7)
-
+#
+  
 # Subview Energy (navigation from Top Button card)
 ## Overview Electricity per room
 Visualised with Sankey Diagram.  
@@ -229,94 +235,94 @@ https://github.com/kippesikgithub/hass_detailed_power_monitoring
 ## Current Devices status
 Visualised with Mushroom Chips. Which devices are on and using power. Visualised with colored/animated icons. 
 ![mobile_devices](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1a3ffd15-78fe-4b4f-8fe3-9823315c4030)
-#### filename
+#### filename(s)
 energy_current_devices_status_card.yaml
 
 ## Netto Electricity per day, last3 days
 Visualised in Apexcharts. Import electricity from net - exported electricity to net, per day-start, start at 0 (utility meter helper).    
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8f56a9e7-ecc4-43c2-b348-c82a4d4667cd)
-#### filename
+#### filename(s)
 energy_electricity_netto_last_week_card.yaml
 
 ## Electricity In per day, last week
 Visualised in Apexcharts. Total Electricity import per day from last week  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3c281470-6239-44c6-b875-1a447d4afcc2)
-#### filename
+#### filename(s)
 energy_electricity_in_last_week_card.yaml
 
 ## Electricity Out per day, last week
 Visualised in Apexcharts.  Total Electricity export per day from last week  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d08a4f3b-125f-4293-8cb0-2b64562da124)
-#### filename
+#### filename(s)
 energy_electricity_out_last_week_card.yaml
 
 ## Gas per day, last week 
 Visualised in Apexcharts. Gas usage last week, per day. Color changing bars based on values.
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/6dc65b24-abde-4783-8dea-cef5466c610c)
-#### filename
+#### filename(s)
 energy_gas_last_week_card.yaml
 
 ## Water per day, last week 
 Visualised in Apexcharts. Water usage last week, per day. Color changing bars based on values.
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a08d52e-e6e9-4b57-97d1-1cbb7b803ef2)
-#### filename
+#### filename(s)
 energy_water_last_week_card.yaml
 
 ## Gas vs Outside temperature per day, last week 
 Visualised in Apexcharts. Gas usage vs outside temperature last week, per day. Color changing bars based on values.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/da36e4cd-287c-4dc6-a68b-c16b57d73c4a)
-#### filename
+#### filename(s)
 energy_gas_vs_temp_last_week_card.yaml
 
 ## Solar Production today vs yesterday vs prediction
 Visualised in Apexcharts. Solar production today's current vs yesterday's current same time vs prediction last week, per day. Color changing bars based on values,  including upcoming sunset, sunrise lines.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ae78dde2-987b-40c6-aa6c-5b8e11e93cd7)
-#### filename
+#### filename(s)
 energy_solar_today_vs_yesterday_vs_prediction_card.yaml
 
 ## Solar Production today vs predicction
 Visualised in Apexcharts. Solar production today vs prediction. Color changing bars based on values,  including upcoming sunset, sunrise lines.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/80ab676b-27f8-4602-be79-947c86fc0923)
-#### filename
+#### filename(s)
 energy_solar_today_vs_prediction_card.yaml
 
 # Subview Audio (navigation from Top Button card)
 ## TV and Audio Card
 Visualised using Mushroom template and Mushroom chips cards. Current status of tv/audio related devices, buttons for controll and color changing icons based on TV/Audio sources and power usage.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/00b25ee3-a7a4-4e99-9596-647e88ef1845)
-#### filename
+#### filename(s)
 multimedia_tv_audio_controll_card.yaml
 
 ## Mediaplayer Card
 Visualised using Mushroom Mediaplayer and Mushroom chips cards.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/d54e982d-ee71-4a7d-9590-878de173fa25)
-#### filename
+#### filename(s)
 multimedia_mediaplayer_card.yaml
 
 # Subview Temperatures (navigation from Top Button card)
 ## Airco Card
 Visualised using Mushroom climate card. Color changing and animated icons.  
 ![airco_lucas](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1d4067cb-63e0-40e7-8782-1e111b1644a9)
-#### filename
+#### filename(s)
 temperatures_climate_card.yaml
 
 # Subview Screens
 Visualised using the Mushroom cards.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/11e013a6-1dbd-4b93-901b-c79d8e3c87ef)
-#### filename
+#### filename(s)
 screens_card.yaml
 
 # Outside Projects
 ## ESP Butterfly House
 Butterfly House supplying data from a temp/baro sensor, solar panel and 2x 18650 cells, completely self sufficient.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/fbea9fce-ced5-49e4-873a-ef377a7b3860)
-#### filename
+#### filename(s)
 vlinderhuis_room_card.yaml
 
 ## ESP Pump House
 Pump House supplying data from a temp/baro, illuminance sensors a waterpump for plants, solar panel and 2x 18650 cells, completely self sufficient.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/2f5760c4-7853-47a4-a08d-0b4fb7adb1a9)
-#### filename
+#### filename(s)
 pomphuis_room_card.yaml
 
 
