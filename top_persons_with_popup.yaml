@@ -1874,11 +1874,11 @@ cards:
                             state_not: '0'
                         card:
                           type: custom:mushroom-template-card
-                          primary: Laadsnelheid
+                          primary: Power
                           secondary: >-
                             {{ states(entity) }} {{ state_attr(entity,
                             'unit_of_measurement') }}
-                          icon: mdi:ev-station
+                          icon: phu:model-s-charge-side
                           entity: sensor.tesla_model_3_charger_power
                           layout: vertical
                           icon_color: red
@@ -1919,11 +1919,11 @@ cards:
                             state_not: '0'
                         card:
                           type: custom:mushroom-template-card
-                          primary: Toegevoegd
+                          primary: Sessie
                           secondary: >-
                             {{ states(entity) }} {{ state_attr(entity,
                             'unit_of_measurement') }}
-                          icon: mdi:lightning-bolt
+                          icon: phu:model-s-charge
                           entity: sensor.tesla_model_3_energy_added
                           layout: vertical
                           icon_color: red
@@ -2006,26 +2006,109 @@ cards:
                                   user-select: none;
                                   pointer-events: none;
                                 }
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.tesla_model_3_arrival_time
+                            state_not: unknown
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: Aankomsttijd
+                          secondary: >-
+                            {{ states(entity) }} {{ state_attr(entity,
+                            'unit_of_measurement') }}
+                          icon: mdi:clock
+                          entity: sensor.tesla_model_3_arrival_time
+                          layout: vertical
+                          icon_color: green
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+
+                                  /* Add destination details */
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
+                      - type: conditional
+                        conditions:
+                          - entity: sensor.tesla_model_3_distance_to_arrival
+                            state_not: unknown
+                        card:
+                          type: custom:mushroom-template-card
+                          primary: Afstand
+                          secondary: >-
+                            {{ states(entity) }} {{ state_attr(entity,
+                            'unit_of_measurement') }}
+                          icon: mdi:clock
+                          entity: sensor.tesla_model_3_distance_to_arrival
+                          layout: green
+                          icon_color: red
+                          tap_action:
+                            action: none
+                          hold_action:
+                            action: none
+                          double_tap_action:
+                            action: none
+                          card_mod:
+                            style:
+                              mushroom-state-info$: |
+                                .primary:after {
+
+                                  /* Add destination details */
+                                  white-space: pre;
+                                  text-overflow: ellipsis;
+                                }
+                              .: |
+                                ha-card {
+
+                                  /* Remove default card styling */
+                                  --ha-card-background: none;
+                                  --ha-card-box-shadow: none;
+                                  --ha-card-border-width: 0;
+
+                                  /* Center card on row */
+                                  width: fit-content;
+                                  margin: auto;
+
+                                  /* Make card non-responsive to select and pointer */
+                                  user-select: none;
+                                  pointer-events: none;
+                                }
                   - type: custom:mushroom-chips-card
                     chips:
                       - type: template
                         tap_action:
                           action: none;
                         hold_action:
+                          action: none
+                        double_tap_action:
                           action: call-service
-                          service: notify.mobile_app_pixel_6_pro
-                          data:
-                            message: Ringing phone...
-                            title: Find Phone
-                            data:
-                              ttl: 0
-                              importance: high
-                              priority: high
-                              tag: Find
-                              channel: alarm_stream
-                        icon: mdi:target
+                          service: script.tesla_m3_pre_heat_on
+                        icon: mdi:heat-wave
                         icon_color: red
-                        content: Find Phone
+                        content: Voorverwarmen
                     alignment: center
                     card_mod:
                       style: |
