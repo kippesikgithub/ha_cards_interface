@@ -266,7 +266,7 @@ Current Temperature and Humidity statusses.
 Chips icon and color changing based on value: dishwasher, coffeemachine, window.  
 Navigation to subview from click on card.
 #### filename(s)
-overloop1_room_card.yaml
+overloop1_room_card.yaml  
 overloop2_room_card.yaml
 
 ## Overloop Subview
