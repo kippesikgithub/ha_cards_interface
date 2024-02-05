@@ -83,6 +83,8 @@ WLED Esp vuilniswagen (garbage collection light/notifier) https://github.com/kip
 Zigbee Wall socket(s) measuring power usage  
 IRobot Roomba  
 Lenovo Wall Tablet
+#### Related projects
+Esp32 Espresense bluetooth/ble tracking: https://github.com/kippesikgithub/espresense
 #
 
 # Keuken
@@ -106,10 +108,13 @@ subview_climate_graph_card.yaml
 Aqara Zigbee Temperature and Humidity sensor  
 ESP32 Espresense beacon  
 ESP32 Based Speaker  
+Esp32 Espresense
 Zigbee Wall socket(s) (oven, microwave)  
 EcoDimm007 Zigbee Dimmer for spots  
 Shelly Plug-s(s) (Quooker, Dishwasher, Coffemachine)  
 Aqara Zigbee window sensor
+#### Related projects
+Esp32 Espresense bluetooth/ble tracking: https://github.com/kippesikgithub/espresense
 #
   
 # Trapkast
