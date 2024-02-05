@@ -34,10 +34,9 @@ Build with custom Mushroom chips and custom Mushroom person cards. Simple overvi
 Clicking on one of the persons, brings up a fully styled popup card with details  
 ![person_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/435e8671-1b7b-47e0-a1b5-02728fb614df)
 #### Popup Cards
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/04420f58-f6c9-470a-879c-4825ff6f0cbb)  
-When Home  
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/34b5987a-a41f-458f-9cd5-8bd0adc0ff98)  
-When Not Home  
+First one 'When Home' second one 'When Not Home'
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/04420f58-f6c9-470a-879c-4825ff6f0cbb)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/34b5987a-a41f-458f-9cd5-8bd0adc0ff98)
 #### features
 chips icon and color changing based on value: ble transmitter, charging and battery percentage  
 Fully styled Popup card mod when clicking on the person
