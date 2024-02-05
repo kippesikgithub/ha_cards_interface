@@ -52,6 +52,7 @@ Build with custom Mushroom chips, card to show the today statistics, most import
 top_chips_today_overview.yaml  
 chips icon and color changing based on value: Total power usage, gas, water and solar    
 chips animated based on value: Solar 
+  
 #
 # Trapkast
 ## Trapkast Room Card
@@ -116,6 +117,7 @@ Aqara Zigbee window sensor
 #### filename
 kinderkamer_sophie_room_card.yaml
 
+#
 ## Subview Kinderkamer Sophie
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
 
@@ -128,7 +130,8 @@ kinderkamer_sophie_room_card.yaml
 6: subview_energy_distribution_card.yaml
 
 #### Related Projects
-WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight 
+WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight  
+  
 #
 # Kinderkamer Lucas
 ## Kinderkamer Lucas Room Card
@@ -158,7 +161,8 @@ kinderkamer_lucas_room_card.yaml
 2: temperatures_climate_card.yaml  
 4: subview_climate_graph_card.yaml  
 5: subview_camera_card.yaml  
-6: subview_energy_distribution_card.yaml
+6: subview_energy_distribution_card.yaml  
+  
 #
 # Woonkamer
 ## Woonkamer Room Card
