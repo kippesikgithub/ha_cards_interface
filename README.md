@@ -89,6 +89,7 @@ Aqara Zigbee window sensor
 #### filename
 badkamer_room_card.yaml
 
+# Kinderkamer Sophie
 ## Kinderkamer Sophie Room Card
 Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/ae3cd92d-9214-4f29-bc3a-5eb9319ba205)
@@ -111,6 +112,21 @@ Aqara Zigbee window sensor
 #### filename
 kinderkamer_sophie_room_card.yaml
 
+## Subview Kinderkamer Sophie
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
+
+#### Cards
+1: subview_kinderkamer_sophie_detailed_card.yaml  
+2: subview_kinderkamer_sophie_slaapwekker_card.yaml  
+3: temperatures_climate_card.yaml  
+4: subview_climate_graph_card.yaml  
+5: subview_camera_card.yaml  
+6: subview_energy_distribution_card.yaml
+
+#### Related Projects
+WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight 
+
+# Kinderkamer Lucas
 ## Kinderkamer Lucas Room Card
 Room card for sons room. Offcourse including babyicons, controlls for the led-lighting (commode), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
 ![lucas_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/c3ace65b-76e9-4c74-b12e-f5beb4321e57)
@@ -129,6 +145,16 @@ Esp32 WLED Commode ledstrip
 Aqara Zigbee window sensor
 #### filename
 kinderkamer_lucas_room_card.yaml
+
+## Subview Kinderkamer Lucas
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/18f4bc5e-8276-4aa4-8c3c-7faf6e8e2adf)
+
+#### Cards
+1: subview_kinderkamer_lucas_detailed_card.yaml  
+2: temperatures_climate_card.yaml  
+4: subview_climate_graph_card.yaml  
+5: subview_camera_card.yaml  
+6: subview_energy_distribution_card.yaml
 
 ## Woonkamer Room Card
 Room card for the Woonkamer.  
@@ -189,7 +215,6 @@ energy_current_devices_status_card.yaml
 ## Netto Electricity per day, last3 days
 Visualised in Apexcharts. Import electricity from net - exported electricity to net, per day-start, start at 0 (utility meter helper).    
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/8f56a9e7-ecc4-43c2-b348-c82a4d4667cd)
-
 #### filename
 energy_electricity_netto_last_week_card.yaml
 
@@ -277,29 +302,9 @@ pomphuis_room_card.yaml
 
 # Subviews for Rooms
 
-## Subview Kinderkamer Sophie
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
+ 
 
-#### Cards
-1: subview_kinderkamer_sophie_detailed_card.yaml  
-2: subview_kinderkamer_sophie_slaapwekker_card.yaml  
-3: temperatures_climate_card.yaml  
-4: subview_climate_graph_card.yaml  
-5: subview_camera_card.yaml  
-6: subview_energy_distribution_card.yaml
 
-#### Projects
-WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight  
-
-## Subview Kinderkamer Lucas
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/18f4bc5e-8276-4aa4-8c3c-7faf6e8e2adf)
-
-#### Cards
-1: subview_kinderkamer_lucas_detailed_card.yaml  
-2: temperatures_climate_card.yaml  
-4: subview_climate_graph_card.yaml  
-5: subview_camera_card.yaml  
-6: subview_energy_distribution_card.yaml
 
  
 ## Woonkamer Subview
