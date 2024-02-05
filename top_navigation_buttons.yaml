@@ -2,7 +2,7 @@ type: horizontal-stack
 cards:
   - type: custom:mushroom-template-card
     primary: ''
-    secondary: Energy
+    secondary: ''
     icon: |-
       {% if states('sensor.power_p1_netto_daily_kwh') | float < 0 %}
       mdi:transmission-tower-import
@@ -22,10 +22,10 @@ cards:
     layout: vertical
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/energy
+      navigation_path: /dashboard-subviews/energy
   - type: custom:mushroom-template-card
     primary: ''
-    secondary: Temps
+    secondary: ''
     icon: |-
       {% if states('sensor.woonkamer_motion_hue_temperature') | float < 0 %}
       mdi:temperature-celsius
@@ -45,16 +45,16 @@ cards:
     layout: vertical
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/thermostaat
+      navigation_path: /dashboard-subviews/verwarming
   - type: custom:mushroom-template-card
     primary: ''
-    secondary: Media
+    secondary: ''
     icon: mdi:speaker
     icon_color: teal
     layout: vertical
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/media
+      navigation_path: /dashboard-subviews/multimedia
     card_mod:
       style: |
         ha-state-icon {
@@ -70,7 +70,7 @@ cards:
         }
   - type: custom:mushroom-template-card
     primary: ''
-    secondary: 3D
+    secondary: ''
     icon: |-
       {% if states('switch.shellyplugs_3dprinter_e3pro', 'on') %}
       mdi:printer-3d-nozzle
@@ -90,13 +90,22 @@ cards:
     layout: vertical
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/servers
+      navigation_path: /dashboard-subviews/3dprinter
   - type: custom:mushroom-template-card
     primary: ''
-    secondary: Screens
+    secondary: ''
+    icon: mdi:server
+    icon_color: green
+    layout: vertical
+    tap_action:
+      action: navigate
+      navigation_path: /dashboard-subviews/servers
+  - type: custom:mushroom-template-card
+    primary: ''
+    secondary: ''
     icon: mdi:window-shutter-settings
     icon_color: white
     layout: vertical
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/screens
+      navigation_path: /dashboard-subviews/screens
