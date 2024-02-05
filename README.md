@@ -105,7 +105,21 @@ Color changing Temperature and Humidity graph in top of card, containing last 24
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
 Chips icon and color changing based on value: motion, window, airco.  
 Navigation to subview from click on card.
-#### devices in room
+#### filename(s)
+kinderkamer_sophie_room_card.yaml
+
+## Subview Kinderkamer Sophie
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
+
+#### filename(s)
+1: subview_kinderkamer_sophie_detailed_card.yaml  
+2: subview_kinderkamer_sophie_slaapwekker_card.yaml  
+3: temperatures_climate_card.yaml  
+4: subview_climate_graph_card.yaml  
+5: subview_camera_card.yaml  
+6: subview_energy_distribution_card.yaml
+
+#### devices in Kinderkamer Sophie
 Hue Light  
 Hue remote dimmer  
 Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination) https://github.com/kippesikgithub/esp_motion_mmwave  
@@ -116,21 +130,6 @@ Esp8266 Sleeptrainer/Slaapwekker (3d print, esp8266, some ws2812b leds) https://
 Wemos D1 mini WLED Unicorn light  
 Esp32 Somfy RTS for controlling screens  
 Aqara Zigbee window sensor
-#### filename
-kinderkamer_sophie_room_card.yaml
-#
-  
-## Subview Kinderkamer Sophie
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
-
-#### Cards
-1: subview_kinderkamer_sophie_detailed_card.yaml  
-2: subview_kinderkamer_sophie_slaapwekker_card.yaml  
-3: temperatures_climate_card.yaml  
-4: subview_climate_graph_card.yaml  
-5: subview_camera_card.yaml  
-6: subview_energy_distribution_card.yaml
-
 #### Related Projects
 WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight  
 #
@@ -144,6 +143,19 @@ Color changing Temperature and Humidity graph in top of card, containing last 24
 Current Temperature, Humidity, Illumination and Power usage of room statusses.  
 chips icon and color changing based on value: motion, window, airco.  
 Navigation to subview from click on card.
+#### filename(s)
+kinderkamer_lucas_room_card.yaml
+
+## Subview Kinderkamer Lucas
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/18f4bc5e-8276-4aa4-8c3c-7faf6e8e2adf)
+
+#### filename(s)
+1: subview_kinderkamer_lucas_detailed_card.yaml  
+2: temperatures_climate_card.yaml  
+4: subview_climate_graph_card.yaml  
+5: subview_camera_card.yaml  
+6: subview_energy_distribution_card.yaml  
+
 #### devices in room
 Hue Light  
 Hue remote dimmer  
@@ -152,20 +164,8 @@ Zigbee Wall socket(s) measuring power usage
 Mitsubishi Heavy Industries Airco (cooling/heating)  
 Esp32 WLED Commode ledstrip  
 Aqara Zigbee window sensor
-#### filename
-kinderkamer_lucas_room_card.yaml
-
-## Subview Kinderkamer Lucas
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/18f4bc5e-8276-4aa4-8c3c-7faf6e8e2adf)
-
-#### Cards
-1: subview_kinderkamer_lucas_detailed_card.yaml  
-2: temperatures_climate_card.yaml  
-4: subview_climate_graph_card.yaml  
-5: subview_camera_card.yaml  
-6: subview_energy_distribution_card.yaml  
-  
 #
+  
 # Woonkamer
 ## Woonkamer Room Card
 Room card for the Woonkamer.  
@@ -175,6 +175,12 @@ Color changing Temperature graph in top of card, containing last 24 hours.
 Current Temperature, Humidity, Illumination of room statusses.  
 chips icon and color changing based on value: television, motion, particulate matter, robot vacuum.  
 Navigation to subview from click on card.
+#### filename(s)
+woonkamer_room_card.yaml
+
+## Woonkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+
 #### devices in room
 Hue Lights  
 Hue remote dimmers  
@@ -185,12 +191,8 @@ Esp32 + espresense
 WLED Esp vuilniswagen (garbage collection light/notifier) https://github.com/kippesikgithub/wled_garbagetruck  
 Zigbee Wall socket(s) measuring power usage  
 IRobot Roomba  
-Lenovo Wall Tablet  
-#### filename
-woonkamer_room_card.yaml
-
-## Woonkamer Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+Lenovo Wall Tablet
+#
 
 # Washok
 ## Washok Room Card
