@@ -68,6 +68,9 @@ woonkamer_room_card.yaml
 
 ## Woonkamer Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+#### filename(s)
+subview_woonkamer_detailed_card.yaml  
+subview_climate_graph_card.yaml
 
 #### devices in room
 Hue Lights  
@@ -95,6 +98,9 @@ keuken_room_card.yaml
 
 ## Keuken Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)  
+#### filename(s)
+subview_keuken_detailed_card.yaml  
+subview_climate_graph_card.yaml
 
 #### devices in room
 Aqara Zigbee Temperature and Humidity sensor  
@@ -120,6 +126,10 @@ trapkast_room_card.yaml
 
 ## Trapkast Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/bec7f35d-89d1-4a37-bf9f-914d9ab32220)  
+#### filename(s)
+subview_trapkast_detailed_card.yaml  
+subview_climate_graph_card.yaml
+
 #### devices in room
 Hue light  
 Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)  
@@ -142,6 +152,9 @@ hal_room_card.yaml
 
 ## Hal Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/40f9c2ea-b643-4251-aeca-1ce2225b3c37)  
+#### filename(s)
+subview_hal_detailed_card.yaml  
+subview_climate_graph_card.yaml
 
 #### devices in room
 Shelly RGBW2 + 12v Ledstrip behind coat rack   
@@ -164,6 +177,9 @@ badkamer_room_card.yaml
 
 ## Badkamer Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)  
+#### filename(s)
+subview_badkamer_detailed_card.yaml  
+subview_climate_graph_card.yaml
 
 #### devices in room
 Aqara Zigbee Temperature and Humidity sensor  
@@ -187,7 +203,6 @@ kinderkamer_sophie_room_card.yaml
 
 ## Subview Kinderkamer Sophie
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
-
 #### filename(s)
 1: subview_kinderkamer_sophie_detailed_card.yaml  
 2: subview_kinderkamer_sophie_slaapwekker_card.yaml  
@@ -225,7 +240,6 @@ kinderkamer_lucas_room_card.yaml
 
 ## Subview Kinderkamer Lucas
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/18f4bc5e-8276-4aa4-8c3c-7faf6e8e2adf)
-
 #### filename(s)
 1: subview_kinderkamer_lucas_detailed_card.yaml  
 2: temperatures_climate_card.yaml  
