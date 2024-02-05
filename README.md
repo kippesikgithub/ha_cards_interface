@@ -159,7 +159,7 @@ subview_climate_graph_card.yaml
 #### devices in room
 Shelly RGBW2 + 12v Ledstrip behind coat rack   
 Zigbee Smoke Sensor  
-Philips Hue Zigbee Motion (+ temp and illumination)  
+Philips Hue Zigbee Motion (+ temp and illumination)
 #
   
 # Badkamer
@@ -255,6 +255,33 @@ Zigbee Wall socket(s) measuring power usage
 Mitsubishi Heavy Industries Airco (cooling/heating)  
 Esp32 WLED Commode ledstrip  
 Aqara Zigbee window sensor
+#
+
+# Overloop1 & Overloop2
+## Overloop Room Card
+Room card for the Overloop on floor 1 and 2.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/310ee723-d8f1-4a9c-850c-2e685d356fb5)
+#### features
+Current Temperature and Humidity statusses.  
+Chips icon and color changing based on value: dishwasher, coffeemachine, window.  
+Navigation to subview from click on card.
+#### filename(s)
+overloop1_room_card.yaml
+overloop2_room_card.yaml
+
+## Overloop Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1c8c3a09-5c5f-433d-a7b3-edf22d8cb34b)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/164fb350-a29b-4a64-be07-eeef40309561)
+#### filename(s)
+subview_overloop1_detailed_card.yaml  
+subview_overloop2_detailed_card.yaml  
+subview_climate_graph_card.yaml
+
+#### devices in room
+Hue Light  
+Hue Remote Dimmer  
+Philips Hue Zigbee Motion (+ temp and illumination)  
+Kaku ZSDR-850 Zigbee Smoke Sensors  
 #
   
 # Washok
@@ -406,7 +433,7 @@ pomphuis_room_card.yaml
 
 
 ## Overloop1 Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1c8c3a09-5c5f-433d-a7b3-edf22d8cb34b)
+
 
 ## Overloop2 Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/164fb350-a29b-4a64-be07-eeef40309561)
+
