@@ -71,6 +71,7 @@ Esp32 + LD2410 (mmwave) + BMP180 (temp and baro) https://github.com/kippesikgith
 Zigbee Wall socket for controlling floor heating pump
 #### filename
 trapkast_room_card.yaml
+  
 #
 # Badkamer
 ## Badkamer Room Card
@@ -92,8 +93,9 @@ Aqara Zigbee window sensor
 badkamer_room_card.yaml
 
 ## Badkamer Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)  
 #
+  
 # Kinderkamer Sophie
 ## Kinderkamer Sophie Room Card
 Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
@@ -116,8 +118,8 @@ Esp32 Somfy RTS for controlling screens
 Aqara Zigbee window sensor
 #### filename
 kinderkamer_sophie_room_card.yaml
-
 #
+  
 ## Subview Kinderkamer Sophie
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/aa92bf6f-e692-461a-ad96-543f74952264)
 
@@ -131,8 +133,8 @@ kinderkamer_sophie_room_card.yaml
 
 #### Related Projects
 WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight  
-  
 #
+  
 # Kinderkamer Lucas
 ## Kinderkamer Lucas Room Card
 Room card for sons room. Offcourse including babyicons, controlls for the led-lighting (commode), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
