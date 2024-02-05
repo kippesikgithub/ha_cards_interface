@@ -417,28 +417,3 @@ Pump House supplying data from a temp/baro, illuminance sensors a waterpump for 
 #### filename(s)
 pomphuis_room_card.yaml
 
-
-# Subviews for Rooms
-## Keuken Subview
-
- 
-
-
-
- 
-
-
-## Hal Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/38c4b3ec-daa1-4811-b500-d963faf210c5)
-
-
-
-
-
-
-
-## Overloop1 Subview
-
-
-## Overloop2 Subview
-
