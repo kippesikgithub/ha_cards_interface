@@ -106,7 +106,7 @@ Esp32 + LD2410 (mmwave) + DHT22 (temp and humidity + WDR (illumination) https://
 Zigbee Wall socket(s) measuring power usage  
 Mitsubishi Heavy Industries Airco (cooling/heating)  
 Esp32 WLED Desk ledstrip
-Esp8266 Sleeptrainer/Slaapwekker (3d print, esp8266, some ws2812b leds)  
+Esp8266 Sleeptrainer/Slaapwekker (3d print, esp8266, some ws2812b leds) https://github.com/kippesikgithub/esp_kids_nightlight  
 Wemos D1 mini WLED Unicorn light  
 Esp32 Somfy RTS for controlling screens  
 Aqara Zigbee window sensor
