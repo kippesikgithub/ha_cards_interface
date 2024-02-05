@@ -1,0 +1,209 @@
+type: custom:vertical-stack-in-card
+horizontal: false
+cards:
+  - type: custom:stack-in-card
+    cards:
+      - type: custom:mushroom-template-card
+        primary: Lucas 👶
+        icon: mdi:cradle
+        icon_color: blue
+        layout: horizontal
+        entity: light.kleinekamer_hue
+        secondary: >-
+          🌡️{{states('sensor.kinderkamer_lucas_temperature') }}°C | 
+          💧{{states('sensor.kinderkamer_lucas_humidity') | int }}% |
+          💡{{states('sensor.kinderkamer_lucas_illuminance') | int }}lux |
+          🔌{{states('sensor.lucas_total_energy_watt') | int }}W
+        tap_action:
+          action: navigate
+          navigation_path: /dashboard-subviews/kinderkamer-lucas
+        fill_container: true
+        multiline_secondary: false
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-light-card
+            entity: light.kleinekamer_hue
+            primary_info: none
+            secondary_info: state
+            layout: vertical
+            fill_container: false
+            show_brightness_control: true
+            show_color_temp_control: true
+            show_color_control: false
+            collapsible_controls: false
+            use_light_color: true
+          - type: custom:mushroom-light-card
+            entity: light.kinderkamer_ledstrip
+            primary_info: none
+            secondary_info: state
+            layout: vertical
+            fill_container: false
+            show_brightness_control: true
+            show_color_temp_control: true
+            show_color_control: false
+            collapsible_controls: false
+            use_light_color: true
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: climate.airco_sophie
+            layout: vertical
+            icon: |-
+              {% if is_state('climate.airco_lucas', 'heat') %}
+              mdi:thermometer-chevron-up
+              {% elif is_state('climate.airco_lucas', 'cool') %}
+              mdi:thermometer-chevron-down
+              {% elif is_state('climate.airco_lucas', 'off') %}
+              mdi:thermostat
+              {% else %}
+              disbled
+              {% endif %}
+            icon_color: |-
+              {% if is_state('climate.airco_lucas', 'heat') %}
+              red
+              {% elif is_state('climate.airco_lucas', 'cool') %}
+              blue
+              {% elif is_state('climate.airco_lucas', 'off') %}
+              disabled
+              {% else %}
+              disbled
+              {% endif %}
+            tap_action:
+              action: more-info
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              target:
+                entity_id: input_boolean.node_red_kinderkamer_lucas_airco_automations
+              data: {}
+            card_mod:
+              style:
+                mushroom-shape-icon$: >
+                  {% if
+                  is_state('input_boolean.node_red_kinderkamer_lucas_airco_automations',
+                  'on') %}
+
+                  .shape {
+                    --shape-animation: ping 3s infinite;
+                  }
+
+                  @keyframes ping {
+                    0% {
+                      box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 5px 5px transparent;
+                    }
+                  }
+
+                  {% elif
+                  is_state('input_boolean.node_red_kinderkamer_lucas_airco_automations',
+                  'off') %}
+
+                  {% endif %}
+          - type: custom:mushroom-template-card
+            entity: switch.esp_kinderkamer_nachtlampje
+            layout: vertical
+            icon: |-
+              {% if is_state('switch.esp_kinderkamer_nachtlampje', 'on') %}
+              mdi:butterfly
+              {% else %}
+              mdi:butterfly
+              {% endif %}
+            icon_color: |-
+              {% if is_state('switch.esp_kinderkamer_nachtlampje', 'on') %}
+                green
+              {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:motion-sensor
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                grey
+                {% endif %}
+            entity: binary_sensor.kinderkamer_lucas_occupancy
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:window-closed
+              {% else %}
+              mdi:window-open
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'off') %}
+                green
+                {% else %}
+                red
+                {% endif %}
+            entity: binary_sensor.kleinekamer_raam_aqara_contact
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'off') %}
+              mdi:thermostat
+              {% else %}
+              mdi:thermostat 
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'heat') %}
+                red
+                {% elif is_state(entity, 'cool') %}
+                blue
+                {% else %}
+                disabled
+                {% endif %}
+            entity: climate.airco_lucas
+            tap_action:
+              action: more-info
+        alignment: end
+        card_mod:
+          style:
+            mushroom-template-chip: |
+              ha-card {
+                --ha-card-box-shadow: none;
+                --chip-background: none;
+                --chip-box-shadow: none;
+                --chip-spacing: 0;
+                : -36px;
+              } 
+            mushroom-template-chip:nth-child(1)$: >
+              {% if is_state('binary_sensor.kinderkamer_lucas_occupancy','on')
+              %}
+
+              ha-state-icon {
+                animation: clip 2s linear infinite;
+              }
+
+              @keyframes clip {
+                50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
+              }
+
+              .shape {
+                --shape-animation: motion 2s linear infinite;
+              }
+
+              @keyframes motion {
+                0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
+                50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
+              }
+
+              }
+
+              {% else %}
+
+
+              {% endif %}
+
+              }
