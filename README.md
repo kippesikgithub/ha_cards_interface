@@ -52,7 +52,7 @@ Build with custom Mushroom chips, card to show the today statistics, most import
 top_chips_today_overview.yaml  
 chips icon and color changing based on value: Total power usage, gas, water and solar    
 chips animated based on value: Solar 
-
+#
 # Trapkast
 ## Trapkast Room Card
 Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
@@ -70,7 +70,7 @@ Esp32 + LD2410 (mmwave) + BMP180 (temp and baro) https://github.com/kippesikgith
 Zigbee Wall socket for controlling floor heating pump
 #### filename
 trapkast_room_card.yaml
-
+#
 # Badkamer
 ## Badkamer Room Card
 Room card for the Badkamer.  
@@ -92,7 +92,7 @@ badkamer_room_card.yaml
 
 ## Badkamer Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)
-
+#
 # Kinderkamer Sophie
 ## Kinderkamer Sophie Room Card
 Room card for daughters room. Offcourse including princesses, controlls for the led-lighting (desk and unicorn), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
@@ -129,7 +129,7 @@ kinderkamer_sophie_room_card.yaml
 
 #### Related Projects
 WLED Kids Nightlight / Sleeptrainer: https://github.com/kippesikgithub/esp_kids_nightlight 
-
+#
 # Kinderkamer Lucas
 ## Kinderkamer Lucas Room Card
 Room card for sons room. Offcourse including babyicons, controlls for the led-lighting (commode), motion status, controlls for the airconditiong/heating, and temp/humidity/illumination status.  
@@ -159,7 +159,7 @@ kinderkamer_lucas_room_card.yaml
 4: subview_climate_graph_card.yaml  
 5: subview_camera_card.yaml  
 6: subview_energy_distribution_card.yaml
-
+#
 # Woonkamer
 ## Woonkamer Room Card
 Room card for the Woonkamer.  
