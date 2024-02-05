@@ -82,7 +82,6 @@ IRobot Roomba
 Lenovo Wall Tablet
 #
 
-#
 # Trapkast
 ## Trapkast Room Card
 Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
@@ -92,10 +91,11 @@ Color changing Temperature graph in top of card, containing last 24 hours.
 Current Temperature status.  
 Blinking ring around the light, to show if automations for that entity/room are enbled. Double click on icon to toggle automations (on/off).  
 Chips icon and color changing based on value: motion, main water usage, floor heating pump, rc wifi car (project: https://github.com/kippesikgithub/esp_rc_car)
-
 #### filename(s)
 trapkast_room_card.yaml
 
+## Trapkast Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/bec7f35d-89d1-4a37-bf9f-914d9ab32220)  
 #### devices in room
 Hue light  
 Wemos D1 + 3 Dallas DS18B20 sensors (measure floor heating pipes)  
@@ -124,7 +124,29 @@ Shelly RGBW2 + 12v Ledstrip behind coat rack
 Zigbee Smoke Sensor  
 Philips Hue Zigbee Motion (+ temp and illumination)  
 #
-  
+
+# Keuken
+## Keuken Room Card
+Room card for the Badkamer.  
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/033be75a-9302-402c-af83-bf5e01b5e40d)
+#### features
+Current Temperature and Humidity statusses.  
+Chips icon and color changing based on value: dishwasher, coffeemachine, window.  
+Navigation to subview from click on card.
+#### filename(s)
+keuken_room_card.yaml
+
+## Keuken Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)  
+
+#### devices in room
+Aqara Zigbee Temperature and Humidity sensor  
+Zigbee Wall socket for controlling charging electric toothbrushes  
+Shelly 1L for controlling the Fan (based on humidity level)  
+Toon integration for reading shower/warm water status  
+Aqara Zigbee window sensor
+#
+
 # Badkamer
 ## Badkamer Room Card
 Room card for the Badkamer.  
@@ -350,7 +372,7 @@ pomphuis_room_card.yaml
 
 # Subviews for Rooms
 ## Keuken Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)
+
  
 
 
