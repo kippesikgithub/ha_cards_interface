@@ -19,7 +19,7 @@ Colors and text changing from entities and attributes
 https://github.com/kippesikgithub/hass_walltablet  
 Documentation still has to be updated
 
-# Screenshot per card
+# Main Overview Cards
 ## Top Chips Current card  
 Build with custom Mushroom chips, card to show the current situation, most important things. Shows the current outside temperature, the main entrance/exit doors status, current power usage, current solar production, and conditional chip for garbage collection icon.
 ![top_chips_current_overview](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/4fe34500-c97d-4ba1-a8ba-9042f930419c)
@@ -37,7 +37,6 @@ chips icon and color changing based on value: ble transmitter, charging and batt
 #### filename
 top_persons_card.yaml
 
-
 ## Top Button card
 Build with custom Mushroom template cards. Just some simple buttons to navigate to subviews with summaries and statistics about Energy, Temperatures, Mediaplayers incl volumes and sources, 3d printing and outside screens. every button navigates to a subview.
 ![top_button_navigation](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/f1ade95c-a77d-4a4b-b31f-af099f8c1018)
@@ -54,6 +53,7 @@ top_chips_today_overview.yaml
 chips icon and color changing based on value: Total power usage, gas, water and solar    
 chips animated based on value: Solar 
 
+# Trapkast
 ## Trapkast Room Card
 Room card for the Trapkast. Contains a pretty basic version of the roomcard, only displaying the temperature, temperature trend, controlls for the light, and some chips for statusses.  
 ![trapkast_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9de6b181-02ae-4656-8920-c9d77cc54fa2)
@@ -71,6 +71,7 @@ Zigbee Wall socket for controlling floor heating pump
 #### filename
 trapkast_room_card.yaml
 
+# Badkamer
 ## Badkamer Room Card
 Room card for the Badkamer.  
 ![badkamer_room_card](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/637caac6-3d99-4ecf-80e3-45628e5833d1)
@@ -88,6 +89,9 @@ Toon integration for reading shower/warm water status
 Aqara Zigbee window sensor
 #### filename
 badkamer_room_card.yaml
+
+## Badkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)
 
 # Kinderkamer Sophie
 ## Kinderkamer Sophie Room Card
@@ -156,6 +160,7 @@ kinderkamer_lucas_room_card.yaml
 5: subview_camera_card.yaml  
 6: subview_energy_distribution_card.yaml
 
+# Woonkamer
 ## Woonkamer Room Card
 Room card for the Woonkamer.  
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/5e0b8316-9594-4ca2-b19b-a743cc76de51)
@@ -178,6 +183,10 @@ Lenovo Wall Tablet
 #### filename
 woonkamer_room_card.yaml
 
+## Woonkamer Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+
+# Washok
 ## Washok Room Card
 Room card for the Washok.  
 ![washok_cards](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/a68dad4d-edd4-4f24-843a-7d860de0f9b5)
@@ -198,6 +207,9 @@ Aqara Zigbee window sensor
 washok_room_card.yaml
 #### Related projects
 How to monitor washing machine and tumble dryer state with powerplug/shelly: https://github.com/kippesikgithub/hass_washing_dryer
+
+## Washok Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/91a3be6a-33a8-4179-9e1c-c4d5502b68d7)
 
 # Subview Energy (navigation from Top Button card)
 ## Overview Electricity per room
@@ -301,26 +313,23 @@ pomphuis_room_card.yaml
 
 
 # Subviews for Rooms
-
+## Keuken Subview
+![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)
  
 
 
 
  
-## Woonkamer Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/cf97fd75-2386-4bdd-872d-1ad4bd0875a9)
+
 
 ## Hal Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/38c4b3ec-daa1-4811-b500-d963faf210c5)
 
-## Keuken Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/3a6b1a33-4be3-4733-91ee-fe0d12371d09)
 
-## Badkamer Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/9802172c-5edc-4732-acd3-8cac9a3fa012)
 
-## Washok Subview
-![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/91a3be6a-33a8-4179-9e1c-c4d5502b68d7)
+
+
+
 
 ## Overloop1 Subview
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/1c8c3a09-5c5f-433d-a7b3-edf22d8cb34b)
