@@ -36,7 +36,7 @@ Clicking on one of the persons, brings up a fully styled popup card with details
 #### filename(s)
 top_persons_without_popup.yaml
 #### Popup Cards
-First one 'When Home', second one 'When Not Home', third one for the car.   
+Examples: First one 'When Home', second one 'When Not Home', third one for the car.   
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/04420f58-f6c9-470a-879c-4825ff6f0cbb)
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/34b5987a-a41f-458f-9cd5-8bd0adc0ff98)
 ![image](https://github.com/kippesikgithub/ha_cards_interface/assets/100353268/feacfb5b-1990-4825-b1ee-ca12e4c87d57)
