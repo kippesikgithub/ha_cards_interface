@@ -1,5 +1,4 @@
 type: custom:vertical-stack-in-card
-horizontal: false
 cards:
   - type: custom:stack-in-card
     cards:
@@ -16,7 +15,7 @@ cards:
           🔌{{states('sensor.sophie_total_energy_watt') | int }}W
         tap_action:
           action: navigate
-          navigation_path: /lovelace-tablet/sophie
+          navigation_path: /dashboard-subviews/kinderkamer-sophie
         fill_container: true
         multiline_secondary: false
         card_mod:
@@ -34,27 +33,27 @@ cards:
             y_axis: secondary
         color_thresholds:
           - value: -20
-            color: '#264CFF'
+            color: "#264CFF"
           - value: -15
-            color: '#3FA0FF'
+            color: "#3FA0FF"
           - value: -10
-            color: '#72D8FF'
+            color: "#72D8FF"
           - value: -5
-            color: '#AAF7FF'
+            color: "#AAF7FF"
           - value: 0
-            color: '#E0FFFF'
+            color: "#E0FFFF"
           - value: 5
-            color: '#FFFFBF'
+            color: "#FFFFBF"
           - value: 10
-            color: '#FFE099'
+            color: "#FFE099"
           - value: 15
-            color: '#FFAD72'
+            color: "#FFAD72"
           - value: 20
-            color: '#F76D5E'
+            color: "#F76D5E"
           - value: 25
-            color: '#D82632'
+            color: "#D82632"
           - value: 30
-            color: '#A50021'
+            color: "#A50021"
         height: 50
         hours_to_show: 24
         line_width: 2
@@ -178,19 +177,65 @@ cards:
                 purple
               {% endif %}
           - type: custom:mushroom-template-card
-            entity: light.wled_bureau_sophie
+            entity: light.kinderkamer_sophie_bed
             layout: vertical
             use_light_color: true
             icon: |-
-              {% if is_state('light.wled_bureau_sophie', 'on') %}
-              mdi:desk
+              {% if is_state('light.kinderkamer_sophie_bed', 'on') %}
+              mdi:bed
               {% else %}
-              mdi:desk
+              mdi:bed
               {% endif %}
             icon_color: |-
-              {% if is_state('light.wled_bureau_sophie', 'on') %}
+              {% if is_state('light.kinderkamer_sophie_bed', 'on') %}
                 purple
               {% endif %}
+          - type: custom:mushroom-template-card
+            entity: light.wled_night_sophie_master
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('light.wled_night_sophie_master', 'on') %}
+              mdi:eye-outline
+              {% else %}
+              mdi:eye-outline
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.wled_night_sophie_master', 'on') %}
+                purple
+              {% endif %}
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              target:
+                entity_id: input_boolean.node_red_kinderkamer_sophie_oogjes_automations
+              data: {}
+            card_mod:
+              style:
+                mushroom-shape-icon$: >
+                  {% if
+                  is_state('input_boolean.node_red_kinderkamer_sophie_oogjes_automations',
+                  'on') %}
+
+                  .shape {
+                    --shape-animation: ping 3s infinite;
+                  }
+
+                  @keyframes ping {
+                    0% {
+                      box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 5px 5px transparent;
+                    }
+                  }
+
+                  {% elif
+                  is_state('input_boolean.node_red_kinderkamer_sophie_oogjes_automations',
+                  'off') %}
+
+                  {% endif %}
       - type: custom:mushroom-chips-card
         chips:
           - type: template
@@ -236,6 +281,21 @@ cards:
                 disabled
                 {% endif %}
             entity: climate.airco_sophie
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:remote
+            entity: sensor.kinderkamer_sophie_dimmer_hue_battery
+            icon_color: |2-
+                {% if states('sensor.kinderkamer_sophie_dimmer_hue_battery') | float < 25 %}
+                red
+                {% elif states('sensor.kinderkamer_sophie_dimmer_hue_battery') | float < 50 %}
+                orange
+                {% elif states('sensor.kinderkamer_sophie_dimmer_hue_battery') | float >= 50 %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
             tap_action:
               action: more-info
         alignment: end
