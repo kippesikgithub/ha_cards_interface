@@ -19,7 +19,7 @@ chips:
       {% else %}
       grey
       {% endif %}
-    content: '{{ states("sensor.power_p1_netto_daily_kwh") }} kWh'
+    content: "{{ states(\"sensor.power_p1_netto_daily_kwh\") }} kWh"
     entity: sensor.power_p1_netto_daily_kwh
     tap_action:
       action: more-info
@@ -40,7 +40,7 @@ chips:
       {% else %}
       grey
       {% endif %}
-    content: '{{ (states("sensor.gas_import_p1_daily")|round(1)) }} m3'
+    content: "{{ (states(\"sensor.gas_import_p1_daily\")|round(1)) }} m3"
     entity: sensor.gas_import_p1_daily
     tap_action:
       action: more-info
@@ -61,7 +61,7 @@ chips:
       {% else %}
       grey
       {% endif %}
-    content: '{{ (states("sensor.water_daily_total")|float *1000)|round }} L'
+    content: "{{ (states(\"sensor.water_daily_total\")|float *1000)|round }} L"
     entity: sensor.water_daily_total
     tap_action:
       action: more-info
