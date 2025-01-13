@@ -17,7 +17,7 @@ chips:
       {% else %}
       orange
       {% endif %}
-    content: '{{ states("sensor.achtertuin_buitentemperatuur") }}'
+    content: "{{ states(\"sensor.achtertuin_buitentemperatuur\") }}"
     entity: sensor.achtertuin_buitentemperatuur
     tap_action:
       action: more-info
@@ -36,8 +36,7 @@ chips:
         {% endif %}
     entity: binary_sensor.voordeur_aqara_contact
     tap_action:
-      action: navigate
-      navigation_path: /lovelace-tablet/deurrraam
+      action: more-info
   - type: template
     icon: |-
       {% if is_state(entity, 'off') %}
@@ -87,7 +86,7 @@ chips:
       {% else %}
       grey
       {% endif %}
-    content: '{{ states("sensor.p1_meter_current_power") }} W'
+    content: "{{ states(\"sensor.p1_meter_current_power\") }} W"
     entity: sensor.p1_meter_current_power
     tap_action:
       action: more-info
@@ -104,14 +103,14 @@ chips:
       grey
 
       {% endif %}
-    content: '{{ states("sensor.envoy_122217065650_current_power_production") }} W'
+    content: "{{ states(\"sensor.envoy_122217065650_current_power_production\") }} W"
     entity: sensor.envoy_122217065650_current_power_production
     tap_action:
       action: more-info
   - type: conditional
     conditions:
       - entity: light.wled_vuilniswagen
-        state: 'on'
+        state: "on"
     chip:
       type: template
       icon: |-
@@ -122,14 +121,14 @@ chips:
         {% endif %}
       icon_color: |2-
           {% if is_state('sensor.avalex_tomorrow', 'None') %}
-          yellow
-          {% elif is_state('sensor.avalex_tomorrow', 'pmd') %}
+          disabled
+          {% elif is_state('sensor.avalex_tomorrow', 'PMD') %}
           #FF00FF
-          {% elif is_state('sensor.avalex_tomorrow', 'papier') %}
+          {% elif is_state('sensor.avalex_tomorrow', 'Papier') %}
           blue
-          {% elif is_state('sensor.avalex_tomorrow', 'gft') %}
+          {% elif is_state('sensor.avalex_tomorrow', 'GFT') %}
           green
-          {% elif is_state('sensor.avalex_tomorrow', 'restafval') %}
+          {% elif is_state('sensor.avalex_tomorrow', 'Restafval') %}
           yellow
           {% else %}
           disabled
@@ -153,7 +152,51 @@ chips:
     entity: switch.away_mode_switches
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/switches
+      navigation_path: /dashboard-subviews/fuses
+  - type: conditional
+    conditions:
+      - entity: binary_sensor.voordeur_ding
+        state: "on"
+    chip:
+      type: template
+      icon: |-
+        {% if is_state(entity, 'on') %}
+        mdi:bell-ring
+        {% else %}
+        mdi:bell-ring
+        {% endif %}
+      icon_color: |-
+        {% if is_state(entity, 'on') %}
+        red
+        {% else %}
+        disabled
+        {% endif %}
+      entity: binary_sensor.voordeur_ding
+      tap_action:
+        action: none
+  - type: conditional
+    conditions:
+      - condition: numeric_state
+        entity: sensor.frigate_vogelhuis_bird_count
+        above: 0
+    chip:
+      type: template
+      icon: |-
+        {% if states('sensor.frigate_vogelhuis_bird_count') | float < 0 %}
+        mdi:bird
+        {% else %}
+        mdi:bird
+        {% endif %}
+      icon_color: |-
+        {% if states('sensor.frigate_vogelhuis_bird_count') | float < 0 %}
+        yellow
+        {% else %}
+        grey
+        {% endif %}
+      content: "{{ states(\"sensor.frigate_vogelhuis_bird_count\") }} "
+      entity: sensor.frigate_vogelhuis_bird_count
+      tap_action:
+        action: more-info
 alignment: center
 card_mod:
   style:
