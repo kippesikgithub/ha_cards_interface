@@ -1,5 +1,4 @@
 type: custom:vertical-stack-in-card
-horizontal: false
 cards:
   - type: custom:stack-in-card
     cards:
@@ -14,7 +13,19 @@ cards:
           {{states('sensor.garage_motion_hue_illuminance_lux') | int }}lux
         tap_action:
           action: navigate
-          navigation_path: /lovelace-tablet/garage
+          navigation_path: /dashboard-subviews/garage
+        badge_icon: |
+          {% if is_state('binary_sensor.garage_motion_hue_occupancy', 'on') %}
+            mdi:human-greeting
+          {% else %}  
+            mdi:motion-sensor-off
+          {% endif %}
+        badge_color: |
+          {% if is_state('binary_sensor.garage_motion_hue_occupancy', 'on') %}
+            green
+          {% else %}  
+            disabled
+          {% endif %}
         fill_container: true
         multiline_secondary: false
         card_mod:
@@ -28,27 +39,27 @@ cards:
             name: Temperature
         color_thresholds:
           - value: -20
-            color: '#264CFF'
+            color: "#264CFF"
           - value: -15
-            color: '#3FA0FF'
+            color: "#3FA0FF"
           - value: -10
-            color: '#72D8FF'
+            color: "#72D8FF"
           - value: -5
-            color: '#AAF7FF'
+            color: "#AAF7FF"
           - value: 0
-            color: '#E0FFFF'
+            color: "#E0FFFF"
           - value: 5
-            color: '#FFFFBF'
+            color: "#FFFFBF"
           - value: 10
-            color: '#FFE099'
+            color: "#FFE099"
           - value: 15
-            color: '#FFAD72'
+            color: "#FFAD72"
           - value: 20
-            color: '#F76D5E'
+            color: "#F76D5E"
           - value: 25
-            color: '#D82632'
+            color: "#D82632"
           - value: 30
-            color: '#A50021'
+            color: "#A50021"
         height: 50
         hours_to_show: 24
         line_width: 2
@@ -163,9 +174,9 @@ cards:
           - type: template
             icon: |-
               {% if is_state(entity, 'on') %}
-              mdi:bicycle-cargo
+              mdi:bicycle-electric
               {% else %}
-              mdi:bicycle-cargo
+              mdi:bicycle-electric
               {% endif %}
             icon_color: |2-
                 {% if is_state(entity, 'on') %}
@@ -173,20 +184,9 @@ cards:
                 {% else %}
                 grey
                 {% endif %}
-            entity: switch.bakfiets_plug_bw
+            entity: switch.garage_fietsen_plug_bw
             tap_action:
               action: more-info
-          - type: conditional
-            conditions:
-              - entity: sensor.espresense_garage_count
-                state_not: '0'
-            chip:
-              type: entity
-              icon: mdi:human-greeting
-              icon_color: green
-              entity: sensor.espresense_garage_count
-              tap_action:
-                action: more-info
           - type: template
             icon: |-
               {% if is_state(entity, 'off') %}
