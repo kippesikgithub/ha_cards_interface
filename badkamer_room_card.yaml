@@ -1,5 +1,4 @@
 type: custom:vertical-stack-in-card
-horizontal: false
 cards:
   - type: custom:stack-in-card
     cards:
@@ -32,27 +31,27 @@ cards:
             y_axis: secondary
         color_thresholds:
           - value: -20
-            color: '#264CFF'
+            color: "#264CFF"
           - value: -15
-            color: '#3FA0FF'
+            color: "#3FA0FF"
           - value: -10
-            color: '#72D8FF'
+            color: "#72D8FF"
           - value: -5
-            color: '#AAF7FF'
+            color: "#AAF7FF"
           - value: 0
-            color: '#E0FFFF'
+            color: "#E0FFFF"
           - value: 5
-            color: '#FFFFBF'
+            color: "#FFFFBF"
           - value: 10
-            color: '#FFE099'
+            color: "#FFE099"
           - value: 15
-            color: '#FFAD72'
+            color: "#FFAD72"
           - value: 20
-            color: '#F76D5E'
+            color: "#F76D5E"
           - value: 25
-            color: '#D82632'
+            color: "#D82632"
           - value: 30
-            color: '#A50021'
+            color: "#A50021"
         height: 50
         hours_to_show: 24
         line_width: 2
@@ -87,17 +86,17 @@ cards:
     horizontal: true
     cards:
       - type: custom:mushroom-template-card
-        entity: switch.shelly1l_badkamerfan
+        entity: switch.badkamer_fan_sonoff
         layout: vertical
         use_light_color: true
         icon: |-
-          {% if is_state('switch.shelly1l_badkamerfan', 'on') %}
+          {% if is_state('switch.badkamer_fan_sonoff', 'on') %}
           mdi:fan
           {% else %}
           mdi:fan
           {% endif %}
         icon_color: |-
-          {% if is_state('switch.shelly1l_badkamerfan', 'on') %}
+          {% if is_state('switch.badkamer_fan_sonoff', 'on') %}
             green
           {% endif %}
         tap_action:
@@ -142,7 +141,7 @@ cards:
             {% else %}
             grey
             {% endif %}
-        entity: switch.tandenborstels
+        entity: switch.badkamer_tandenborstels_sonoff
         tap_action:
           action: more-info
       - type: template
@@ -153,7 +152,7 @@ cards:
             {% else %}
             grey
             {% endif %}
-        entity: switch.shelly1l_badkamerfan
+        entity: switch.badkamer_fan_sonoff
         tap_action:
           action: more-info
       - type: template
@@ -195,7 +194,7 @@ cards:
             : -36px;
           } 
         mushroom-template-chip:nth-child(1)$: |
-          {% if is_state('switch.tandenborstels','on') %}
+          {% if is_state('switch.badkamer_tandenborstels_sonoff','on') %}
           ha-state-icon {
             animation: charge 1s linear infinite;
           }
@@ -218,7 +217,7 @@ cards:
           {% endif %}
           }
         mushroom-template-chip:nth-child(2)$: |
-          {% if is_state('switch.shelly1l_badkamerfan','on') %}
+          {% if is_state('switch.badkamer_fan_sonoff','on') %}
           ha-state-icon {
             animation: rotation 2s linear infinite;
           }
