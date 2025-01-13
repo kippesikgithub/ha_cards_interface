@@ -1,5 +1,4 @@
 type: custom:vertical-stack-in-card
-horizontal: false
 cards:
   - type: custom:stack-in-card
     cards:
@@ -10,22 +9,20 @@ cards:
         layout: horizontal
         entity: light.staanlamp_hue
         secondary: >-
-          🌡️{{states('sensor.woonkamer_motion_hue_temperature') }}°C |
-          💧{{states('sensor.humidity') | int }}% |
-          💡{{states('sensor.woonkamer_motion_hue_illuminance_lux') | int }}lux
+          🌡️{{states('sensor.woonkamer_temperature') }}°C |
+          💡{{states('sensor.woonkamer_illuminance') | int }}lux |
+          🔌{{states('sensor.woonkamer_total_energy_watt') | int }}W
         tap_action:
           action: navigate
-          navigation_path: /lovelace-tablet/woonkamer
-        badge_icon: >
-          {% if is_state('binary_sensor.woonkamer_motion_hue_occupancy', 'on')
-          %}
+          navigation_path: /dashboard-subviews/woonkamer
+        badge_icon: |
+          {% if is_state('binary_sensor.woonkamer_occupancy', 'on') %}
             mdi:human-greeting
           {% else %}  
             mdi:motion-sensor-off
           {% endif %}
-        badge_color: >
-          {% if is_state('binary_sensor.woonkamer_motion_hue_occupancy', 'on')
-          %}
+        badge_color: |
+          {% if is_state('binary_sensor.woonkamer_occupancy', 'on') %}
             green
           {% else %}  
             disabled
@@ -39,35 +36,31 @@ cards:
             }
       - type: custom:mini-graph-card
         entities:
-          - entity: sensor.woonkamer_motion_hue_temperature
+          - entity: sensor.woonkamer_temperature
             name: Temperature
-          - entity: sensor.humidity
-            name: Humidity
-            color: blue
-            y_axis: secondary
         color_thresholds:
           - value: -20
-            color: '#264CFF'
+            color: "#264CFF"
           - value: -15
-            color: '#3FA0FF'
+            color: "#3FA0FF"
           - value: -10
-            color: '#72D8FF'
+            color: "#72D8FF"
           - value: -5
-            color: '#AAF7FF'
+            color: "#AAF7FF"
           - value: 0
-            color: '#E0FFFF'
+            color: "#E0FFFF"
           - value: 5
-            color: '#FFFFBF'
+            color: "#FFFFBF"
           - value: 10
-            color: '#FFE099'
+            color: "#FFE099"
           - value: 15
-            color: '#FFAD72'
+            color: "#FFAD72"
           - value: 20
-            color: '#F76D5E'
+            color: "#F76D5E"
           - value: 25
-            color: '#D82632'
+            color: "#D82632"
           - value: 30
-            color: '#A50021'
+            color: "#A50021"
         height: 50
         hours_to_show: 24
         line_width: 2
@@ -115,7 +108,9 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('light.staanlamp_hue', 'on') %}
-                yellow
+              yellow
+              {% else %}
+              disabled
               {% endif %}
           - type: custom:mushroom-template-card
             entity: light.philipstv
@@ -129,7 +124,9 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('light.philipstv', 'on') %}
-                yellow
+              yellow
+              {% else %}
+              disabled
               {% endif %}
           - type: custom:mushroom-template-card
             entity: switch.esp_servieskast_kerst
@@ -143,7 +140,9 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('switch.esp_servieskast_kerst', 'on') %}
-                yellow
+              yellow
+              {% else %}
+              disabled
               {% endif %}
       - type: custom:vertical-stack-in-card
         horizontal: true
@@ -159,7 +158,9 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('light.eettafel_hue', 'on') %}
-                yellow
+              yellow
+              {% else %}
+              disabled
               {% endif %}
           - type: custom:mushroom-template-card
             entity: light.woonkamer_knutseltafel_hue
@@ -173,7 +174,9 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('light.woonkamer_knutseltafel_hue', 'on') %}
-                yellow
+              yellow
+              {% else %}
+              disabled
               {% endif %}
           - type: custom:mushroom-template-card
             entity: light.woonkamer_achter_dimmer_3sp_ecodim
@@ -199,17 +202,19 @@ cards:
         horizontal: true
         cards:
           - type: custom:mushroom-template-card
-            entity: light.woonkamer_tv_links_hue
+            entity: light.woonkamer_tv_achter_hue
             layout: vertical
             icon: |-
-              {% if is_state('light.woonkamer_tv_links_hue', 'on') %}
-              hue:lily
+              {% if is_state('light.woonkamer_tv_achter_hue', 'on') %}
+              mdi:lamp
               {% else %}
-              hue:lily
+              mdi:lamp
               {% endif %}
             icon_color: |-
-              {% if is_state('light.woonkamer_tv_links_hue', 'on') %}
-                yellow
+              {% if is_state('light.woonkamer_tv_achter_hue', 'on') %}
+              yellow
+              {% else %}
+              disabled
               {% endif %}
           - type: custom:mushroom-template-card
             entity: light.hue_tv_ledstrip
@@ -223,24 +228,55 @@ cards:
               {% endif %}
             icon_color: |-
               {% if is_state('light.hue_tv_ledstrip', 'on') %}
-                yellow
+              yellow
+              {% else %}
+              disabled
               {% endif %}
           - type: custom:mushroom-template-card
-            entity: light.woonkamer_tv_rechts_hue
+            entity: light.ledstrippiano
             layout: vertical
             use_light_color: true
             icon: |-
-              {% if is_state('light.woonkamer_tv_rechts_hue', 'on') %}
-              hue:lily
+              {% if is_state('light.ledstrippiano', 'on') %}
+              mdi:piano
               {% else %}
-              hue:lily
+              mdi:piano
               {% endif %}
             icon_color: |-
-              {% if is_state('light.woonkamer_tv_rechts_hue', 'on') %}
-                yellow
+              {% if is_state('light.ledstrippiano', 'on') %}
+              yellow
+              {% else %}
+              disabled
+              {% endif %}
+          - type: custom:mushroom-template-card
+            entity: switch.esp_kerstboom
+            layout: vertical
+            use_light_color: true
+            icon: |-
+              {% if is_state('switch.esp_kerstboom', 'on') %}
+              mdi:pine-tree
+              {% else %}
+              mdi:pine-tree
+              {% endif %}
+            icon_color: |-
+              {% if is_state('switch.esp_kerstboom', 'on') %}
+              yellow
+              {% else %}
+              disabled
               {% endif %}
       - type: custom:mushroom-chips-card
         chips:
+          - type: template
+            icon: mdi:clock-digital
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                green
+                {% else %}
+                disabled
+                {% endif %}
+            entity: light.esp_leddisplay_tt_matrix_color
+            tap_action:
+              action: more-info
           - type: template
             icon: |-
               {% if is_state(entity, 'playing') %}
@@ -263,7 +299,7 @@ cards:
                 grey
                 {% endif %}
             entity: media_player.philipstv
-            content: '{{ state_attr(''media_player.philipstv'', ''source'') }}'
+            content: "{{ state_attr('media_player.philipstv', 'source') }}"
             tap_action:
               action: more-info
           - type: template
@@ -274,23 +310,12 @@ cards:
                 {% else %}
                 grey
                 {% endif %}
-            entity: binary_sensor.woonkamer_motion_hue_occupancy
+            entity: binary_sensor.woonkamer_occupancy
             tap_action:
               action: more-info
           - type: entity
-            entity: sensor.ikea_vindriktning_woonkamer_pm25
+            entity: sensor.esp_vindriktning_woonkamer_pm25
             icon_color: blue
-          - type: conditional
-            conditions:
-              - entity: sensor.espresense_woonkamer_count
-                state_not: '0'
-            chip:
-              type: entity
-              icon: mdi:human-greeting
-              icon_color: green
-              entity: sensor.espresense_woonkamer_count
-              tap_action:
-                action: more-info
           - type: entity
             entity: vacuum.sri
             icon_color: yellow
@@ -305,9 +330,8 @@ cards:
                 --chip-spacing: 0;
                 : -36px;
               } 
-            mushroom-template-chip:nth-child(2)$: >
-              {% if
-              is_state('binary_sensor.woonkamer_motion_hue_occupancy','on') %}
+            mushroom-template-chip:nth-child(3)$: >
+              {% if is_state('binary_sensor.woonkamer_occupancy','on') %}
               ha-state-icon {
                 animation: clip 2s linear infinite;
               } @keyframes clip {
