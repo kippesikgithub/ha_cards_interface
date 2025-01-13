@@ -1,153 +1,239 @@
 type: custom:vertical-stack-in-card
-mode: vertical
 cards:
-  - type: custom:mushroom-template-card
-    primary: Trapkast
-    icon: hue:room-stairs
-    icon_color: teal
-    layout: horizontal
-    entity: light.overloop1_hue
-    secondary: >-
-      {{states('sensor.trapkast_motion_aqara_device_temperature') }}°C |
-      {{states('sensor.trapkast_motion_aqara_illuminance_lux') | int }}lux
-    tap_action:
-      action: navigate
-      navigation_path: /lovelace-tablet/trapkast
-    badge_icon: |
-      {% if is_state('binary_sensor.trapkast_motion_aqara_occupancy', 'on') %}
-        mdi:human-greeting
-      {% else %}  
-        mdi:motion-sensor-off
-      {% endif %}
-    badge_color: |
-      {% if is_state('binary_sensor.trapkast_motion_aqara_occupancy', 'on') %}
-        green
-      {% else %}  
-        disabled
-      {% endif %}
-  - type: custom:vertical-stack-in-card
-    horizontal: true
+  - type: custom:stack-in-card
     cards:
       - type: custom:mushroom-template-card
+        primary: Trapkast
+        icon: hue:room-stairs
+        icon_color: teal
+        layout: horizontal
         entity: light.trapkast_hue
-        layout: vertical
-        icon: |-
-          {% if is_state('light.trapkast_hue', 'on') %}
-          hue:single-spot
-          {% else %}
-          hue:single-spot
-          {% endif %}
-        icon_color: |-
-          {% if is_state('light.trapkast_hue', 'on') %}
-            yellow
-          {% endif %}
+        secondary: "{{states('sensor.trapkast_temperature') }}°C"
         tap_action:
-          action: toggle
-        double_tap_action:
-          action: call-service
-          service: input_boolean.toggle
-          target:
-            entity_id: input_boolean.node_red_trapkast_automations
-          data: {}
+          action: navigate
+          navigation_path: /dashboard-subviews/trapkast
+        badge_icon: |
+          {% if is_state('binary_sensor.trapkast_occupancy', 'on') %}
+            mdi:human-greeting
+          {% else %}  
+            mdi:motion-sensor-off
+          {% endif %}
+        badge_color: |
+          {% if is_state('binary_sensor.trapkast_occupancy', 'on') %}
+            green
+          {% else %}  
+            disabled
+          {% endif %}
+        fill_container: true
+        multiline_secondary: false
+        card_mod:
+          style: |
+            ha-card {
+              z-index: 1;
+            }
+      - type: custom:mini-graph-card
+        entities:
+          - entity: sensor.trapkast_temperature
+            name: Temperature
+        color_thresholds:
+          - value: -20
+            color: "#264CFF"
+          - value: -15
+            color: "#3FA0FF"
+          - value: -10
+            color: "#72D8FF"
+          - value: -5
+            color: "#AAF7FF"
+          - value: 0
+            color: "#E0FFFF"
+          - value: 5
+            color: "#FFFFBF"
+          - value: 10
+            color: "#FFE099"
+          - value: 15
+            color: "#FFAD72"
+          - value: 20
+            color: "#F76D5E"
+          - value: 25
+            color: "#D82632"
+          - value: 30
+            color: "#A50021"
+        height: 50
+        hours_to_show: 24
+        line_width: 2
+        font_size: 50
+        animate: true
+        show:
+          name: false
+          icon: false
+          state: false
+          legend: false
+          fill: fade
+          labels: false
+          labels_secondary: false
+          points: false
+        card_mod:
+          style: |
+            ha-card {
+              position: absolute !important;
+              height: 100%;
+              width: 100%;
+              top: 0px;
+              --ha-card-border-width: 0;
+            }
+            ha-card:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, var(--card-background-color) 20%, transparent);
+            }
+  - type: custom:vertical-stack-in-card
+    mode: vertical
+    cards:
+      - type: custom:vertical-stack-in-card
+        horizontal: true
+        cards:
+          - type: custom:mushroom-template-card
+            entity: light.trapkast_hue
+            layout: vertical
+            icon: |-
+              {% if is_state('light.trapkast_hue', 'on') %}
+              hue:single-spot
+              {% else %}
+              hue:single-spot
+              {% endif %}
+            icon_color: |-
+              {% if is_state('light.trapkast_hue', 'on') %}
+                yellow
+              {% endif %}
+            tap_action:
+              action: toggle
+            double_tap_action:
+              action: call-service
+              service: input_boolean.toggle
+              target:
+                entity_id: input_boolean.node_red_trapkast_automations
+              data: {}
+            card_mod:
+              style:
+                mushroom-shape-icon$: >
+                  {% if is_state('input_boolean.node_red_trapkast_automations',
+                  'on') %}
+
+                  .shape {
+                    --shape-animation: ping 3s infinite;
+                  }
+
+                  @keyframes ping {
+                    0% {
+                      box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
+                    }
+                    
+                    100% {
+                      box-shadow: 0 0 5px 5px transparent;
+                    }
+                  }
+
+                  {% elif
+                  is_state('input_boolean.node_red_trapkast_automations', 'off')
+                  %}
+
+                  {% endif %}
+      - type: custom:mushroom-chips-card
+        chips:
+          - type: template
+            icon: mdi:motion-sensor
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                blue
+                {% else %}
+                disabled
+                {% endif %}
+            entity: binary_sensor.trapkast_occupancy
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:water-pump
+            icon_color: |2-
+                {% if states('sensor.watermeter_flow') | float > 0 %}
+                blue
+                {% else %}
+                disabled
+                {% endif %}
+            entity: sensor.watermeter_flow
+            tap_action:
+              action: more-info
+          - type: template
+            icon: mdi:heat-pump-outline
+            icon_color: |2-
+                {% if is_state(entity, 'on') %}
+                red
+                {% else %}
+                disabled
+                {% endif %}
+            entity: switch.vloerverwarming_pomp_plug_tuya
+            tap_action:
+              action: more-info
+          - type: template
+            icon: |-
+              {% if is_state(entity, 'unavailable') %}
+              mdi:car-off
+              {% else %}
+              mdi:car-electric
+              {% endif %}
+            icon_color: |2-
+                {% if is_state(entity, 'unavailable') %}
+                disabled
+                {% else %}
+                green
+                {% endif %}
+            entity: sensor.esp_remote_car_rc_car_wifi_signal_db
+            tap_action:
+              action: navigate
+              navigation_path: /dashboard-subviews/vehicles
+        alignment: end
         card_mod:
           style:
-            mushroom-shape-icon$: >
-              {% if is_state('input_boolean.node_red_trapkast_automations',
-              'on') %}
-
+            mushroom-template-chip: |
+              ha-card {
+                  --ha-card-box-shadow: none;
+                  --ha-card-border-width: 0;
+                  --chip-background: none;
+                  --chip-box-shadow: none;
+                  --chip-spacing: 0;
+                  : -36px;
+              } 
+            mushroom-template-chip:nth-child(1)$: |
+              {% if is_state('binary_sensor.trapkast_occupancy','on') %}
+              ha-state-icon {
+                animation: clip 2s linear infinite;
+              }
+              @keyframes clip {
+                50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
+              }
               .shape {
-                --shape-animation: ping 3s infinite;
+                --shape-animation: motion 2s linear infinite;
               }
-
-              @keyframes ping {
-                0% {
-                  box-shadow: 0 0 5px 1px rgba(var(--rgb-blue), 0.7);
-                }
-                
-                100% {
-                  box-shadow: 0 0 5px 5px transparent;
-                }
+              @keyframes motion {
+                0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
+                50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
               }
-
-              {% elif is_state('input_boolean.node_red_trapkast_automations',
-              'off') %}
+              }
+              {% else %}
 
               {% endif %}
-  - type: custom:mushroom-chips-card
-    chips:
-      - type: template
-        icon: mdi:motion-sensor
-        icon_color: |2-
-            {% if is_state(entity, 'on') %}
-            blue
-            {% else %}
-            grey
-            {% endif %}
-        entity: binary_sensor.trapkast_motion_aqara_occupancy
-        tap_action:
-          action: more-info
-      - type: template
-        icon: mdi:water-pump
-        icon_color: |2-
-            {% if states('sensor.watermeter_flow') | float > 0 %}
-            blue
-            {% else %}
-            grey
-            {% endif %}
-        entity: sensor.watermeter_flow
-        tap_action:
-          action: more-info
-    alignment: end
-    card_mod:
-      style:
-        mushroom-template-chip: |
-          ha-card {
-              --ha-card-box-shadow: none;
-              --ha-card-border-width: 0;
-              --chip-background: none;
-              --chip-box-shadow: none;
-              --chip-spacing: 0;
-              : -36px;
-          } 
-        mushroom-template-chip:nth-child(1)$: >
-          {% if is_state('binary_sensor.trapkast_motion_aqara_occupancy','on')
-          %}
+              }
+            mushroom-template-chip:nth-child(2)$: |
+              {% if states('sensor.watermeter_flow') | float > 0 %}
+              ha-state-icon {
+                animation: drip 2s infinite; 
+              } @keyframes drip {
+                0%, 100% { clip-path: inset(0 0 0 0); }
+                15%, 85% { clip-path: polygon(0 0, 100% 0, 100% 57%, 64% 57%, 64% 100%, 0 100%); }
+              }
+              }
+              {% else %}
 
-          ha-state-icon {
-            animation: clip 2s linear infinite;
-          }
-
-          @keyframes clip {
-            50% { clip-path: polygon(0 0, 55% 0, 100% 100%, 0 100%); }
-          }
-
-          .shape {
-            --shape-animation: motion 2s linear infinite;
-          }
-
-          @keyframes motion {
-            0%, 100% { --shape-color: rgba(var(--rgb-blue), 0.3); }
-            50% { --shape-color: rgba(var(--rgb-blue), 0.2); }
-          }
-
-          }
-
-          {% else %}
-
-
-          {% endif %}
-
-          }
-        mushroom-template-chip:nth-child(2)$: |
-          {% if states('sensor.watermeter_flow') | float > 0 %}
-          ha-state-icon {
-            animation: drip 2s infinite; 
-          } @keyframes drip {
-            0%, 100% { clip-path: inset(0 0 0 0); }
-            15%, 85% { clip-path: polygon(0 0, 100% 0, 100% 57%, 64% 57%, 64% 100%, 0 100%); }
-          }
-          }
-          {% else %}
-
-          {% endif %}
-          }
+              {% endif %}
+              }
