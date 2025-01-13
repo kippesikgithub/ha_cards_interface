@@ -1,5 +1,4 @@
 type: custom:vertical-stack-in-card
-mode: vertical
 cards:
   - type: custom:mushroom-template-card
     primary: Keuken
@@ -8,12 +7,12 @@ cards:
     layout: horizontal
     entity: light.woonkamer_keuken_dimmer_6sp_ecodim
     secondary: >-
-      {{states('sensor.woonkamer_motion_hue_temperature') }}°C |
-      {{states('sensor.woonkamer_motion_hue_illuminance_lux') | int }}lux |
-      {{states('sensor.keuken_total_energy_watt') | int }}W
+      🌡️{{states('sensor.woonkamer_temperature') }}°C |
+      💡{{states('sensor.woonkamer_illuminance') | int }}lux |
+      🔌{{states('sensor.keuken_total_energy_watt') | int }}W
     tap_action:
       action: navigate
-      navigation_path: /lovelace-tablet/keuken
+      navigation_path: /dashboard-subviews/keuken
   - type: custom:vertical-stack-in-card
     horizontal: true
     cards:
@@ -35,12 +34,12 @@ cards:
       - type: template
         icon: mdi:coffee-maker
         icon_color: |2-
-            {% if states('sensor.shelly1pm_koffie_power') | float > 2 %}
+            {% if states('sensor.keuken_koffie_plug_bw_power') | float > 2 %}
             brown
             {% else %}
             disabled
             {% endif %}
-        entity: sensor.shelly1pm_koffie_power
+        entity: sensor.keuken_koffie_plug_bw_power
         tap_action:
           action: more-info
       - type: template
@@ -54,17 +53,6 @@ cards:
         entity: binary_sensor.vaatwasser_status
         tap_action:
           action: more-info
-      - type: conditional
-        conditions:
-          - entity: sensor.espresense_keuken_count
-            state_not: '0'
-        chip:
-          type: entity
-          icon: mdi:human-greeting
-          icon_color: green
-          entity: sensor.espresense_keuken_count
-          tap_action:
-            action: more-info
       - type: template
         icon: |-
           {% if is_state(entity, 'off') %}
@@ -109,7 +97,7 @@ cards:
             : -36px;
           } 
         mushroom-template-chip:nth-child(1)$: |
-          {% if states('sensor.shelly1pm_koffie_power') | float > 2 %}
+          {% if states('sensor.keuken_koffie_plug_bw_power') | float > 2 %}
           ha-state-icon {
             animation: java 4s linear infinite;
           }
