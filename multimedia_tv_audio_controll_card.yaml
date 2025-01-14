@@ -3,10 +3,8 @@ columns: 2
 type: grid
 cards:
   - type: custom:vertical-stack-in-card
-    mode: vertical
     cards:
       - type: custom:vertical-stack-in-card
-        horizontal: true
         cards:
           - type: custom:mushroom-template-card
             icon: >-
@@ -19,7 +17,6 @@ cards:
               float < 1 %}  disabled  {% elif
               states('sensor.woonkamer_multimedia_tv_plug_tuya_power') | float >
               1 %} green  {% else %}  red  {% endif %}
-            layout: horizontal
             entity: script.tv_philipstv_ir_on_off
             tap_action:
               action: toggle
@@ -36,7 +33,6 @@ cards:
               {% else %}
               disabled
               {% endif %}
-            layout: horizontal
             entity: media_player.ziggonext
             tap_action:
               action: toggle
@@ -131,7 +127,6 @@ cards:
           float < 1 %} disabled {% elif
           states('sensor.woonkamer_multimedia_audio_plug_tuya_power') | float >
           1 %} green {% else %} red {% endif %}
-        layout: horizontal
         entity: script.audio_z5500_on_off
         tap_action:
           action: toggle
