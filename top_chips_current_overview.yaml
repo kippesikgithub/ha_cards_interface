@@ -205,6 +205,7 @@ card_mod:
         --ha-card-box-shadow: none;
         --chip-background: none;
         --chip-box-shadow: none;
+        --chip-height: 20px;
         --chip-spacing: 0;
         : -36px;
       } 
