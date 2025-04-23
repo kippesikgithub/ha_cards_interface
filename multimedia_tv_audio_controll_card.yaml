@@ -4,7 +4,8 @@ type: grid
 cards:
   - type: custom:vertical-stack-in-card
     cards:
-      - type: custom:vertical-stack-in-card
+      - type: custom:stack-in-card
+        mode: horizontal
         cards:
           - type: custom:mushroom-template-card
             icon: >-
